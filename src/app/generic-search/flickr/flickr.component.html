@@ -1,0 +1,365 @@
+
+<!--<section class="box-typical">-->
+
+
+  <!--<div class="box-typical-body">-->
+    <!--<div class="table-responsive">-->
+      <!--<div class="bootstrap-table">-->
+        <!--<p-dataTable #dt exportFilename="Influencers" [value]="influencers.serializer"-->
+                     <!--class="table table-striped table-hover" >-->
+
+          <!--<p-header class="box-typical-header">-->
+            <!--<div class="fixed-table-toolbar">-->
+              <!--<div class="bars pull-left">-->
+                <!--<div id="toolbar">-->
+                  <!--<div class="bootstrap-table-header">Search results</div>-->
+                  <!--<button  class="btn btn-primary" (click)="add_create_list()">-->
+                    <!--&lt;!&ndash;<i class="font-icon font-icon-close-2"></i> &ndash;&gt;-->
+                    <!--Add to list-->
+                  <!--</button>-->
+                  <!--<button  class="btn btn-primary" (click)="clear_list()">-->
+                    <!--&lt;!&ndash;<i class="font-icon font-icon-close-2"></i> &ndash;&gt;-->
+                    <!--Clear selected-->
+                  <!--</button>-->
+                <!--</div>-->
+              <!--</div>-->
+              <!--<div class="columns columns-right btn-group pull-right">-->
+
+                <!--<div class="export btn-group">-->
+                  <!--<button class="btn btn-default dropdown-toggle" data-toggle="dropdown"-->
+                          <!--type="button" aria-expanded="false"><i-->
+                          <!--class="font-icon font-icon-download"></i> <span class="caret"></span>-->
+                  <!--</button>-->
+                  <!--<ul class="dropdown-menu" role="menu" style="min-width: fit-content;left: auto">-->
+                    <!--<li data-type="json"><a href="javascript:void(0)">JSON</a></li>-->
+                    <!--<li data-type="xml"><a href="javascript:void(0)">XML</a></li>-->
+                    <!--<li data-type="csv"><a href="javascript:void(0)">CSV</a></li>-->
+                    <!--<li data-type="txt"><a href="javascript:void(0)">TXT</a></li>-->
+                    <!--<li data-type="sql"><a href="javascript:void(0)">SQL</a></li>-->
+                    <!--<li data-type="excel"><a href="javascript:void(0)">MS-Excel</a></li>-->
+                  <!--</ul>-->
+                <!--</div>-->
+              <!--</div>-->
+
+
+            <!--</div>-->
+          <!--</p-header>-->
+
+
+
+          <!--<p-column>-->
+            <!--<ng-template pTemplate="header">-->
+              <!--<div class="table-check">-->
+                <!--<div class="checkbox checkbox-only">-->
+                  <!--<input type="checkbox"  id="table-check-head" name="main_checkbox" [(ngModel)]="main_checkbox" (change)="cheakall($event.target.checked)">-->
+                  <!--<label for="table-check-head"></label>-->
+                <!--</div>-->
+              <!--</div>-->
+            <!--</ng-template>-->
+            <!--<ng-template pTemplate="body" let-col let-car="rowData">-->
+
+              <!--<div class="table-check">-->
+                <!--<div class="checkbox checkbox-only">-->
+                  <!--<input type="checkbox"  name="{{car['id']}}" [(ngModel)]="inflist[car['id']]" (change)="chec()" id="table-check-{{car['id']}}">-->
+                  <!--<label for="table-check-{{car['id']}}"></label>-->
+                <!--</div>-->
+              <!--</div>-->
+            <!--</ng-template>-->
+          <!--</p-column>-->
+          <!--<p-column>-->
+            <!--<ng-template pTemplate="header">-->
+              <!--<div class="th-inner" style="text-align: center">-->
+                <!--<label style="" >Title</label>-->
+              <!--</div>-->
+              <!--<div class="fht-cell"></div>-->
+            <!--</ng-template>-->
+            <!--<ng-template pTemplate="body" let-col let-car="rowData">-->
+              <!--<div class="mail-box-item selected-line red" (click)="goFlickrProfile(car)" style=" max-width: 250px; cursor: pointer">-->
+
+                <!--<div class="mail-box-item-header">-->
+
+                  <!--<div class="mail-box-item-photo">-->
+                    <!--<img *ngIf="car['image_link']"-->
+                         <!--src="{{car['image_link']}}"-->
+                         <!--style="width: 32px;height: 32px" alt="" data-toggle="tooltip"-->
+                         <!--data-placement="bottom">-->
+
+                  <!--</div>-->
+                  <!--<div class="tbl mail-box-item-head-tbl">-->
+                    <!--<div class="tbl-row">-->
+                      <!--<div class="tbl-cell">-->
+                        <!--<div class="tbl mail-box-item-user-tbl">-->
+                          <!--<div class="tbl-row">-->
+                            <!--<div class="tbl-cell tbl-cell-name"-->
+                                 <!--[innerHTML]="car['profile_name']"></div>-->
+                            <!--&lt;!&ndash;<div class="tbl-cell tbl-cell-new"><span class="label label-pill label-danger">11</span></div>&ndash;&gt;-->
+                          <!--</div>-->
+                        <!--</div>-->
+
+                      <!--</div>-->
+                      <!--&lt;!&ndash;<div class="tbl-cell tbl-cell-date" title="Type of website"><strong>{{car['data']['site_type']&ndash;&gt;-->
+                      <!--&lt;!&ndash;| uppercase}}</strong></div>&ndash;&gt;-->
+                    <!--</div>-->
+                  <!--</div>-->
+                <!--</div>-->
+
+              <!--</div>-->
+
+            <!--</ng-template>-->
+          <!--</p-column>-->
+          <!--<p-column>-->
+            <!--<ng-template pTemplate="header">-->
+              <!--<div class="th-inner" style="text-align: center">-->
+                <!--<label style="" >Followers</label>-->
+              <!--</div>-->
+              <!--<div class="fht-cell"></div>-->
+            <!--</ng-template>-->
+            <!--<ng-template pTemplate="body" let-col let-car="rowData">-->
+              <!--{{car['followers']}}-->
+            <!--</ng-template>-->
+          <!--</p-column>-->
+          <!--<p-column>-->
+            <!--<ng-template pTemplate="header">-->
+              <!--<div class="th-inner" style="text-align: center">-->
+                <!--<label style="" >Joined Flickr</label>-->
+              <!--</div>-->
+              <!--<div class="fht-cell"></div>-->
+            <!--</ng-template>-->
+            <!--<ng-template pTemplate="body" let-col let-car="rowData">-->
+              <!--{{car['joined_date'] }}-->
+            <!--</ng-template>-->
+          <!--</p-column>-->
+          <!--<p-column>-->
+            <!--<ng-template pTemplate="header">-->
+              <!--<div class="th-inner" style="text-align: center">-->
+                <!--<label style="" >Profile</label>-->
+              <!--</div>-->
+              <!--<div class="fht-cell"></div>-->
+            <!--</ng-template>-->
+            <!--<ng-template pTemplate="body" let-car="rowData">-->
+              <!--{{car['profile_linked']}}                        </ng-template>-->
+          <!--</p-column>-->
+          <!--<p-column>-->
+            <!--<ng-template pTemplate="header">-->
+              <!--<div class="th-inner" style="text-align: center">-->
+                <!--<label style="" >Rank</label>-->
+              <!--</div>-->
+              <!--<div class="fht-cell"></div>-->
+            <!--</ng-template>-->
+            <!--<div class="th-inner" style="text-align: left">Perfomance-->
+              <!--<div class="export btn-group" style="float: right; background-color: black">-->
+                <!--<button class="btn btn-default dropdown-toggle"  style=" background-color: black" data-toggle="dropdown"-->
+                        <!--type="button" aria-expanded="false"><i-->
+                        <!--class="font-icon font-icon-download"></i> <span class="caret"></span>-->
+                <!--</button>-->
+                <!--<ul class="dropdown-menu" role="menu" style="min-width: 100%;-->
+    <!--font-size: 14px;-->
+    <!--text-align: -webkit-center;left: auto">-->
+                  <!--<li data-type="json"><a  id="clickMe">PDF</a></li>-->
+                  <!--<li data-type="xml"><a href="javascript:void(0)">XML</a></li>-->
+                  <!--<li data-type="csv"><a  >CSV</a></li>-->
+                  <!--<li data-type="txt"><a href="javascript:void(0)">TXT</a></li>-->
+                  <!--<li data-type="sql"><a href="javascript:void(0)">SQL</a></li>-->
+                  <!--<li data-type="excel"><a href="javascript:void(0)">MS-Excel</a></li>-->
+                <!--</ul>-->
+              <!--</div>-->
+            <!--</div>-->
+            <!--<ng-template pTemplate="body" let-car="rowData" >-->
+              <!--<round-progress [current]="car['profile_rank']"-->
+                              <!--[max]="max"-->
+                              <!--[color]="'#ca260f'"-->
+                              <!--[background]="'#eaeaea'"-->
+                              <!--[radius]="100"-->
+                              <!--[stroke]="20"-->
+                              <!--[semicircle]="false"-->
+                              <!--[rounded]="false"-->
+                              <!--[clockwise]="true"-->
+                              <!--[responsive]="false"-->
+                              <!--[duration]="800"-->
+                              <!--[animation]="'easeInOutQuart'"-->
+                              <!--[animationDelay]="5"-->
+                              <!--style="margin: auto; max-width:70px; max-height: 46px; overflow: unset"   >-->
+
+              <!--</round-progress>-->
+              <!--<div style="position: relative; bottom: 22px;font-size:16px; font-weight: bold">{{car['profile_rank']}}</div>-->
+
+
+
+              <!--&lt;!&ndash;<div class="chart chart-table">&ndash;&gt;-->
+              <!--&lt;!&ndash;&lt;!&ndash;{{(row.ER.replace('%',''))|round}}&ndash;&gt;&ndash;&gt;-->
+              <!--&lt;!&ndash;<div class="bar bar-{{(car['ER'].replace('%',''))|round}} navy">&ndash;&gt;-->
+              <!--&lt;!&ndash;<div class="face top">&ndash;&gt;-->
+              <!--&lt;!&ndash;<div class="growing-bar"></div>&ndash;&gt;-->
+              <!--&lt;!&ndash;</div>&ndash;&gt;-->
+              <!--&lt;!&ndash;<div class="face side-0">&ndash;&gt;-->
+              <!--&lt;!&ndash;<div class="growing-bar"></div>&ndash;&gt;-->
+              <!--&lt;!&ndash;</div>&ndash;&gt;-->
+              <!--&lt;!&ndash;<div class="face floor">&ndash;&gt;-->
+              <!--&lt;!&ndash;<div class="growing-bar"></div>&ndash;&gt;-->
+              <!--&lt;!&ndash;</div>&ndash;&gt;-->
+              <!--&lt;!&ndash;<div class="face side-a">&ndash;&gt;-->
+              <!--&lt;!&ndash;</div>&ndash;&gt;-->
+              <!--&lt;!&ndash;<div class="face side-b">&ndash;&gt;-->
+              <!--&lt;!&ndash;</div>&ndash;&gt;-->
+              <!--&lt;!&ndash;<div class="face side-1">&ndash;&gt;-->
+              <!--&lt;!&ndash;<div class="growing-bar">&ndash;&gt;-->
+              <!--&lt;!&ndash;</div>&ndash;&gt;-->
+              <!--&lt;!&ndash;</div>&ndash;&gt;-->
+              <!--&lt;!&ndash;</div>&ndash;&gt;-->
+              <!--&lt;!&ndash;</div>&ndash;&gt;-->
+            <!--</ng-template>-->
+          <!--</p-column>-->
+
+
+        <!--</p-dataTable>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
+<!--</section>-->
+<div class="container-fluid" >
+
+  <div class="row" id="myHeader">
+    <div class="col-md-6">
+      <div class="col-md-3">
+        <div id="ck-button">
+          <label>
+
+            <input type="checkbox"  (change)="cheakall($event.target.checked)" ><span>Select All</span>
+          </label>
+        </div>
+      </div>
+      <div class="col-md-9 text-left">
+        <button  class="btn btn-success" (click)="add_create_list()"> Add to list</button>
+
+      </div>
+    </div>
+    <div class="col-md-6 text-right">
+      <h5 style="margin: 10px; color: gray; ">Displaying {{influencers.serializer.length}} of {{influencers.totalItems}} Results</h5>
+
+    </div>
+  </div>
+
+  <div class="profile-container" *ngFor="let item of influencers.serializer" >
+    <div class="row main-div">
+
+      <div class="col-md-3 image-area">
+
+
+        <div class="p-checkbox" type="checkbox">
+          <input type="checkbox" style="display: flex" name="{{item['id']}}" [(ngModel)]="inflist[item['id']]" (change)="chec()" id="table-check-{{item['id']}}">
+          <label for="table-check-{{item['id']}}"></label>
+        </div>
+
+        <div class="p-img">
+          <img [src]="item['image_link']">
+        </div>
+
+      </div>
+
+
+
+
+
+      <div class="col-md-9 detail-area" >
+        <h3 class="">
+          <img src="../../assets/header-images/flickr_32.png">
+          {{item['profile_name']}}
+        </h3>
+        <div class="">
+          <p class="item-content" title="{{item['description']}}">{{item['description']}}</p>
+        </div>
+        <div class="row">
+          <div class="col-md-3 text-left">
+            <label class="item-loc"> <i class="fa fa-map-marker" ></i> Category: <span class="list-item1">Global</span> </label>
+
+          </div>
+          <div class="col-md-9 text-left">
+
+            <label class="item-loc"> <i class="fa fa-location-arrow"></i> Profile: <a (click)="goToFlickr(item['profile_linked'])">{{item['profile_linked']}}</a></label>
+          </div>
+        </div>
+        <hr style="color: #555555">
+        <div class="item-loc" >
+          <ul style="display: flex; justify-content: space-between">
+            <li><span class="right-item"><i class="fa fa-users" ></i> Followers:</span>
+
+
+              <span *ngIf="item['followers']<100" class="list-item1"><span class="label label-danger"><small>Poor</small> {{item['followers']}}</span></span>
+              <span *ngIf="item['followers']>100 && item['total_claps']<500" class="list-item1"><span class="label label-primary"><small>Normal</small> {{item['followers']}}</span></span>
+              <span *ngIf="item['followers']>500" class="list-item1"><span class="label label-success"><small>Perfect</small> {{item['followers']}}</span></span>              </li>
+            <li>
+              <span class="right-item"><i class="fa fa-calendar" ></i> Joined Date:</span> <span class="list-item1">{{item['joined_date']}}</span></li>
+            <li>
+              <span class="right-item"> <i class="fa fa-bar-chart" ></i> Rank:</span>
+
+              <span *ngIf="item['profile_rank']<5" class="list-item1"><span class="label label-danger"><small>Poor</small> {{item['profile_rank']}}</span></span>
+              <span *ngIf="item['profile_rank']==5 || item['profile_rank']>5" class="list-item1"><span class="label label-success"><small>Perfect</small> {{item['profile_rank']}}</span></span>
+            </li>
+            <!--<li><span class="right-item"><i class="fa fa-upload" style=" padding-left: 5px"></i> Broadcast :</span> <span class="list-item1">{{item['braodcasts']}} | </span> </li>-->
+
+          </ul>
+        </div>
+        <hr style="color: #555555">
+        <div class="item-loc" >
+          <ul style="display: flex; padding-top: 5px">
+            <!--<li style="font-weight: bolder"> Videos Uploads | </li>-->
+            <!--<li><span class="right-item"> <i class="fa fa-sticky-note-o" ></i> Posts :</span> <span class="list-item1">{{item['posts']}} | </span></li>-->
+            <!--<li *ngIf="item['twitter_profile']"><span class="right-item"><i class="fa fa-twitter" ></i> Twitter: </span> <span class="list-item1">{{item['twitter_profile']}}</span></li>-->
+            <!--<li *ngIf="!item['twitter_profile']"><span class="right-item"><i class="fa fa-twitter" ></i> Twitter: </span> <span class="list-item1">N/A</span></li>-->
+
+
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row" style="margin-top: 1%">
+  <div class="col-md-12 text-center">
+    <nav>
+      <ul *ngIf="pager.pages && pager.pages.length" class="pagination pagination-lg">
+
+        <!--<li [ngClass]="{disabled:pager.currentPage === 1}">-->
+        <!--<a (click)="setPage(pager.currentPage - 1)" class="page-link" aria-label="Previous"></a>-->
+        <!--</li>-->
+        <li class="page-item" [ngClass]="{disabled:pager.currentPage === 1}">
+          <a class="page-link" (click)="setPage(1)" aria-label="Previous">
+            First
+          </a>
+        </li>
+        <li class="page-item" [ngClass]="{disabled:pager.currentPage === 1}">
+          <a class="page-link" (click)="setPage(pager.currentPage - 1)" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+            <span class="sr-only">Previous</span>
+          </a>
+        </li>
+
+        <li class="page-item" *ngFor="let page of pager.pages"
+            [ngClass]="{active:pager.currentPage === page}"
+            (click)="setPage(page)"><a class="page-link" (click)="navSearch()">{{page}}</a></li>
+        <!--<li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">-->
+        <!--<a (click)="setPage(pager.currentPage + 1)">Next</a>-->
+        <!--</li>-->
+        <li class="page-item" [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+          <a class="page-link" (click)="setPage(pager.currentPage + 1)" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+            <span class="sr-only">Next</span>
+          </a>
+        </li>
+        <li class="page-item" [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+          <a class="page-link" (click)="setPage(pager.totalPages)" aria-label="Next">
+            Last
+          </a>
+        </li>
+        <!--<li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">-->
+        <!--<a (click)="setPage(pager.totalPages)">Last</a>-->
+        <!--</li>-->
+      </ul>
+    </nav>
+
+  </div>
+</div>
+
+
+

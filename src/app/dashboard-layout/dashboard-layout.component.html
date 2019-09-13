@@ -1,0 +1,40 @@
+<div class="navbar-fixed">
+    <app-header></app-header>
+    <!--<app-loader></app-loader>-->
+    <!-- <app-usernavbar></app-usernavbar> -->
+  <span class="openbtn" (click)="openNav()">&#9776;</span>
+</div>
+
+<!--<div class="margin-t-80">-->
+    <!--<span class="openbtn" (click)="openNav()">&#9776;</span>-->
+    <!--<div id="mySidenav" class="sidenav col-xl-3 col-xxl-4 col-lg-2 col-md-4" data-spy="affix" data-offset-top="137" style="background: #000000">-->
+        <!--&lt;!&ndash;<a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>&ndash;&gt;-->
+        <!--<app-side-menu></app-side-menu>-->
+    <!--</div>-->
+
+    <!--<div class="col-lg-offset-2 col-md-offset-2 col-lg-10 pull-right padding-zero-i sh-top-menu-fix" style="background: #fafafa; margin-top: -25px; float: right">-->
+
+        <!--<div class="padding-box" style="position: relative;">-->
+            <!--<router-outlet></router-outlet>-->
+
+
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
+<div class="margin-t-80">
+
+  <div id="mySidenav" class="sidenav col-xl-3 col-xxl-4 col-lg-2 col-md-4" data-spy="affix" data-offset-top="137" style="background: #000000">
+    <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
+    <app-side-menu></app-side-menu>
+  </div>
+
+  <div class="col-lg-offset-2 col-md-offset-2 col-lg-10 pull-right padding-zero-i sh-top-menu-fix" style="background: #fafafa; margin-top: -25px; float: right">
+
+    <div class="padding-box" style="position: relative;">
+      <router-outlet></router-outlet>
+
+
+    </div>
+  </div>
+</div>
+

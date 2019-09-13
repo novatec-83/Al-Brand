@@ -1,0 +1,189 @@
+.example-full-width input{
+  width: 100%;
+  border-radius: 5px;
+
+}
+.mat-form-field-placeholder-wrapper{
+  margin: 1%!important;
+  font-size: 23px!important;
+}
+
+.popup-close-button{
+  width: 50px;
+  height: 50px;
+  border-radius: 38px;
+  background: #000000;
+  position: absolute;
+  top: -20px;
+  right: -10px;
+  cursor: pointer;
+  transition: all .1s ease-in-out;
+  color: #fff;
+  font-size: 26px;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 500;
+  text-align: center;
+  line-height: 50px;
+  z-index: 1;
+}
+.card-header{
+  width: 82%;
+  height: 50px;
+  border-radius: 5px;
+  background: #000000;
+  position: absolute;
+  top: -25px;
+  right: 70px;
+  padding: 1px;
+  cursor: pointer;
+  transition: all .1s ease-in-out;
+  color: #fff;
+  font-size: 26px;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 500;
+  text-align: center;
+  line-height: 50px;
+  z-index: 1;
+}
+.modal-content{
+  width: 115%!important;
+}
+[placeholder], input[placeholder]{
+  color: #0A0A0A!important;
+
+}
+mat-tab-group{
+  -webkit-box-shadow: 0 3px 5px 0 rgba(0,0,0,.5),0 6px 20px 0 rgba(0,0,0,.19)!important;
+  box-shadow: 0 3px 5px 0 rgba(0,0,0,.5),0 6px 20px 0 rgba(0,0,0,.19)!important;
+}
+section{
+  -webkit-box-shadow: 0 3px 5px 0 rgba(0,0,0,.5),0 6px 20px 0 rgba(0,0,0,.19)!important;
+  box-shadow: 0 3px 5px 0 rgba(0,0,0,.5),0 6px 20px 0 rgba(0,0,0,.19)!important;
+}
+.body{
+  background-color: #f9f9f9!important;
+}
+mat-form-field{
+  width: 75%;
+  line-height: 0.95;
+}
+.col-md-6{
+  margin-top: 0!important;
+}
+.btn-rounded {
+  background: #000;
+  color: #fff;
+  text-align: center;
+  margin-top: 3%;
+  border-color: black;
+  font-size: 17px;
+  box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.19) !important;
+}
+.list-row{
+  margin-left: 15px;
+  border-radius: 3px;
+  height: 45px;
+  /*-webkit-box-shadow: 0 3px 5px 0 rgba(0,0,0,.5),0 6px 20px 0 rgba(0,0,0,.19)!important;*/
+  /*box-shadow: 0 0px 0px 0 rgba(0,0,0,.5),0 0px 2px 0 rgba(0,0,0,.19)!important;*/
+}
+.profile-container{
+  width: 100%;
+  flex-direction: column;
+  position: relative;
+  border-radius: 5px;
+  background-color: #fff;
+  /*box-shadow: 0 3px 4px 0 #bdbdc3;*/
+  box-shadow: 0 3px 5px 0 rgba(0,0,0,.5),0 6px 20px 0 rgba(0,0,0,.19)!important;
+  max-width: 1200px;
+  display: inline-block;
+  /*height: 165px;*/
+  margin-top: 18px;
+}
+.loaded-container{
+  width: 100%;
+  flex-direction: column;
+  position: relative;
+  border-radius: 5px;
+  background-color: #fff;
+  /*box-shadow: 0 3px 4px 0 #bdbdc3;*/
+  box-shadow: 0 3px 5px 0 rgba(0,0,0,.5),0 6px 20px 0 rgba(0,0,0,.19)!important;
+  max-width: 1200px;
+  /*height: 300px;*/
+  /*display: inline-block;*/
+  margin-top: 18px;
+}
+.profile-checkbox {
+  display: flex;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+  width: 65px;
+  /* height: 100%; */
+  /* padding-left: 12px; */
+  padding-right: 12px;
+  border-right: 1px solid #ebecf3;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -ms-flex-align: center;
+  align-items: center;
+  /* background-color: #fff; */
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  cursor: pointer;
+}
+input[type=checkbox]{
+  zoom: 1.5;
+}
+.tbl-cell{
+  font-weight: 600;
+  font-size: 16px;
+}
+i{
+  color: white;
+}
+.item-content{
+
+  color: #919fa9;
+  font-size: 14px;
+
+}
+.item-loc{
+  color: #919fa9;
+  font-size: 14px;
+}
+hr{
+  margin: 0!important;
+}
+.list-item1{
+  margin-right: 20px;
+  color: #0a6aa1;
+  font-weight: 700;
+  font-size: 15px;
+}
+.right-item{
+  color: #919fa9;
+  font-size: 14px;
+}
+.btn-success{
+  background: black;
+  border-radius: 50px;
+  border-color: black;
+  padding: 8px 26px;
+  margin-top: 3px;
+  -webkit-box-shadow: 0 14px 26px -12px rgba(0, 0, 0, .42), 0 4px 23px 0 rgba(0, 0, 0, .12), 0 8px 10px -5px rgba(0, 0, 0, .2)!important;
+  box-shadow: 0 14px 26px -12px rgba(0, 0, 0, .42), 0 4px 23px 0 rgba(0, 0, 0, .12), 0 8px 10px -5px rgba(0, 0, 0, .2)!important;
+}
+.mat-tab-label-container{
+  background-color: black;
+  color: white;
+}
+.mat-tab-header{
+  background-color: black!important;
+}
+
+.close{
+  margin-top: -20px!important;
+}
+.temp{
+  font-weight: bolder;
+
+}

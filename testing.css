@@ -1,0 +1,229 @@
+
+.ui-dialog {
+    position: fixed;
+    padding: 0;
+}
+.ui-dialog .ui-dialog-titlebar {
+    padding: .5em .75em;
+    position: relative;
+    border: 0;
+}
+.ui-dialog .ui-dialog-content {
+    position: relative;
+    border: 0;
+    padding: .5em .75em;
+    background: none;
+    overflow: auto;
+    zoom: 1;
+}
+.ui-dialog .ui-dialog-buttonpane .ui-dialog-buttonset {
+    float: right;
+}
+
+.ui-dialog .ui-dialog-buttonpane button {
+    margin: .5em .4em .5em 0;
+    cursor: pointer;
+    float: right;
+}
+.ui-dialog .ui-resizable-se {
+    width: 14px;
+    height: 14px;
+    right: 3px;
+    bottom: 3px;
+}
+.ui-draggable .ui-dialog-titlebar {
+    cursor: move;
+}
+.ui-dialog .ui-dialog-titlebar-icon {
+    text-decoration: none
+}
+.ui-dialog .ui-dialog-titlebar-close {
+    float: right;
+    padding: .125em;
+    cursor: pointer;
+    border: 1px solid transparent;
+}
+.ui-dialog .ui-dialog-titlebar-close span {
+    display: block;
+    margin: 0;
+}
+
+.ui-dialog-footer {
+    padding: 1em;
+    border-width: 1px 0 0 0;
+    text-align: right;
+}
+
+.ui-dialog-mask {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+}
+
+/* ConfirmDialog */
+.ui-confirmdialog {
+    width: 30em;
+}
+
+.ui-confirmdialog.ui-dialog .ui-dialog-content {
+    padding: 1em 2em;
+}
+.ui-confirmdialog .ui-dialog-content .fa {
+    font-size: 1.5em;
+    vertical-align: middle;
+    margin-right: .5em;
+}
+.ui-confirmdialog .ui-dialog-content .ui-confirmdialog-message {
+    vertical-align: middle;
+}
+
+/* Fluid */
+.ui-fluid .ui-dialog-footer .ui-button {
+    width: auto;
+}
+
+/* RTL */
+.ui-rtl .ui-dialog .ui-dialog-titlebar-close  {
+    float: left;
+}
+
+.ui-rtl .ui-dialog .ui-dialog-buttonpane button {
+    text-align: right;
+}
+
+@media screen and (max-width: 40em) {
+    .ui-confirmdialog {
+        width: 90%;
+    }
+}
+
+.ui-datagrid .ui-paginator {
+    text-align: center;
+    border-top: 0 none;
+}
+.ui-datagrid .ui-paginator-top {
+    border-bottom: 0 none;
+}
+
+.ui-datagrid .ui-paginator-bottom {
+    border-top: 0 none;
+}
+
+.ui-datalist .ui-paginator {
+    border-top: 0 none;
+}
+
+.ui-datatable .ui-paginator {
+    padding: .125em;
+}
+
+.ui-datatable .ui-paginator-top {
+    border-bottom-width: 0;
+}
+
+.ui-datatable .ui-paginator-bottom {
+    border-top-width: 0;
+}
+
+.ui-paginator {
+    margin: 0;
+    text-align: center;
+    padding: .125em;
+}
+
+.ui-paginator .ui-paginator-top {
+    border-bottom: 0 none;
+}
+
+.ui-paginator .ui-paginator-bottom {
+    border-top:0 none;
+}
+
+.ui-paginator .ui-paginator-page,
+.ui-paginator .ui-paginator-pages,
+.ui-paginator .ui-paginator-next,
+.ui-paginator .ui-paginator-last,
+.ui-paginator .ui-paginator-first,
+.ui-paginator .ui-paginator-prev,
+.ui-paginator .ui-paginator-current {
+    display: inline-block;
+    padding: .125em .375em;
+    zoom: 1;
+    margin-left: .063em;
+    margin-right: .063em;
+    text-decoration: none;
+}
+
+.ui-paginator .ui-paginator-page,
+.ui-paginator .ui-paginator-next,
+.ui-paginator .ui-paginator-last,
+.ui-paginator .ui-paginator-first,
+.ui-paginator .ui-paginator-prev{
+    cursor: pointer;
+}
+
+.ui-paginator .ui-paginator-current,
+.ui-paginator .ui-paginator-rpp-options {
+    margin-left: 1em;
+    margin-right: 1em;
+    background-image: none;
+}
+
+.ui-paginator .ui-paginator-jtp-select option,
+.ui-paginator .ui-paginator-rpp-options option {
+    background-image: none;
+    border: 0 none;
+    box-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+}
+
+.ui-paginator a.ui-state-disabled {
+    outline: 0 none;
+}
+
+.ui-colorpicker-panel {
+    position: relative;
+    width: 193px;
+    height: 166px;
+    background-color: #323232;
+    border-color: #191919;
+}
+.ui-colorpicker-overlay-panel {
+    display: none;
+    position: absolute;
+}
+.ui-colorpicker-overlay {
+    position: relative;
+}
+.ui-widget-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.ui-overlaypanel {
+    padding: 0;
+    margin: 0;
+    position: absolute;
+}
+
+.ui-overlaypanel-content {
+    padding: 0.5em 1em;
+    background-color: aliceblue;
+}
+
+.ui-overlaypanel-close {
+    position: absolute;
+    top: -.5em;
+    right: -.5em;
+    -moz-border-radius: 100%;
+    -webkit-border-radius: 100%;
+    border-radius: 100%;
+}
+
+.ui-password-panel-overlay {
+    position: absolute;
+}
+

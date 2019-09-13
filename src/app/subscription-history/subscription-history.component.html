@@ -1,0 +1,56 @@
+<div class="row margin-0">
+  <div class="col-lg-11 col-md-11 col-sm-11 col-xs-11 center-admin-form" id="display_advance" style="min-height: 500px;">
+    <div class=" history-heading" style="margin: 2%">
+      <div class="history-header" *ngIf="result">
+        <h2>Subscription</h2>
+      </div>
+
+      <table class="table table-striped history-table" *ngIf="result">
+        <thead >
+        <tr>
+          <th>Package</th>
+          <th>Price</th>
+          <th>Start Date</th>
+          <th>Expiry Date</th>
+          <th>Payment Status</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr >
+          <!--<td> {{result.package}}</td>-->
+          <td *ngIf="result.package == '1'">Monthly</td>
+          <td *ngIf="result.package == '2'">Yearly</td>
+          <!--<td *ngIf="pkgList.duration== 'S'"> SixMonths PLAN</td>-->
+          <!--<td *ngIf="pkgList.duration == 'Y'"> Yearly PLAN</td>-->
+          <td><span>$ </span> {{result.amount}} </td>
+          <td>{{result.paymentdatetime}}</td>
+          <td>{{result.enddate}}</td>
+          <td *ngIf="result.paymentreceive == false"><button class="btn btn-rounded sh-btn-success" title="Active">False</button></td>
+          <td *ngIf="result.paymentreceive == true"><button class="btn btn-rounded sh-btn-success" title="Active">True</button></td>
+          <!--<td *ngIf="record.is_paid == false"><button (click)=" prv_stepdetail( pkgList.pkg_type,pkgList.duration)"-->
+                                                      <!--title="Subscribe Package" class="btn btn-primary">Subscribe Now <i class="fa fa-thumbtack"></i></button></td>-->
+        </tr>
+        <!-- <tr *ngIf="nofound" style="text-align:center;font-size:24px">
+            <td colspan="4">
+                <h2><span class="no-pkg">Packages</span> you subscribe will appear here.</h2>
+            </td>
+        </tr> -->
+        </tbody>
+      </table>
+      <button class="btn btn-rounded pull-right "  data-target="#modalCompose" data-toggle="modal" *ngIf="result" >
+        Generate Invoice
+      </button>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+<!-- ---------------------------- Template ---------------------------- -->
+
+

@@ -1,0 +1,8 @@
+.mat-form-field {
+    width: 100% !important;
+}
+.gallery-item {
+    display: inline-block;
+    vertical-align: top;
+    float: right;
+}

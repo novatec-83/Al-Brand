@@ -1,0 +1,76 @@
+<div class="container" style="margin-top: 30px">
+  <div class="login-form-1-center">
+    <form  class="login-form-1"   #f="ngForm" >
+      <div class="login-form-1-header" style="background-color: black!important;">
+        <h3>Change Password</h3>
+      </div>
+      <div class="login-form-1-body">
+        <form  #f="ngForm" class="donate-form default-form" (submit)="ChangePassword()">
+
+          <div class="profile-group label-overlay">
+            <mat-form-field class="loginfrom md-size">
+              <input matInput type="text" placeholder="Username"  tabindex=1 [(ngModel)]="username" disabled name=" usern" required>
+              <!--<span class="pointer" *ngIf="model.username"  mdSuffix md-list-icon aria-label="Clear" (click)="model.username=''">-->
+                            <!--<i class="fa fa-close" style="font-size: 23px"></i>-->
+                        <!--</span>-->
+              <!--<md-error *ngIf="userFormControl.hasError('pattern')">-->
+                <!--Please enter a valid username-->
+              <!--</md-error>-->
+              <!--<md-error *ngIf="userFormControl.hasError('required')">-->
+                <!--Username is <strong>required</strong>-->
+              <!--</md-error>-->
+            </mat-form-field>
+          </div>
+
+          <div class="profile-group label-overlay">
+            <mat-form-field class="loginfrom md-size">
+              <input matInput type="password" placeholder="Enter Current Password" [(ngModel)]="currentPass"  tabindex=2  name="currentpass" required>
+              <!--<span class="pointer" *ngIf="model.username"  mdSuffix md-list-icon aria-label="Clear" (click)="model.username=''">-->
+              <!--<i class="fa fa-close" style="font-size: 23px"></i>-->
+              <!--</span>-->
+              <!--<md-error *ngIf="userFormControl.hasError('pattern')">-->
+              <!--Please enter a valid username-->
+              <!--</md-error>-->
+              <!--<md-error *ngIf="userFormControl.hasError('required')">-->
+              <!--Username is <strong>required</strong>-->
+              <!--</md-error>-->
+            </mat-form-field>
+          </div>
+
+          <div class="profile-group label-overlay">
+            <mat-form-field class="loginfrom md-size">
+              <input matInput type="password" placeholder="Enter New Password" [(ngModel)]="newPass"  tabindex=3  name="newpass" required>
+              <!--<span class="pointer" *ngIf="model.username"  mdSuffix md-list-icon aria-label="Clear" (click)="model.username=''">-->
+              <!--<i class="fa fa-close" style="font-size: 23px"></i>-->
+              <!--</span>-->
+              <!--<md-error *ngIf="userFormControl.hasError('pattern')">-->
+              <!--Please enter a valid username-->
+              <!--</md-error>-->
+              <!--<md-error *ngIf="userFormControl.hasError('required')">-->
+              <!--Username is <strong>required</strong>-->
+              <!--</md-error>-->
+            </mat-form-field>
+          </div>
+          <div class="profile-group label-overlay">
+            <mat-form-field class="loginfrom md-size">
+              <input matInput type="password" placeholder="Confirm Password"  [(ngModel)]="confirmPass"  tabindex=4 name="confirmpass" required>
+              <!--<span class="pointer" *ngIf="model.username"  mdSuffix md-list-icon aria-label="Clear" (click)="model.username=''">-->
+              <!--<i class="fa fa-close" style="font-size: 23px"></i>-->
+              <!--</span>-->
+              <!--<md-error *ngIf="userFormControl.hasError('pattern')">-->
+              <!--Please enter a valid username-->
+              <!--</md-error>-->
+              <!--<md-error *ngIf="userFormControl.hasError('required')">-->
+              <!--Username is <strong>required</strong>-->
+              <!--</md-error>-->
+            </mat-form-field>
+          </div>
+
+          <input type="submit"  value="Confirm" class="change-form-btn"  >
+
+        </form>
+
+      </div>
+    </form>
+  </div>
+</div>

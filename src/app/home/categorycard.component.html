@@ -1,0 +1,66 @@
+<!--<div *ngFor="let inf of influencers">-->
+  <!--{{inf.name}}-->
+  <!--<div *ngFor="let i of inf.sub">-->
+    <!--{{i}}-->
+
+  <!--</div>-->
+<!--</div>-->
+<div class="cards-grid" data-columns>
+  <preloader-small></preloader-small>
+  <div class="column size-1of3" *ngFor="let inf of influencers" style="">
+    <div class="card-grid-col" >
+      <article class="card-typical">
+        <div class="card-typical-section">
+          <div class="user-card-row">
+            <div class="tbl-row">
+
+              <div class="tbl-cell">
+                <p class="user-card-row-name" style="font-size: large">{{inf.name | uppercase}}</p>
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <div class="card-typical-section card-typical-content" style="background-color: ghostwhite">
+          <!-- <header class="title"><a href="#">The Jacobs Ladder of coding</a></header> -->
+          <p> <a *ngFor="let i of inf.sub" (click)="onClick(inf.name+' - '+i)" style="font-size: small;font-family:'Helvetica' " class="btn btn-inline btn-primary btn-sm ladda-button">{{i | uppercase}}</a>
+          </p>
+        </div>
+
+      </article><!--.card-typical-->
+    </div><!--.card-grid-col-->
+  </div>
+</div>
+<div class="clear"></div>
+
+
+
+
+<!--<div class="row">-->
+
+
+  <!--<div class="col-lg-4" style="padding-left: 0px;padding-right: 0px" *ngFor="let inf of influencers">-->
+  <!--<div class="example-2 card" >-->
+    <!--<div class="wrapper">-->
+      <!--<div class="header">-->
+        <!--<h2 class="title"><a href="#"> {{inf.name | uppercase}} </a></h2>-->
+
+      <!--</div>-->
+      <!--<div class="data">-->
+        <!--<div class="content" >-->
+
+
+          <!--&lt;!&ndash;<a href="#top" *ngFor="let i of inf.sub"> {{i}} </a>&ndash;&gt;-->
+          <!--<div class="flip section">-->
+            <!--<a *ngFor="let i of inf.sub" (click)="onClick(inf.name+' - '+i)" style="font-size: small;font-family:'Helvetica' " class="btn btn-inline btn-primary btn-sm ladda-button">{{i | uppercase}}</a>-->
+
+          <!--</div>-->
+          <!--<a href="#" class="button">Read more</a>-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
+  <!--</div>-->
+
+<!--</div>-->

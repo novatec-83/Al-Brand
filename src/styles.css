@@ -1,0 +1,78 @@
+@import "~node_modules/@angular/material/prebuilt-themes/indigo-pink.css";
+/* You can add global styles to this file, and also import other style files */
+body{
+font-family: "Open Sans"!important;
+}
+@media screen and (min-width: 1140px) and (max-width: 1520px) {
+  .padding-zero-i{
+    width: 83%!important;
+  }
+}
+
+@media screen and (max-width: 1300px) and (min-width: 40px) {
+  .showul1{
+    display:inline-block !important;
+    text-align: center;
+  }
+  .showul2
+  {
+    display:none !important;
+  }
+  .logo-row{
+    padding: 7px;
+  }
+
+}
+@media screen and  (max-width: 864px) {
+  .h-logo{
+    height: 30px;
+  }
+}
+@media screen and (min-width: 1520px) {
+  .padding-zero-i{
+    width: 83%!important;
+  }
+  .sidenav{
+    width: 260px!important;
+  }
+
+}
+@media screen and (min-width: 1680px) and (max-width: 1900px) {
+  .padding-zero-i{
+    width: 83%!important;
+  }
+  .sidenav{
+    width: 290px!important;
+  }
+
+}
+@media screen and (min-width: 1900px) and (max-width: 2300px) {
+  .sidenav{
+    width: 320px!important;
+  }
+}
+@media screen and (min-width: 2300px)  {
+  .sidenav{
+    width: 380px!important;
+  }
+}
+@media screen and (max-width: 860px) and (min-width: 270px){
+  .dropbtn{
+        font-size: inherit!important;
+  }
+}
+@media screen and (max-width: 767px) and (min-width: 20px) {
+
+  .right-drpdwn{
+    display: none!important;
+  }
+  .top-search-btn{
+    font-size: 20px!important;
+  }
+}
+@media screen and (max-width: 543px) {
+  .showul1{
+
+display: none!important;
+  }
+}

@@ -1,0 +1,1313 @@
+
+<!--<div *ngIf="loaded">-->
+<div class="page-content">
+    <div class="container-fluid padding-zero">
+        <mat-tab-group (selectedIndexChange)="selectedIndexChange($event)" style="background: #ffffff; -webkit-box-shadow: 0 3px 5px 0 rgba(0,0,0,.5),0 6px 20px 0 rgba(0,0,0,.19)!important;
+    box-shadow: 0 3px 5px 0 rgba(0,0,0,.5),0 6px 20px 0 rgba(0,0,0,.19)!important; "
+                      [selectedIndex]="selectedIndex">
+
+
+            <mat-tab class="font-icon font-icon-page" label="Web" style="margin: 0 auto">
+                <ng-template mat-tab-label style="background: white">
+                          <span class="nav-link-in-dash">
+										<i class="fa fa-globe"></i>
+										Web
+									</span>
+                </ng-template>
+                <br>
+                <div>
+                    <div class="tasks-grid" *ngIf="loaded" style="margin: 0 auto; width: 90%">
+                        <div class="row header">
+                            <div class="col-sm-12">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <span class="tasks-grid-col-title align-left" style="padding-top: 16px">Total Lists: <strong>{{user_lists.totalItems}}</strong>
+                                        </span>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="row">
+                                            <div class="col-md-8 col-sm-8 pull-right">
+                                                <mat-select (change)="sort_lists()" name="selected_choice" [(ngModel)]="selected_choice"
+                                                           placeholder="Sort By" style="width: 60%; float: right">
+                                                    <mat-option *ngFor="let choice of blog_choices" [value]="choice.code">{{ choice.name }}</mat-option>
+                                                </mat-select>
+                                            </div>
+                                            <div class="col-md-4 col-sm-4 pull-right">
+                                                <button type="button" class="btn btn-rounded" (click)="create_empty_list()">
+                                                    Create List
+                                                </button>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--<div class="sh-n-table row" >-->
+                            <!--<table>-->
+                                <!--<thead>-->
+                                <!--<tr>-->
+                                    <!--<th>List Name</th>-->
+                                    <!--<th>Total Influencers</th>-->
+                                    <!--<th>Add Influencers</th>-->
+                                    <!--<th>Edit</th>-->
+                                    <!--<th>Email</th>-->
+                                    <!--<th>Delete</th>-->
+                                <!--</tr>-->
+                                <!--</thead>-->
+                                <!--<tbody >-->
+                                <!--<tr *ngFor="let li of user_lists_web;let i=index">-->
+                                    <!--<td >-->
+                                        <!--<a style="font-size: 17px;" (click)="go_to_list(li.id,li.name)">-->
+                                        <!--{{li.name }}-->
+                                        <!--</a>-->
+                                    <!--</td>-->
+                                    <!--<td >-->
+                                        <!--<span class="block-ellipsis"> {{li.influencers_count}}</span>-->
+                                    <!--</td>-->
+                                    <!--<td title="Click to add influencers in this list">-->
+                                        <!--<a (click)="select_add_influencers(li.id, li.name)">-->
+                                            <!--<i class="fa fa-plus" ></i>-->
+
+                                        <!--</a>-->
+                                    <!--</td>-->
+                                    <!--<td  title="Click to Edit this list">-->
+                                        <!--<a (click)="go_to_list(li.id,li.name)">-->
+                                            <!--<i class="fa fa-pencil" ></i>-->
+                                        <!--</a>-->
+                                    <!--</td>-->
+                                    <!--<td title="Click to Email this Infleuncer">-->
+                                        <!--<a (click)="email_list(li.id,li.name)">-->
+                                            <!--<i class="fa fa-envelope" ></i>-->
+                                        <!--</a>-->
+                                    <!--</td>-->
+                                    <!--<td title="Click to Delete this influencer">-->
+                                        <!--<a (click)="delete_list(li.id)">-->
+                                            <!--<i class="fa fa-trash" ></i>-->
+                                        <!--</a>-->
+                                    <!--</td>-->
+                                <!--</tr>-->
+                                <!--</tbody>-->
+                            <!--</table>-->
+                        <!--</div>-->
+
+
+                        <div *ngFor="let li of user_lists.results; let i = index" [ngClass]="{'tasks-grid-col': i%7===0, 'tasks-grid-col red': i%3===0, 'tasks-grid-col black': i%2===0, 'tasks-grid-col blue': i%1===0}">
+                        <!--<div class="tasks-grid-col-title">Done <strong>100</strong></div>-->
+
+                        <div class="sortable">
+                        <section class="box-typical task-card task">
+                        <div class="task-card-photo">
+                        <!--<img src="img/img-task.jpg" alt="">-->
+                        </div>
+                        <div class="task-card-in">
+                        <!--<input type="checkbox" style="zoom: 1.5">-->
+                        <!--<div class="btn-group task-card-menu">-->
+                        <!--<button type="button" data-toggle="dropdown" aria-haspopup="true"-->
+                        <!--aria-expanded="false">-->
+                        <!--<i class="font-icon-dots-vert-square"></i>-->
+                        <!--</button>-->
+                        <!--<div class="dropdown-menu dropdown-menu-right">-->
+                        <!--<a class="dropdown-item" (click)="go_to_list(li.id,li.name)"><i-->
+                        <!--class="font-icon font-icon-pencil"></i>Edit</a>-->
+                        <!--<a class="dropdown-item" (click)="email_list(li.id,li.name)"><i-->
+                        <!--class="font-icon font-icon-mail"></i>Email</a>-->
+                        <!--&lt;!&ndash;<a class="dropdown-item" href="#"><i class="font-icon font-icon-archive"></i>Archive</a>&ndash;&gt;-->
+                        <!--<a class="dropdown-item" (click)="delete_list(li.id)"><i-->
+                        <!--class="font-icon font-icon-trash"></i>Delete</a>-->
+                        <!--</div>-->
+                        <!--</div>-->
+                            <div class="task-card-title-label text-center">
+                                <h6 style="font-weight: bolder">{{li.name}}</h6>
+                            </div>
+                        <div class="task-card-title text-center">
+                        <!--<div class="button__holder">-->
+                            <!--<button class="plus"-->
+                        <!--(click)="select_add_influencers(li.id,li.name)"></button>-->
+                        <!--</div>-->
+                            <h6>  Total Influencers: <b>{{li.influencers_count}}</b></h6>
+                            <button style="margin-bottom: 5%" type="button" class="btn btn-rounded" (click)="select_add_influencers(li.id, li.name) ">
+                                Add Influencers
+                            </button>
+                        </div>
+
+                        </div>
+                        <div class="task-card-footer">
+                        <!--<div class="task-card-meta-item"><i class="font-icon font-icon-comments-2"></i>10</div>-->
+                        <div class="task-card-meta-item" title="Click to Show all Influencers in this list" style="cursor: pointer;" (click)="go_to_list(li.id, li.name)">
+                            <i class="fa fa-edit"></i>
+                        </div>
+                            <!--<div class="task-card-meta-item" title="Click to Email" style="cursor: pointer;" (click)="email_list(li.id, li.name)">-->
+                                <!--<i class="fa fa-envelope"></i>-->
+                            <!--</div>-->
+                            <!--<div class="task-card-meta-item text-right" title="Click to Delete" style="cursor: pointer;" (click)="email_list(li.id, li.name)">-->
+                                <!---->
+                            <!--</div>-->
+                        <div class="avatar-preview avatar-preview-32">
+                            <i class="fa fa-trash" style="cursor: pointer;" (click)="delete_list(li.id, li.name)"></i>
+                        </div>
+                        </div>
+                        </section>
+                        </div>
+                        </div>
+                        <!--</section>&lt;!&ndash;.task-card&ndash;&gt;-->
+
+
+                        <!--</div>-->
+                        <!--</div>&lt;!&ndash;.tasks-grid-col&ndash;&gt;-->
+                    </div><!--.tasks-grid-->
+
+                </div><!--.tab-pane-->
+            </mat-tab>
+            <mat-tab label="Twitter">
+                <ng-template mat-tab-label>
+
+											<span class="nav-link-in-dash">
+										<i class="fa fa-twitter"></i>
+										Twitter
+									</span>
+
+                </ng-template>
+                <br>
+
+                <div>
+                    <div class="tasks-grid" *ngIf="loaded" style="margin: 0 auto; width: 90%">
+                        <div class="row header">
+                            <div class="col-sm-12">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <span class="tasks-grid-col-title align-left">Total Lists: <strong>{{user_lists.totalItems}}</strong>
+                                        </span>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="row">
+                                            <div class="col-md-8 col-sm-6 pull-right">
+                                                <mat-select style="width:60%; float: right" (change)="sort_lists_twitter()" name="selected_choice"
+                                                           [(ngModel)]="selected_choice_twitter"
+                                                           placeholder="Sort By">
+                                                    <mat-option *ngFor="let choice of choices_twitter" [value]="choice.code">{{ choice.name }}
+                                                    </mat-option>
+                                                </mat-select>
+                                            </div>
+                                            <div class="col-md-4 col-sm-6 pull-right">
+                                                <button type="button" class="btn btn-rounded" (click)="create_empty_list_twitter()">
+                                                    Create List
+                                                </button>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--<div class="sh-n-table row" >-->
+                            <!--<table>-->
+                                <!--<thead>-->
+                                <!--<tr>-->
+                                    <!--<th>List Name</th>-->
+                                    <!--<th>Total Influencers</th>-->
+                                    <!--<th>Add Influencers</th>-->
+                                    <!--<th>Edit</th>-->
+                                    <!--<th>Email</th>-->
+                                    <!--<th>Delete</th>-->
+                                <!--</tr>-->
+                                <!--</thead>-->
+                                <!--<tbody >-->
+                                <!--<tr *ngFor="let li of user_lists.results;let i=index">-->
+                                    <!--<td>-->
+                                        <!--<a style="font-size: 17px;" (click)="go_to_list_twitter(li.id,li.name)">-->
+                                            <!--{{li.name }}-->
+                                        <!--</a>-->
+                                    <!--</td>-->
+                                    <!--<td >-->
+                                        <!--<span class="block-ellipsis"> {{li.influencers_count}}</span>-->
+                                    <!--</td>-->
+                                    <!--<td title="Click to add influencers in this list">-->
+                                        <!--<a (click)="select_add_influencers_twitter(li.id,li.name)">-->
+                                            <!--<i class="fa fa-plus" ></i>-->
+
+                                        <!--</a>-->
+                                    <!--</td>-->
+                                    <!--<td  title="Click to Edit this list">-->
+                                        <!--<a (click)="go_to_list_twitter(li.id,li.name)">-->
+                                            <!--<i class="fa fa-pencil" ></i>-->
+                                        <!--</a>-->
+                                    <!--</td>-->
+                                    <!--<td title="Click to Email this Infleuncer">-->
+                                        <!--<a (click)="email_list_twitter(li.id,li.name)">-->
+                                            <!--<i class="fa fa-envelope" ></i>-->
+                                        <!--</a>-->
+                                    <!--</td>-->
+                                    <!--<td title="Click to Delete this influencer">-->
+                                        <!--<a (click)="delete_list_twitter(li.id)">-->
+                                            <!--<i class="fa fa-trash" ></i>-->
+                                        <!--</a>-->
+                                    <!--</td>-->
+                                <!--</tr>-->
+                                <!--</tbody>-->
+                            <!--</table>-->
+                        <!--</div>-->
+
+
+                        <div *ngFor="let li of user_lists.results; let i = index" [ngClass]="{'tasks-grid-col': i%7===0, 'tasks-grid-col red': i%3===0, 'tasks-grid-col black': i%2===0, 'tasks-grid-col blue': i%1===0}">
+                            <!--<div class="tasks-grid-col-title">Done <strong>100</strong></div>-->
+
+                            <div class="sortable">
+                                <section class="box-typical task-card task">
+                                    <div class="task-card-photo">
+                                        <!--<img src="img/img-task.jpg" alt="">-->
+                                    </div>
+                                    <div class="task-card-in">
+                                        <!--<input type="checkbox" style="zoom: 1.5">-->
+                                        <!--<div class="btn-group task-card-menu">-->
+                                        <!--<button type="button" data-toggle="dropdown" aria-haspopup="true"-->
+                                        <!--aria-expanded="false">-->
+                                        <!--<i class="font-icon-dots-vert-square"></i>-->
+                                        <!--</button>-->
+                                        <!--<div class="dropdown-menu dropdown-menu-right">-->
+                                        <!--<a class="dropdown-item" (click)="go_to_list(li.id,li.name)"><i-->
+                                        <!--class="font-icon font-icon-pencil"></i>Edit</a>-->
+                                        <!--<a class="dropdown-item" (click)="email_list(li.id,li.name)"><i-->
+                                        <!--class="font-icon font-icon-mail"></i>Email</a>-->
+                                        <!--&lt;!&ndash;<a class="dropdown-item" href="#"><i class="font-icon font-icon-archive"></i>Archive</a>&ndash;&gt;-->
+                                        <!--<a class="dropdown-item" (click)="delete_list(li.id)"><i-->
+                                        <!--class="font-icon font-icon-trash"></i>Delete</a>-->
+                                        <!--</div>-->
+                                        <!--</div>-->
+                                        <div class="task-card-title-label text-center">
+                                            <h6 style="font-weight: bolder">{{li.name}}</h6>
+                                        </div>
+                                        <div class="task-card-title text-center">
+                                            <!--<div class="button__holder">-->
+                                            <!--<button class="plus"-->
+                                            <!--(click)="select_add_influencers(li.id,li.name)"></button>-->
+                                            <!--</div>-->
+                                            <h6>  Total Influencers: <b>{{li.influencers_count}}</b></h6>
+                                            <button style="margin-bottom: 5%" type="button" class="btn btn-rounded" (click)="select_add_influencers_twitter(li.id, li.name) ">
+                                                Add Influencers
+                                            </button>
+                                        </div>
+
+                                    </div>
+                                    <div class="task-card-footer">
+                                        <!--<div class="task-card-meta-item"><i class="font-icon font-icon-comments-2"></i>10</div>-->
+                                        <div class="task-card-meta-item" title="Click to Show all Influencers in this list" style="cursor: pointer;" (click)="go_to_list_twitter(li.id, li.name)">
+                                            <i class="fa fa-edit"></i>
+                                        </div>
+                                        <!--<div class="task-card-meta-item" title="Click to Email" style="cursor: pointer;" (click)="email_list_twitter(li.id, li.name)">-->
+                                            <!--<i class="fa fa-envelope"></i>-->
+                                        <!--</div>-->
+                                        <!--<div class="task-card-meta-item text-right" title="Click to Delete" style="cursor: pointer;" (click)="email_list(li.id, li.name)">-->
+                                        <!---->
+                                        <!--</div>-->
+                                        <div class="avatar-preview avatar-preview-32">
+                                            <i class="fa fa-trash" style="cursor: pointer;" (click)="delete_list_twitter(li.id, li.name)"></i>
+                                        </div>
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
+
+                        <!--<div *ngFor="let li of user_lists.results; let i = index"-->
+                        <!--[ngClass]="{'tasks-grid-col': i%7===0, 'tasks-grid-col red': i%3===0, 'tasks-grid-col purple': i%2===0, 'tasks-grid-col green': i%1===0}">-->
+                        <!--&lt;!&ndash;<div class="tasks-grid-col-title">Done <strong>100</strong></div>&ndash;&gt;-->
+
+                        <!--<div class="sortable">-->
+                        <!--<section class="box-typical task-card task">-->
+                        <!--<div class="task-card-photo">-->
+                        <!--&lt;!&ndash;<img src="img/img-task.jpg" alt="">&ndash;&gt;-->
+                        <!--</div>-->
+                        <!--<div class="task-card-in">-->
+                        <!--<div class="btn-group task-card-menu">-->
+                        <!--<button type="button" data-toggle="dropdown" aria-haspopup="true"-->
+                        <!--aria-expanded="false">-->
+                        <!--<i class="font-icon-dots-vert-square"></i>-->
+                        <!--</button>-->
+                        <!--<div class="dropdown-menu dropdown-menu-right">-->
+                        <!--<a class="dropdown-item" (click)="go_to_list_twitter(li.id,li.name)"><i-->
+                        <!--class="font-icon font-icon-pencil"></i>Edit</a>-->
+                        <!--<a class="dropdown-item" (click)="email_list_twitter(li.id,li.name)"><i-->
+                        <!--class="font-icon font-icon-mail"></i>Email</a>-->
+                        <!--&lt;!&ndash;<a class="dropdown-item" href="#"><i class="font-icon font-icon-archive"></i>Archive</a>&ndash;&gt;-->
+                        <!--<a class="dropdown-item" (click)="delete_list_twitter(li.id)"><i-->
+                        <!--class="font-icon font-icon-trash"></i>Delete</a>-->
+                        <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="task-card-title">-->
+                        <!--<div class="button__holder">-->
+                        <!--&lt;!&ndash;<h2>Hover me &rarr;</h2>&ndash;&gt;-->
+                        <!--<button class="plus"-->
+                        <!--(click)="select_add_influencers_twitter(li.id,li.name)"></button>-->
+                        <!--</div>-->
+                        <!--<br>-->
+                        <!--<a id="list_name" title="Click to Show all Influencers in this list" style="cursor: pointer;" (click)="go_to_list_twitter(li.id,li.name)">{{li.name}}</a>-->
+                        <!--<span class="task-card-title-label"></span>-->
+                        <!--</div>-->
+
+                        <!--</div>-->
+                        <!--<div class="task-card-footer">-->
+                        <!--&lt;!&ndash;<div class="task-card-meta-item"><i class="font-icon font-icon-comments-2"></i>10</div>&ndash;&gt;-->
+                        <!--<div class="task-card-meta-item" title="Click to Show all Influencers in this list" style="cursor: pointer;" (click)="go_to_list_twitter(li.id, li.name)"><i class="font-icon font-icon-users-group"></i><strong>{{li.influencers_count}}-->
+                        <!--Influencers</strong></div>-->
+                        <!--<div class="avatar-preview avatar-preview-32">-->
+                        <!--<a href="#">-->
+                        <!--&lt;!&ndash;<img src="img/photo-64-2.jpg" alt="">&ndash;&gt;-->
+                        <!--</a>-->
+                        <!--</div>-->
+                        <!--</div>-->
+                        <!--</section>&lt;!&ndash;.task-card&ndash;&gt;-->
+
+
+                        <!--</div>-->
+                        <!--</div>-->
+
+                        <!--.tasks-grid-col-->
+
+
+
+                    </div><!--.tasks-grid-->
+
+                </div>
+
+            </mat-tab>
+
+            <mat-tab label="Blogosphere">
+                <ng-template mat-tab-label>
+                     <span class="nav-link-in-dash">
+										<i class="fa fa-newspaper-o"></i>
+										Blogosphere
+									</span>
+
+                </ng-template>
+                <br>
+
+                <div>
+                    <div class="tasks-grid" *ngIf="loaded" style="margin: 0 auto; width: 90%">
+                        <div class="row header">
+                            <div class="col-sm-12">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <span class="tasks-grid-col-title align-left">Total Lists: <strong>{{user_lists.totalItems}}</strong>
+                                        </span>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="row">
+                                            <div class="col-md-8 col-sm-6 pull-right">
+                                                <mat-select (change)="sort_lists_dd()" name="selected_choice" [(ngModel)]="selected_choice"
+                                                           placeholder="Sort By" style="width: 60%; float: right">
+                                                    <mat-option *ngFor="let choice of blog_choices" [value]="choice.code">{{ choice.name }}
+                                                    </mat-option>
+                                                </mat-select>
+                                            </div>
+                                            <div class="col-md-4 col-sm-6 pull-right">
+                                                <button type="button" class="btn btn-rounded" (click)="create_empty_list_dd()">
+                                                    Create List
+                                                </button>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div *ngFor="let li of user_lists.results; let i = index" [ngClass]="{'tasks-grid-col': i%7===0, 'tasks-grid-col red': i%3===0, 'tasks-grid-col black': i%2===0, 'tasks-grid-col blue': i%1===0}">
+                            <!--<div class="tasks-grid-col-title">Done <strong>100</strong></div>-->
+
+                            <div class="sortable">
+                                <section class="box-typical task-card task">
+                                    <div class="task-card-photo">
+                                        <!--<img src="img/img-task.jpg" alt="">-->
+                                    </div>
+                                    <div class="task-card-in">
+                                        <!--<input type="checkbox" style="zoom: 1.5">-->
+                                        <!--<div class="btn-group task-card-menu">-->
+                                        <!--<button type="button" data-toggle="dropdown" aria-haspopup="true"-->
+                                        <!--aria-expanded="false">-->
+                                        <!--<i class="font-icon-dots-vert-square"></i>-->
+                                        <!--</button>-->
+                                        <!--<div class="dropdown-menu dropdown-menu-right">-->
+                                        <!--<a class="dropdown-item" (click)="go_to_list(li.id,li.name)"><i-->
+                                        <!--class="font-icon font-icon-pencil"></i>Edit</a>-->
+                                        <!--<a class="dropdown-item" (click)="email_list(li.id,li.name)"><i-->
+                                        <!--class="font-icon font-icon-mail"></i>Email</a>-->
+                                        <!--&lt;!&ndash;<a class="dropdown-item" href="#"><i class="font-icon font-icon-archive"></i>Archive</a>&ndash;&gt;-->
+                                        <!--<a class="dropdown-item" (click)="delete_list(li.id)"><i-->
+                                        <!--class="font-icon font-icon-trash"></i>Delete</a>-->
+                                        <!--</div>-->
+                                        <!--</div>-->
+                                        <div class="task-card-title-label text-center">
+                                            <h6 style="font-weight: bolder">{{li.name}}</h6>
+                                        </div>
+                                        <div class="task-card-title text-center">
+                                            <!--<div class="button__holder">-->
+                                            <!--<button class="plus"-->
+                                            <!--(click)="select_add_influencers(li.id,li.name)"></button>-->
+                                            <!--</div>-->
+                                            <h6>  Total Influencers: <b>{{li.influencers_count}}</b></h6>
+                                            <button style="margin-bottom: 5%" type="button" class="btn btn-rounded" (click)="select_add_influencers_dd(li.id, li.name) ">
+                                                Add Influencers
+                                            </button>
+                                        </div>
+
+                                    </div>
+                                    <div class="task-card-footer">
+                                        <!--<div class="task-card-meta-item"><i class="font-icon font-icon-comments-2"></i>10</div>-->
+                                        <div class="task-card-meta-item" title="Click to Show all Influencers in this list" style="cursor: pointer;" (click)="go_to_list_dd(li.id, li.name)">
+                                            <i class="fa fa-edit"></i>
+                                        </div>
+                                        <!--<div class="task-card-meta-item" title="Click to Email" style="cursor: pointer;" (click)="email_list_dd(li.id, li.name)">-->
+                                            <!--<i class="fa fa-envelope"></i>-->
+                                        <!--</div>-->
+                                        <!--<div class="task-card-meta-item text-right" title="Click to Delete" style="cursor: pointer;" (click)="email_list(li.id, li.name)">-->
+                                        <!---->
+                                        <!--</div>-->
+                                        <div class="avatar-preview avatar-preview-32">
+                                            <i class="fa fa-trash" style="cursor: pointer;" (click)="delete_list_dd(li.id, li.name)"></i>
+                                        </div>
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
+
+                        <!--<div class="sh-n-table row" >-->
+                            <!--<table>-->
+                                <!--<thead>-->
+                                <!--<tr>-->
+                                    <!--<th>List Name</th>-->
+                                    <!--<th>Total Influencers</th>-->
+                                    <!--<th>Add Influencers</th>-->
+                                    <!--<th>Edit</th>-->
+                                    <!--<th>Email</th>-->
+                                    <!--<th>Delete</th>-->
+                                <!--</tr>-->
+                                <!--</thead>-->
+                                <!--<tbody >-->
+                                <!--<tr *ngFor="let li of user_lists.results;let i=index">-->
+                                    <!--<td>-->
+                                        <!--<a style="font-size: 17px;" (click)="go_to_list_dd(li.id,li.name)">-->
+                                            <!--{{li.name }}-->
+                                        <!--</a>-->
+                                    <!--</td>-->
+                                    <!--<td >-->
+                                        <!--<span class="block-ellipsis"> {{li.influencers_count}}</span>-->
+                                    <!--</td>-->
+                                    <!--<td title="Click to add influencers in this list">-->
+                                        <!--<a (click)="select_add_influencers_dd(li.id,li.name)">-->
+                                            <!--<i class="fa fa-plus" ></i>-->
+
+                                        <!--</a>-->
+                                    <!--</td>-->
+                                    <!--<td  title="Click to Edit this list">-->
+                                        <!--<a (click)="go_to_list_dd(li.id,li.name)">-->
+                                            <!--<i class="fa fa-pencil" ></i>-->
+                                        <!--</a>-->
+                                    <!--</td>-->
+                                    <!--<td title="Click to Email this Infleuncer">-->
+                                        <!--<a (click)="email_list_dd(li.id,li.name)">-->
+                                            <!--<i class="fa fa-envelope" ></i>-->
+                                        <!--</a>-->
+                                    <!--</td>-->
+                                    <!--<td title="Click to Delete this influencer">-->
+                                        <!--<a (click)="delete_list_dd(li.id)">-->
+                                            <!--<i class="fa fa-trash" ></i>-->
+                                        <!--</a>-->
+                                    <!--</td>-->
+                                <!--</tr>-->
+                                <!--</tbody>-->
+                            <!--</table>-->
+                        <!--</div>-->
+
+                    <!--</div>&lt;!&ndash;.tasks-grid&ndash;&gt;</div>-->
+
+                    </div>
+                </div>
+            </mat-tab>
+
+            <mat-tab label="Youtube">
+                <ng-template mat-tab-label>
+                     <span class="nav-link-in-dash">
+										<i class="fa fa-youtube"></i>
+										Youtube
+									</span>
+
+                </ng-template>
+                <br>
+
+                <div>
+                    <div class="tasks-grid" *ngIf="loaded" style="margin: 0 auto; width: 90%">
+                        <div class="row header">
+                            <div class="col-sm-12">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <span class="tasks-grid-col-title align-left">Total Lists: <strong>{{user_lists.totalItems}}</strong>
+                                        </span>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="row">
+
+                                            <div class="col-md-8 col-sm-6 pull-right">
+                                                <mat-select (change)="sort_lists_yt()" name="selected_choice" [(ngModel)]="selected_choice"
+                                                           placeholder="Sort By" style="width: 60%; float: right">
+                                                    <mat-option *ngFor="let choice of youtube_choices" [value]="choice.code">{{ choice.name }}
+                                                    </mat-option>
+                                                </mat-select>
+                                            </div>
+                                            <div class="col-md-4 col-sm-6 pull-right">
+                                                <button type="button" class="btn btn-rounded" (click)="create_empty_list_yt()">
+                                                    Create List
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div *ngFor="let li of user_lists.results; let i = index" [ngClass]="{'tasks-grid-col': i%7===0, 'tasks-grid-col red': i%3===0, 'tasks-grid-col black': i%2===0, 'tasks-grid-col blue': i%1===0}">
+                            <!--<div class="tasks-grid-col-title">Done <strong>100</strong></div>-->
+
+                            <div class="sortable">
+                                <section class="box-typical task-card task">
+                                    <div class="task-card-photo">
+                                        <!--<img src="img/img-task.jpg" alt="">-->
+                                    </div>
+                                    <div class="task-card-in">
+
+                                        <div class="task-card-title-label text-center">
+                                            <h6 style="font-weight: bolder">{{li.name}}</h6>
+                                        </div>
+                                        <div class="task-card-title text-center">
+                                            <!--<div class="button__holder">-->
+                                            <!--<button class="plus"-->
+                                            <!--(click)="select_add_influencers(li.id,li.name)"></button>-->
+                                            <!--</div>-->
+                                            <h6>  Total Influencers: <b>{{li.influencers_count}}</b></h6>
+                                            <button style="margin-bottom: 5%" type="button" class="btn btn-rounded" (click)="select_add_influencers_yt(li.id, li.name) ">
+                                                Add Influencers
+                                            </button>
+                                        </div>
+
+                                    </div>
+                                    <div class="task-card-footer">
+                                        <!--<div class="task-card-meta-item"><i class="font-icon font-icon-comments-2"></i>10</div>-->
+                                        <div class="task-card-meta-item" title="Click to Show all Influencers in this list" style="cursor: pointer;" (click)="go_to_list_yt(li.id, li.name)">
+                                            <i class="fa fa-edit"></i>
+                                        </div>
+                                        <!--<div class="task-card-meta-item" title="Click to Email" style="cursor: pointer;" (click)="email_list_yt(li.id, li.name)">-->
+                                            <!--<i class="fa fa-envelope"></i>-->
+                                        <!--</div>-->
+                                        <!--<div class="task-card-meta-item text-right" title="Click to Delete" style="cursor: pointer;" (click)="email_list(li.id, li.name)">-->
+                                        <!---->
+                                        <!--</div>-->
+                                        <div class="avatar-preview avatar-preview-32">
+                                            <i class="fa fa-trash" style="cursor: pointer;" (click)="delete_list_yt(li.id, li.name)"></i>
+                                        </div>
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
+
+                        <!--.tasks-grid-col-->
+                        <!--<div class="sh-n-table row" >-->
+                            <!--<table>-->
+                                <!--<thead>-->
+                                <!--<tr>-->
+                                    <!--<th>List Name</th>-->
+                                    <!--<th>Total Influencers</th>-->
+                                    <!--<th>Add Influencers</th>-->
+                                    <!--<th>Edit</th>-->
+                                    <!--<th>Email</th>-->
+                                    <!--<th>Delete</th>-->
+                                <!--</tr>-->
+                                <!--</thead>-->
+                                <!--<tbody >-->
+                                <!--<tr *ngFor="let li of user_lists.results;let i=index">-->
+                                    <!--<td>-->
+                                        <!--<a style="font-size: 17px;" (click)="go_to_list_yt(li.id,li.name)">-->
+                                            <!--{{li.name }}-->
+                                        <!--</a>-->
+                                    <!--</td>-->
+                                    <!--<td >-->
+                                        <!--<span class="block-ellipsis"> {{li.influencers_count}}</span>-->
+                                    <!--</td>-->
+                                    <!--<td title="Click to add influencers in this list">-->
+                                        <!--<a (click)="select_add_influencers_yt(li.id,li.name)">-->
+                                            <!--<i class="fa fa-plus" ></i>-->
+
+                                        <!--</a>-->
+                                    <!--</td>-->
+                                    <!--<td  title="Click to Edit this list">-->
+                                        <!--<a (click)="go_to_list_yt(li.id,li.name)">-->
+                                            <!--<i class="fa fa-pencil" ></i>-->
+                                        <!--</a>-->
+                                    <!--</td>-->
+                                    <!--<td title="Click to Email this Infleuncer">-->
+                                        <!--<a (click)="email_list_yt(li.id,li.name)">-->
+                                            <!--<i class="fa fa-envelope" ></i>-->
+                                        <!--</a>-->
+                                    <!--</td>-->
+                                    <!--<td title="Click to Delete this influencer">-->
+                                        <!--<a (click)="delete_list_yt(li.id)">-->
+                                            <!--<i class="fa fa-trash" ></i>-->
+                                        <!--</a>-->
+                                    <!--</td>-->
+                                <!--</tr>-->
+                                <!--</tbody>-->
+                            <!--</table>-->
+                        <!--</div>-->
+                    </div><!--.tasks-grid--></div>
+
+
+            </mat-tab>
+            <mat-tab label="Instagram">
+                <ng-template mat-tab-label>
+                     <span class="nav-link-in-dash">
+										<i class="fa fa-instagram"></i>
+										Instagram
+									</span>
+
+                </ng-template>
+                <br>
+
+                <div>
+                    <div class="tasks-grid" *ngIf="loaded" style="margin:0 auto; width: 90%">
+                        <div class="row header">
+                            <div class="col-sm-12">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <span class="tasks-grid-col-title align-left">Total Lists: <strong>{{user_lists.totalItems}}</strong>
+                                        </span>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="row">
+                                            <div class="col-md-8 col-sm-6 pull-right">
+                                                <mat-select (change)="sort_lists_in()" name="selected_choice" [(ngModel)]="selected_choice"
+                                                           placeholder="Sort By" style="width: 60%; float: right">
+                                                    <mat-option *ngFor="let choice of insta_choices" [value]="choice.code">{{ choice.name }}
+                                                    </mat-option>
+                                                </mat-select>
+                                            </div>
+
+                                            <div class="col-md-4 col-sm-6 pull-right">
+                                                <button type="button" class="btn btn-rounded" (click)="create_empty_list_in()">
+                                                    Create List
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div *ngFor="let li of user_lists.results; let i = index" [ngClass]="{'tasks-grid-col': i%7===0, 'tasks-grid-col red': i%3===0, 'tasks-grid-col black': i%2===0, 'tasks-grid-col blue': i%1===0}">
+                            <!--<div class="tasks-grid-col-title">Done <strong>100</strong></div>-->
+
+                            <div class="sortable">
+                                <section class="box-typical task-card task">
+                                    <div class="task-card-photo">
+                                        <!--<img src="img/img-task.jpg" alt="">-->
+                                    </div>
+                                    <div class="task-card-in">
+
+                                        <div class="task-card-title-label text-center">
+                                            <h6 style="font-weight: bolder">{{li.name}}</h6>
+                                        </div>
+                                        <div class="task-card-title text-center">
+                                            <!--<div class="button__holder">-->
+                                            <!--<button class="plus"-->
+                                            <!--(click)="select_add_influencers(li.id,li.name)"></button>-->
+                                            <!--</div>-->
+                                            <h6>  Total Influencers: <b>{{li.influencers_count}}</b></h6>
+                                            <button style="margin-bottom: 5%" type="button" class="btn btn-rounded" (click)="select_add_influencers_in(li.id, li.name) ">
+                                                Add Influencers
+                                            </button>
+                                        </div>
+
+                                    </div>
+                                    <div class="task-card-footer">
+                                        <!--<div class="task-card-meta-item"><i class="font-icon font-icon-comments-2"></i>10</div>-->
+                                        <div class="task-card-meta-item" title="Click to Show all Influencers in this list" style="cursor: pointer;" (click)="go_to_list_in(li.id, li.name)">
+                                            <i class="fa fa-edit"></i>
+                                        </div>
+                                        <!--<div class="task-card-meta-item" title="Click to Email" style="cursor: pointer;" (click)="email_list_in(li.id, li.name)">-->
+                                            <!--<i class="fa fa-envelope"></i>-->
+                                        <!--</div>-->
+                                        <!--<div class="task-card-meta-item text-right" title="Click to Delete" style="cursor: pointer;" (click)="email_list(li.id, li.name)">-->
+                                        <!---->
+                                        <!--</div>-->
+                                        <div class="avatar-preview avatar-preview-32">
+                                            <i class="fa fa-trash" style="cursor: pointer;" (click)="delete_list_in(li.id, li.name)"></i>
+                                        </div>
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
+
+
+                    </div><!--.tasks-grid-->
+                </div>
+
+
+            </mat-tab>
+            <!--<p>For Facebook</p> -->
+
+
+            <mat-tab label="Facebook">
+                <ng-template mat-tab-label>
+                     <span class="nav-link-in-dash">
+										<i class="fa fa-facebook"></i>
+										Facebook
+									</span>
+
+                </ng-template>
+                <br>
+
+                <div>
+                    <div class="tasks-grid" *ngIf="loaded" style="width: 90%; margin: 0 auto">
+                        <div class="row header">
+                            <div class="col-sm-12">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <span class="tasks-grid-col-title align-left">Total Lists: <strong>{{user_lists.totalItems}}</strong>
+                                        </span>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="row">
+                                            <div class="col-md-8 col-sm-6 pull-right">
+                                                <mat-select (change)="sort_lists_fb()" name="selected_choice" [(ngModel)]="selected_choice"
+                                                           placeholder="Sort By" style="width: 60%; float: right">
+                                                    <mat-option *ngFor="let choice of facebook_choices" [value]="choice.code">{{ choice.name }}
+                                                    </mat-option>
+                                                </mat-select>
+                                            </div>
+                                            <div class="col-md-4 col-sm-6 pull-right">
+                                                <button type="button" class="btn btn-rounded" (click)="create_empty_list_fb()">
+                                                    Create List
+                                                </button>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div *ngFor="let li of user_lists.results; let i = index" [ngClass]="{'tasks-grid-col': i%7===0, 'tasks-grid-col red': i%3===0, 'tasks-grid-col black': i%2===0, 'tasks-grid-col blue': i%1===0}">
+                            <!--<div class="tasks-grid-col-title">Done <strong>100</strong></div>-->
+
+                            <div class="sortable">
+                                <section class="box-typical task-card task">
+                                    <div class="task-card-photo">
+                                        <!--<img src="img/img-task.jpg" alt="">-->
+                                    </div>
+                                    <div class="task-card-in">
+
+                                        <div class="task-card-title-label text-center">
+                                            <h6 style="font-weight: bolder">{{li.name}}</h6>
+                                        </div>
+                                        <div class="task-card-title text-center">
+                                            <!--<div class="button__holder">-->
+                                            <!--<button class="plus"-->
+                                            <!--(click)="select_add_influencers(li.id,li.name)"></button>-->
+                                            <!--</div>-->
+                                            <h6>  Total Influencers: <b>{{li.influencers_count}}</b></h6>
+                                            <button style="margin-bottom: 5%" type="button" class="btn btn-rounded" (click)="select_add_influencers_fb(li.id, li.name) ">
+                                                Add Influencers
+                                            </button>
+                                        </div>
+
+                                    </div>
+                                    <div class="task-card-footer">
+                                        <!--<div class="task-card-meta-item"><i class="font-icon font-icon-comments-2"></i>10</div>-->
+                                        <div class="task-card-meta-item" title="Click to Show all Influencers in this list" style="cursor: pointer;" (click)="go_to_list_fb(li.id, li.name)">
+                                            <i class="fa fa-edit"></i>
+                                        </div>
+                                        <!--<div class="task-card-meta-item" title="Click to Email" style="cursor: pointer;" (click)="email_list_dd(li.id, li.name)">-->
+                                            <!--<i class="fa fa-envelope"></i>-->
+                                        <!--</div>-->
+                                        <!--<div class="task-card-meta-item text-right" title="Click to Delete" style="cursor: pointer;" (click)="email_list(li.id, li.name)">-->
+                                        <!---->
+                                        <!--</div>-->
+                                        <div class="avatar-preview avatar-preview-32">
+                                            <i class="fa fa-trash" style="cursor: pointer;" (click)="delete_list_fb(li.id, li.name)"></i>
+                                        </div>
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </mat-tab>
+
+
+            <!-- <mat-tab label="linkedIn">
+                <ng-template mat-tab-label>
+                     <span class="nav-link-in-dash">
+										<i class="fa fa-linkedin"></i>
+										Linkedin
+									</span>
+
+                </ng-template>
+                <br>
+
+                <div>
+                    <div class="tasks-grid" *ngIf="loaded" style="margin: 0 auto; width: 90%">
+                        <div class="row header">
+                            <div class="col-sm-12">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <span class="tasks-grid-col-title align-left">Total Lists: <strong>{{user_lists.totalItems}}</strong>
+                                        </span>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="row">
+                                            <div class="col-md-8 col-sm-6 pull-right">
+                                                <mat-select (change)="sort_list_lnkd()" name="selected_choice" [(ngModel)]="selected_choice"
+                                                           placeholder="Sort By" style="width: 60%; float: right">
+                                                    <mat-option *ngFor="let choice of linkedin_choices" [value]="choice.code">{{ choice.name }}
+                                                    </mat-option>
+                                                </mat-select>
+                                            </div>
+                                            <div class="col-md-4 col-sm-6 pull-right">
+                                                <button type="button" class="btn btn-rounded" (click)="create_empty_list_lnkd()">
+                                                    Create List
+                                                </button>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div *ngFor="let li of user_lists.results; let i = index" [ngClass]="{'tasks-grid-col': i%7===0, 'tasks-grid-col red': i%3===0, 'tasks-grid-col black': i%2===0, 'tasks-grid-col blue': i%1===0}">
+                            
+                            
+                            <div class="tasks-grid-col-title">Done <strong>100</strong></div>
+
+                            <div class="sortable">
+                                <section class="box-typical task-card task">
+                                    <div class="task-card-photo">
+                                       
+                                       
+                                        <img src="img/img-task.jpg" alt="">
+                                    
+                                    
+                                    </div>
+                                    <div class="task-card-in">
+
+                                        <div class="task-card-title-label text-center">
+                                            <h6 style="font-weight: bolder">{{li.name}}</h6>
+                                        </div>
+                                        <div class="task-card-title text-center">
+                                            
+                                            
+                                            
+                                            <div class="button__holder">
+                                            <button class="plus"
+                                            (click)="select_add_influencers(li.id,li.name)"></button>
+                                            </div>
+                                            
+                                            
+                                            <h6>  Total Influencers: <b>{{li.influencers_count}}</b></h6>
+                                            <button style="margin-bottom: 5%" type="button" class="btn btn-rounded" (click)="select_add_influencers_lnkd(li.id, li.name) ">
+                                                Add Influencers
+                                            </button>
+                                        </div>
+
+                                    </div>
+                                    <div class="task-card-footer">
+                                        
+                                        <div class="task-card-meta-item"><i class="font-icon font-icon-comments-2"></i>10</div>
+                                       
+                                        <div class="task-card-meta-item" title="Click to Show all Influencers in this list" style="cursor: pointer;" (click)="go_to_list_lnkd(li.id, li.name)">
+                                            <i class="fa fa-edit"></i>
+                                        </div>
+                                       
+                                       
+                                        <div class="task-card-meta-item" title="Click to Email" style="cursor: pointer;" (click)="email_list_dd(li.id, li.name)">
+                                            <i class="fa fa-envelope"></i>
+                                        </div>
+                                        <div class="task-card-meta-item text-right" title="Click to Delete" style="cursor: pointer;" (click)="email_list(li.id, li.name)">
+                                        
+                                        </div>
+                                        
+                                        
+                                        <div class="avatar-preview avatar-preview-32">
+                                            <i class="fa fa-trash" style="cursor: pointer;" (click)="delete_ilist_lnkd(li.id, li.name)"></i>
+                                        </div>
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    .tasks-grid
+                
+                </div>
+           </mat-tab> -->
+
+
+            <!--  For Pinterest Coded by Amjad-->
+            <mat-tab label="Pinterest">
+                <ng-template mat-tab-label>
+                     <span class="nav-link-in-dash">
+										<i class="fa fa-pinterest "></i>
+										Pinterest
+									</span>
+
+                </ng-template>
+                <br>
+
+                <div>
+                    <div class="tasks-grid" *ngIf="loaded" style="width: 90%; margin: 0 auto">
+                        <div class="row header">
+                            <div class="col-sm-12">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <span class="tasks-grid-col-title align-left">Total Lists: <strong>{{user_lists.totalItems}}</strong>
+                                        </span>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="row">
+                                            <div class="col-md-8 col-sm-6 pull-right">
+                                                <mat-select (change)="sort_list_pt()" name="selected_choice" [(ngModel)]="selected_choice"
+                                                           placeholder="Sort By" style="width: 60%; float: right">
+                                                    <mat-option *ngFor="let choice of pint_choices" [value]="choice.code">{{ choice.name }}
+                                                    </mat-option>
+                                                </mat-select>
+                                            </div>
+                                            <div class="col-md-4 col-sm-6 pull-right">
+                                                <button type="button" class="btn btn-rounded" (click)="create_empty_list_pt()">
+                                                    Create List
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div *ngFor="let li of user_lists.results; let i = index" [ngClass]="{'tasks-grid-col': i%7===0, 'tasks-grid-col red': i%3===0, 'tasks-grid-col black': i%2===0, 'tasks-grid-col blue': i%1===0}">
+                            <!--<div class="tasks-grid-col-title">Done <strong>100</strong></div>-->
+
+                            <div class="sortable">
+                                <section class="box-typical task-card task">
+                                    <div class="task-card-photo">
+                                        <!--<img src="img/img-task.jpg" alt="">-->
+                                    </div>
+                                    <div class="task-card-in">
+
+                                        <div class="task-card-title-label text-center">
+                                            <h6 style="font-weight: bolder">{{li.name}}</h6>
+                                        </div>
+                                        <div class="task-card-title text-center">
+                                            <!--<div class="button__holder">-->
+                                            <!--<button class="plus"-->
+                                            <!--(click)="select_add_influencers(li.id,li.name)"></button>-->
+                                            <!--</div>-->
+                                            <h6>  Total Influencers: <b>{{li.influencers_count}}</b></h6>
+                                            <button style="margin-bottom: 5%" type="button" class="btn btn-rounded" (click)="select_add_influencers_pt(li.id, li.name) ">
+                                                Add Influencers
+                                            </button>
+                                        </div>
+
+                                    </div>
+                                    <div class="task-card-footer">
+                                        <!--<div class="task-card-meta-item"><i class="font-icon font-icon-comments-2"></i>10</div>-->
+                                        <div class="task-card-meta-item" title="Click to Show all Influencers in this list" style="cursor: pointer;" (click)="go_to_list_pt(li.id, li.name)">
+                                            <i class="fa fa-edit"></i>
+                                        </div>
+                                        <!--<div class="task-card-meta-item" title="Click to Email" style="cursor: pointer;" (click)="email_list_dd(li.id, li.name)">-->
+                                            <!--<i class="fa fa-envelope"></i>-->
+                                        <!--</div>-->
+                                        <!--<div class="task-card-meta-item text-right" title="Click to Delete" style="cursor: pointer;" (click)="email_list(li.id, li.name)">-->
+                                        <!---->
+                                        <!--</div>-->
+                                        <div class="avatar-preview avatar-preview-32">
+                                            <i class="fa fa-trash" style="cursor: pointer;" (click)="delete_ilist_pt(li.id, li.name)"></i>
+                                        </div>
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
+                    </div><!--.tasks-grid-->
+                </div>
+
+
+            </mat-tab>
+            <mat-tab label="Periscope">
+                <ng-template mat-tab-label>
+                     <span class="nav-link-in-dash">
+                         <img src="../../assets/img/periscope.png">
+                         Periscope
+									</span>
+
+                </ng-template>
+
+
+                <div class="tasks-grid" *ngIf="loaded" style="width: 90%; margin: 28px auto 20px auto ">
+                    <div class="row header">
+                        <div class="col-sm-12">
+                            <div class="row">
+                                <div class="col-md-6">
+                                        <span class="tasks-grid-col-title align-left">Total Lists: <strong>{{user_lists.totalItems}}</strong>
+                                        </span>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="row">
+                                        <div class="col-md-8 col-sm-6 pull-right">
+                                            <mat-select (change)="sort_lists_peri()" name="selected_choice" [(ngModel)]="selected_choice"
+                                                       placeholder="Sort By" style="width: 60%; float: right">
+                                                <mat-option *ngFor="let choice of periscope_choices" [value]="choice.code">{{ choice.name }}
+                                                </mat-option>
+                                            </mat-select>
+                                        </div>
+                                        <div class="col-md-4 col-sm-6 pull-right">
+                                            <button type="button" class="btn btn-rounded" (click)="create_empty_list_peri()">
+                                                Create List
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div *ngFor="let li of user_lists.results; let i = index" [ngClass]="{'tasks-grid-col': i%7===0, 'tasks-grid-col red': i%3===0, 'tasks-grid-col black': i%2===0, 'tasks-grid-col blue': i%1===0}">
+                        <!--<div class="tasks-grid-col-title">Done <strong>100</strong></div>-->
+
+                        <div class="sortable">
+                            <section class="box-typical task-card task">
+                                <div class="task-card-photo">
+                                    <!--<img src="img/img-task.jpg" alt="">-->
+                                </div>
+                                <div class="task-card-in">
+
+                                    <div class="task-card-title-label text-center">
+                                        <h6 style="font-weight: bolder">{{li.name}}</h6>
+                                    </div>
+                                    <div class="task-card-title text-center">
+                                        <!--<div class="button__holder">-->
+                                        <!--<button class="plus"-->
+                                        <!--(click)="select_add_influencers(li.id,li.name)"></button>-->
+                                        <!--</div>-->
+                                        <h6>  Total Influencers: <b>{{li.influencers_count}}</b></h6>
+                                        <button style="margin-bottom: 5%" type="button" class="btn btn-rounded" (click)="select_add_influencers_peri(li.id, li.name) ">
+                                            Add Influencers
+                                        </button>
+                                    </div>
+
+                                </div>
+                                <div class="task-card-footer">
+                                    <!--<div class="task-card-meta-item"><i class="font-icon font-icon-comments-2"></i>10</div>-->
+                                    <div class="task-card-meta-item" title="Click to Show all Influencers in this list" style="cursor: pointer;" (click)="go_to_list_peri(li.id, li.name)">
+                                        <i class="fa fa-edit"></i>
+                                    </div>
+                                    <!--<div class="task-card-meta-item" title="Click to Email" style="cursor: pointer;" (click)="email_list_dd(li.id, li.name)">-->
+                                        <!--<i class="fa fa-envelope"></i>-->
+                                    <!--</div>-->
+                                    <!--<div class="task-card-meta-item text-right" title="Click to Delete" style="cursor: pointer;" (click)="email_list(li.id, li.name)">-->
+                                    <!---->
+                                    <!--</div>-->
+                                    <div class="avatar-preview avatar-preview-32">
+                                        <i class="fa fa-trash" style="cursor: pointer;" (click)="delete_ilist_peri(li.id, li.name)"></i>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+
+                </div>
+            </mat-tab>
+
+            <mat-tab label="Periscope">
+                <ng-template mat-tab-label>
+                     <span class="nav-link-in-dash">
+                         <!--<img src="../../assets/img/periscope.png">-->
+                         <i class="fa fa-medium"></i>
+                         Medium
+									</span>
+
+                </ng-template>
+
+
+                <div class="tasks-grid" *ngIf="loaded" style="width: 90%; margin: 28px auto 20px auto ">
+                    <div class="row header">
+                        <div class="col-sm-12">
+                            <div class="row">
+                                <div class="col-md-6">
+                                        <span class="tasks-grid-col-title align-left">Total Lists: <strong>{{user_lists.totalItems}}</strong>
+                                        </span>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="row">
+                                        <div class="col-md-8 col-sm-6 pull-right">
+                                            <mat-select (change)="sort_lists_med()" name="selected_choice" [(ngModel)]="selected_choice"
+                                                        placeholder="Sort By" style="width: 60%; float: right">
+                                                <mat-option *ngFor="let choice of medium_choices" [value]="choice.code">{{ choice.name }}
+                                                </mat-option>
+                                            </mat-select>
+                                        </div>
+                                        <div class="col-md-4 col-sm-6 pull-right">
+                                            <button type="button" class="btn btn-rounded" (click)="create_empty_list_med()">
+                                                Create List
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div *ngFor="let li of user_lists.results; let i = index" [ngClass]="{'tasks-grid-col': i%7===0, 'tasks-grid-col red': i%3===0, 'tasks-grid-col black': i%2===0, 'tasks-grid-col blue': i%1===0}">
+                        <!--<div class="tasks-grid-col-title">Done <strong>100</strong></div>-->
+
+                        <div class="sortable">
+                            <section class="box-typical task-card task">
+                                <div class="task-card-photo">
+                                    <!--<img src="img/img-task.jpg" alt="">-->
+                                </div>
+                                <div class="task-card-in">
+
+                                    <div class="task-card-title-label text-center">
+                                        <h6 style="font-weight: bolder">{{li.name}}</h6>
+                                    </div>
+                                    <div class="task-card-title text-center">
+                                        <!--<div class="button__holder">-->
+                                        <!--<button class="plus"-->
+                                        <!--(click)="select_add_influencers(li.id,li.name)"></button>-->
+                                        <!--</div>-->
+                                        <h6>  Total Influencers: <b>{{li.influencers_count}}</b></h6>
+                                        <button style="margin-bottom: 5%" type="button" class="btn btn-rounded" (click)="select_add_influencers_med(li.id, li.name) ">
+                                            Add Influencers
+                                        </button>
+                                    </div>
+
+                                </div>
+                                <div class="task-card-footer">
+                                    <!--<div class="task-card-meta-item"><i class="font-icon font-icon-comments-2"></i>10</div>-->
+                                    <div class="task-card-meta-item" title="Click to Show all Influencers in this list" style="cursor: pointer;" (click)="go_to_list_med(li.id, li.name)">
+                                        <i class="fa fa-edit"></i>
+                                    </div>
+                                    <!--<div class="task-card-meta-item" title="Click to Email" style="cursor: pointer;" (click)="email_list_dd(li.id, li.name)">-->
+                                        <!--<i class="fa fa-envelope"></i>-->
+                                    <!--</div>-->
+                                    <!--<div class="task-card-meta-item text-right" title="Click to Delete" style="cursor: pointer;" (click)="email_list(li.id, li.name)">-->
+                                    <!---->
+                                    <!--</div>-->
+                                    <div class="avatar-preview avatar-preview-32">
+                                        <i class="fa fa-trash" style="cursor: pointer;" (click)="delete_ilist_med(li.id, li.name)"></i>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+
+                </div>
+            </mat-tab>
+            <mat-tab label="Flickr">
+                <ng-template mat-tab-label>
+                     <span class="nav-link-in-dash">
+                         <!--<img src="../../assets/img/periscope.png">-->
+                         <i class="fa fa-flickr"></i>
+                         Flickr
+									</span>
+
+                </ng-template>
+
+
+                <div class="tasks-grid" *ngIf="loaded" style="width: 90%; margin: 28px auto 20px auto ">
+                    <div class="row header">
+                        <div class="col-sm-12">
+                            <div class="row">
+                                <div class="col-md-6">
+                                        <span class="tasks-grid-col-title align-left">Total Lists: <strong>{{user_lists.totalItems}}</strong>
+                                        </span>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="row">
+                                        <div class="col-md-8 col-sm-6 pull-right">
+                                            <mat-select (change)="sort_lists_fli()"  name="selected_choice" [(ngModel)]="selected_choice"
+                                                        placeholder="Sort By" style="width: 60%; float: right">
+                                                <mat-option *ngFor="let choice of choices_flicker" [value]="choice.code">{{ choice.name }}
+                                                </mat-option>
+                                            </mat-select>
+                                        </div>
+                                        <div class="col-md-4 col-sm-6 pull-right">
+                                            <button type="button" class="btn btn-rounded" (click)="create_empty_list_flkr()">
+                                                Create List
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div *ngFor="let li of user_lists.results; let i = index" [ngClass]="{'tasks-grid-col': i%7===0, 'tasks-grid-col red': i%3===0, 'tasks-grid-col black': i%2===0, 'tasks-grid-col blue': i%1===0}">
+                        <!--<div class="tasks-grid-col-title">Done <strong>100</strong></div>-->
+
+                        <div class="sortable">
+                            <section class="box-typical task-card task">
+                                <div class="task-card-photo">
+                                    <!--<img src="img/img-task.jpg" alt="">-->
+                                </div>
+                                <div class="task-card-in">
+
+                                    <div class="task-card-title-label text-center">
+                                        <h6 style="font-weight: bolder">{{li.name}}</h6>
+                                    </div>
+                                    <div class="task-card-title text-center">
+                                        <!--<div class="button__holder">-->
+                                        <!--<button class="plus"-->
+                                        <!--(click)="select_add_influencers(li.id,li.name)"></button>-->
+                                        <!--</div>-->
+                                        <h6>  Total Influencers: <b>{{li.influencers_count}}</b></h6>
+                                        <button style="margin-bottom: 5%" type="button" class="btn btn-rounded" (click)="select_add_influencers_flkr(li.id, li.name) ">
+                                            Add Influencers
+                                        </button>
+                                    </div>
+
+                                </div>
+                                <div class="task-card-footer">
+                                    <!--<div class="task-card-meta-item"><i class="font-icon font-icon-comments-2"></i>10</div>-->
+                                    <div class="task-card-meta-item" title="Click to Show all Influencers in this list" style="cursor: pointer;" (click)="go_to_list_flkr(li.id, li.name)">
+                                        <i class="fa fa-edit"></i>
+                                    </div>
+                                    <!--<div class="task-card-meta-item" title="Click to Email" style="cursor: pointer;" (click)="email_list_dd(li.id, li.name)">-->
+                                        <!--<i class="fa fa-envelope"></i>-->
+                                    <!--</div>-->
+                                    <!--<div class="task-card-meta-item text-right" title="Click to Delete" style="cursor: pointer;" (click)="email_list(li.id, li.name)">-->
+                                    <!---->
+                                    <!--</div>-->
+                                    <div class="avatar-preview avatar-preview-32">
+                                        <i class="fa fa-trash" style="cursor: pointer;" (click)="delete_ilist_flkr(li.id, li.name)"></i>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+
+                </div>
+            </mat-tab>
+
+        </mat-tab-group>
+        <preloader-small></preloader-small>
+        <!--<md-card>-->
+            <!--(Currently)Listing feature available for only blog influencers.-->
+        <!--</md-card>-->
+
+
+    </div>
+
+
+</div>
+<!--</div>-->
+

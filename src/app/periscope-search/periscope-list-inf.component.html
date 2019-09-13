@@ -1,0 +1,177 @@
+<!--<p class="lead color-blue-grey-lighter">Zero influencers in the list.<br> Add some influencers <strong></strong></p>-->
+
+<div class="page-content">
+
+  <div class="container-fluid" *ngIf="loaded && lnkdProfiles.totalItems==0">
+    <div class="box-typical box-typical-full-height" style="min-height: 119px;">
+      <div class="add-customers-screen tbl" style="height: 119px;">
+        <div class="add-customers-screen-in">
+          <div class="add-customers-screen-user">
+            <i class="font-icon font-icon-user"></i>
+          </div>
+          <h2>OOPS!</h2>
+          <p class="lead color-blue-grey-lighter">Zero influencers in the list.<br> Add some influencers <strong></strong></p>
+          <!--<a href="#" class="btn">Add customer</a>-->
+        </div>
+      </div>
+    </div><!--.box-typical-->
+  </div>
+  <div class="SickyPage">
+    <div id="wrapper" *ngIf="loaded&& lnkdProfiles.totalItems!=0">
+      <div id="yourdiv">
+        <nav>
+          <ul *ngIf="pager.pages && pager.pages.length" class="pagination pagination-lg">
+
+            <!--<li [ngClass]="{disabled:pager.currentPage === 1}">-->
+            <!--<a (click)="setPage(pager.currentPage - 1)" class="page-link" aria-label="Previous"></a>-->
+            <!--</li>-->
+            <li class="page-item" [ngClass]="{disabled:pager.currentPage === 1}">
+              <a class="page-link" (click)="setPage(1)" aria-label="Previous">
+                First
+              </a>
+            </li>
+            <li class="page-item" [ngClass]="{disabled:pager.currentPage === 1}">
+              <a class="page-link" (click)="setPage(pager.currentPage - 1)" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+                <span class="sr-only">Previous</span>
+              </a>
+            </li>
+
+            <li class="page-item" *ngFor="let page of pager.pages"
+                [ngClass]="{active:pager.currentPage === page}"
+                (click)="setPage(page)"><a class="page-link">{{page}}</a>
+            </li>
+            <!--<li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">-->
+            <!--<a (click)="setPage(pager.currentPage + 1)">Next</a>-->
+            <!--</li>-->
+            <li class="page-item" [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+              <a class="page-link" (click)="setPage(pager.currentPage + 1)" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+                <span class="sr-only">Next</span>
+              </a>
+            </li>
+            <li class="page-item" [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+              <a class="page-link" (click)="setPage(pager.totalPages)" aria-label="Next">
+                Last
+              </a>
+            </li>
+            <!--<li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">-->
+            <!--<a (click)="setPage(pager.totalPages)">Last</a>-->
+            <!--</li>-->
+          </ul>
+        </nav>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="container-fluid" *ngIf="loaded&& lnkdProfiles.totalItems!=0">
+
+    <div class="row" id="myHeader">
+      <div class="col-md-12 list-row">
+        <div class="row">
+          <div class="col-md-12">
+            <!--<button  class="btn btn-success">Select All</button>-->
+            <div id="toolbar">
+
+              <!--<button  style="width:70%;font-size: x-large;font-weight: bold;" class="btn btn-rounded">Login</button>-->
+
+              <inline-editor [disabled]="loading" class="bootstrap-table-header" type="text" [(ngModel)]="listname" min="1"
+                             max="30" [fnErrorLength]="myHandleError" (onSave)="saveEditable($event)" name="editableText1" size="30"></inline-editor>
+              <img *ngIf="loading"
+                   src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAA
+                        GJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJ
+                        CgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAd
+                        Ka+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7W
+                        EYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhm
+                        KtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZf
+                        hYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunI
+                        nK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEA
+                        AQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJC
+                        gAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLW
+                        zpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtq
+                        lAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="/>
+              <button  class="btn btn-success" (click)="deleteSelected()">
+                <!--<i class="font-icon font-icon-close-2"></i> -->
+                Delete selected
+              </button>
+              <button  class="btn btn-success" (click)="clear_list()">
+                <!--<i class="font-icon font-icon-close-2"></i> -->
+                Clear selected
+              </button>
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="profile-container" *ngFor="let item of lnkdProfiles.results" >
+      <div class="row">
+
+
+        <div class="col-md-2 profile-checkbox" type="checkbox">
+          <input type="checkbox" style="display: flex"  name="{{item['id']}}" [(ngModel)]="inflist[item['id']]" (change)="chec()" id="table-check-{{item['id']}}">
+          <label for="table-check-{{item['id']}}"></label>
+        </div>
+        <div class="col-md-2 text-center">
+          <img [src]="item['image_url']"  style="height: 100px;  width: 100px; margin-top: 15px; border-radius: 100%">
+        </div>
+
+
+        <div class="col-md-7" style="margin-left: 3%">
+          <div class="row">
+            <label class="tbl-cell tbl-cell-name">{{item['profile_name']}}</label>
+          </div>
+          <div class="row" style="padding-top: 8px">
+            <label class="item-content" style="overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;" title="{{item['description']}}">{{item['description']}}</label>
+          </div>
+          <div class="row" style="padding-top: 8px">
+            <div class="col-md-3 text-left">
+              <label class="item-loc"> <i class="fa fa-map-marker" style="font-size:16px;color:#c00"></i> Category: <span class="list-item1">Global</span> </label>
+
+            </div>
+            <div class="col-md-9 text-left">
+
+              <label class="item-loc"> <i class="fa fa-location-arrow" style="font-size:16px;color:#c00; "></i> Profile:  <a style="color: #0a6aa1; font-weight: bolder">{{item['profile_link']}}</a></label>
+            </div>
+          </div>
+          <hr style="color: #555555">
+          <div class="row" >
+            <ul style="display: flex; padding-top: 5px">
+              <li><span class="right-item"><i class="fa fa-users" style="font-size:16px;color:#0a4069"></i> Followers:</span> <span class="list-item1">{{item['followers']}} |  </span> </li>
+              <li><span class="right-item"> <i class="fa fa-eye" style="font-size:16px;color:#0a4069"></i> Following:</span> <span class="list-item1">{{item['following']}} |   </span></li>
+              <li><span class="right-item"><i class="fa fa-bar-chart" style="font-size:16px;color:#0a4069"></i> Rank:</span> <span class="list-item1">{{item['profile_rank']}}</span></li>
+              <li><span class="right-item"><i class="fa fa-upload" style="font-size:16px;color:#0a4069; padding-left: 5px"></i> Broadcast :</span> <span class="list-item1">{{item['braodcasts']}} |  </span> </li>
+
+            </ul>
+          </div>
+          <hr style="color: #555555">
+          <div class="row" >
+            <ul style="display: flex; padding-top: 5px">
+              <!--<li style="font-weight: bolder"> Videos Uploads | </li>-->
+              <li><span class="right-item"> <i class="fa fa-heart-o" style="font-size:16px;color:#0a4069"></i> Hearts :</span> <span class="list-item1">{{item['hearts']}} |   </span></li>
+              <li><span class="right-item"><i class="fa fa-twitter" style="font-size:16px;color:#0a4069"></i> Twitter: </span> <span class="list-item1">{{item['twitter_name']}}</span></li>
+
+
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+
+
+
+
+
+

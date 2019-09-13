@@ -1,0 +1,13 @@
+<mat-card class="card">
+    <div class="main"> <img [src]="imgName">
+        <button class="refrash-button" type="button" (click)="resetImg()" mat-icon-button>
+            <img src="../../assets/refresh-page-option.svg" style="margin-left: 4px" height="17" width="17">
+        </button>
+    </div>
+  <mat-form-field>
+
+    <input class="recapcha-input" matInput [(ngModel)]="capchaText" autocomplete="off" maxlength="5"
+        (change)="checkChange()" placeholder="Enter above text">
+  </mat-form-field>
+
+</mat-card>

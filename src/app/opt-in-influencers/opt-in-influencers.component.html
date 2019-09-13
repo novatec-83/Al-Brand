@@ -1,0 +1,493 @@
+
+<p-overlayPanel #op>
+
+  <ul *ngFor="let row of blogdata">
+    <li>{{row}}</li>
+
+  </ul>
+
+</p-overlayPanel>
+
+<div class="page-content">
+
+  <div class="SickyPage">
+
+  <div id="wrapper" *ngIf="loaded&& blogs.totalItems!=0">
+    <!--<h3>Opt-In Influencers</h3>-->
+    <div id="yourdiv">
+      <nav>
+        <ul *ngIf="pager.pages && pager.pages.length" class="pagination pagination-lg">
+
+          <!--<li [ngClass]="{disabled:pager.currentPage === 1}">-->
+          <!--<a (click)="setPage(pager.currentPage - 1)" class="page-link" aria-label="Previous"></a>-->
+          <!--</li>-->
+          <li class="page-item" [ngClass]="{disabled:pager.currentPage === 1}">
+            <a class="page-link" (click)="setPage(1)" aria-label="Previous">
+              First
+            </a>
+          </li>
+          <li class="page-item" [ngClass]="{disabled:pager.currentPage === 1}">
+            <a class="page-link" (click)="setPage(pager.currentPage - 1)" aria-label="Previous">
+              <span aria-hidden="true">&laquo;</span>
+              <span class="sr-only">Previous</span>
+            </a>
+          </li>
+
+          <li class="page-item" *ngFor="let page of pager.pages"
+              [ngClass]="{active:pager.currentPage === page}"
+              (click)="setPage(page)"><a class="page-link" (click)="navSearch()">{{page}}</a></li>
+          <!--<li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">-->
+          <!--<a (click)="setPage(pager.currentPage + 1)">Next</a>-->
+          <!--</li>-->
+          <li class="page-item" [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+            <a class="page-link" (click)="setPage(pager.currentPage + 1)" aria-label="Next">
+              <span aria-hidden="true">&raquo;</span>
+              <span class="sr-only">Next</span>
+            </a>
+          </li>
+          <li class="page-item" [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+            <a class="page-link" (click)="setPage(pager.totalPages)" aria-label="Next">
+              Last
+            </a>
+          </li>
+          <!--<li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">-->
+          <!--<a (click)="setPage(pager.totalPages)">Last</a>-->
+          <!--</li>-->
+        </ul>
+      </nav>
+
+    </div>
+  </div>
+  </div>
+
+  <section class="box-typical" *ngIf="loaded&& blogs.totalItems!=0">
+
+
+    <div class="box-typical-body">
+      <div class="table-responsive">
+        <div class="bootstrap-table">
+          <p-dataTable #dt exportFilename="Influencers" [value]="results"
+                       class="table table-striped table-hover">
+
+            <p-header class="box-typical-header">
+              <div class="fixed-table-toolbar">
+                <div class="bars pull-left">
+                  <div id="toolbar">
+                    <div class="bootstrap-table-header">Search results</div>
+                    <button class="btn btn-primary1" (click)="add_create_list()">
+                      <!--<i class="font-icon font-icon-close-2"></i> -->
+                      Add to list
+                    </button>
+                    <button class="btn btn-primary1" (click)="clear_list()">
+                      <!--<i class="font-icon font-icon-close-2"></i> -->
+                      Clear selected
+                    </button>
+                  </div>
+                </div>
+                <div class="columns columns-right btn-group pull-right">
+
+                  <div class="export btn-group">
+                    <button class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+                            type="button" aria-expanded="false"><i
+                            class="font-icon font-icon-download"></i> <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu" style="min-width: fit-content;left: auto">
+                      <li data-type="json"><a href="javascript:void(0)">JSON</a></li>
+                      <li data-type="xml"><a href="javascript:void(0)">XML</a></li>
+                      <li data-type="csv"><a href="javascript:void(0)">CSV</a></li>
+                      <li data-type="txt"><a href="javascript:void(0)">TXT</a></li>
+                      <li data-type="sql"><a href="javascript:void(0)">SQL</a></li>
+                      <li data-type="excel"><a href="javascript:void(0)">MS-Excel</a></li>
+                    </ul>
+                  </div>
+                </div>
+                <!---->
+                <!---->
+              </div>
+            </p-header>
+
+
+            <p-column>
+              <ng-template pTemplate="header">
+                <div class="table-check">
+                  <div class="checkbox checkbox-only">
+                    <input type="checkbox" id="table-check-head" name="main_checkbox"
+                           [(ngModel)]="main_checkbox" (change)="cheakall($event.target.checked)">
+                    <label for="table-check-head"></label>
+                  </div>
+                </div>
+              </ng-template>
+              <ng-template pTemplate="body" let-col let-car="rowData">
+
+                <div class="table-check">
+                  <div class="checkbox checkbox-only">
+                    <input type="checkbox" style="display: flex"  name="{{car['id']}}" [(ngModel)]="inflist[car['id']]" (change)="chec()" id="table-check-{{car['id']}}">
+                    <label for="table-check-{{car['id']}}"></label>
+                  </div>
+                </div>
+              </ng-template>
+            </p-column>
+            <p-column>
+              <ng-template pTemplate="header">
+                <div style="text-align: center; " class="th-inner">Title</div>
+                <div class="fht-cell"></div>
+              </ng-template>
+              <ng-template pTemplate="body" let-col let-car="rowData">
+                <a  style="text-align: left;">
+                  <div class="mail-box-item selected-line red" style="max-width: 250px">
+                    <div class="mail-box-item-header">
+
+                      <div class="mail-box-item-photo">
+                        <img *ngIf="car['profile_image']"
+                             src="{{car['profile_image']}}"
+                             style="width: 32px;height: 32px" alt="" data-toggle="tooltip"
+                             data-placement="bottom">
+
+                      </div>
+                      <div class="tbl mail-box-item-head-tbl">
+                        <div class="tbl-row">
+                          <div class="tbl-cell">
+                            <div class="tbl mail-box-item-user-tbl">
+                              <div class="tbl-row">
+                                <div class="tbl-cell tbl-cell-name"
+                                     [innerHTML]="car['profile_name']"></div>
+                                <!--<div class="tbl-cell tbl-cell-new"><span class="label label-pill label-danger">11</span></div>-->
+                              </div>
+                            </div>
+
+                          </div>
+                          <!--<div class="tbl-cell tbl-cell-date" title="Type of website"><strong>{{car['data']['site_type']-->
+                          <!--| uppercase}}</strong></div>-->
+                        </div>
+                      </div>
+
+                    </div>
+                    <div class="mail-box-item-content">
+                      <!--<div *ngIf="!car['highlightText']" class="txt" title="{{car['data']['title_full']}}" [innerHTML]="car['data']['title_full']"></div>-->
+                      <div *ngIf="car['facebookdata']['name']" class="txt" title="{{car['facebookdata']['name']}}"
+                           style="white-space: normal;max-height: 75px;text-overflow: ellipsis"
+                           [innerHTML]="car['facebookdata']['name']"></div>
+                    </div>
+                  </div>
+                </a>
+
+              </ng-template>
+            </p-column>
+            <p-column>
+              <ng-template pTemplate="header">
+                <div style="text-align: center; " class="th-inner">Contact</div>
+                <div class="fht-cell"></div>
+              </ng-template>
+              <ng-template let-col let-car="rowData" pTemplate="body">
+                <div class="col-item col-contact tooltips">
+                  <ul>
+                    <li *ngIf="car['email']">
+                      <div>
+                        <i class="fa fa-map-marker"></i><!--ko text:AlexaCountry-->
+                        {{car['email']}}<!--/ko-->
+                      </div>
+                    </li>
+                    <!--<li>-->
+                      <!--<a target="_blank" data-container="body"-->
+                         <!--href="{{car['seoData']['contactpages']}}"-->
+                         <!--*ngIf="car['seoData']['contactpages']"-->
+                         <!--title="{{car['seoData']['contactpages']}}"><i-->
+                              <!--class="fa fa-info-circle"></i>-->
+                        <!--Contact</a>-->
+                      <!--&lt;!&ndash;<br>&ndash;&gt;-->
+                    <!--</li>-->
+                    <!--&lt;!&ndash;<a data-bind="href : AboutUrl,attr.title:AboutUrl" target="_blank" data-container="body" href=""><i class="fa fa-user"></i> About</a>&ndash;&gt;-->
+                    <!--<li><a target="_blank" data-container="body"-->
+                           <!--href="{{car['seoData']['aboutpages']}}"-->
+                           <!--*ngIf="car['seoData']['aboutpages']"-->
+                           <!--title="{{car['seoData']['aboutpages']}}"><i-->
+                            <!--class="fa fa-user"></i> About</a>-->
+                    <!--</li>-->
+                    <!--&lt;!&ndash;<a class="email" target="_blank" data-container="body" title="foundation_ww@oracle.com"><i class="fa fa-envelope"></i>&lt;!&ndash;ko text:EmailAddress&ndash;&gt; <span>admin@b.com</span>&lt;!&ndash;/ko&ndash;&gt;</a>&ndash;&gt;-->
+                    <!--<li *ngIf="car['seoData']['phones']"><a class="phone" target="_blank"-->
+                                                            <!--data-container="body"-->
+                                                            <!--(mouseenter)="filldata(car['seoData']['phones'])"-->
+                                                            <!--*ngIf="car['seoData']['phones'][0]"-->
+                                                            <!--(click)="op.toggle($event)"><i-->
+                            <!--class="fa fa-phone"></i> Phone-->
+                      <!--&lt;!&ndash;ko text:AlexaPhoneNumber&ndash;&gt;&lt;!&ndash;/ko&ndash;&gt;</a>-->
+                    <!--</li>-->
+                    <li *ngIf="car['email']">
+                      <a class="phone" target="_blank" data-container="body"><i class="font-icon-mail"></i> {{car['email']}}
+                        <!--ko text:AlexaPhoneNumber--><!--/ko--></a>
+                    </li>
+                  </ul>
+                </div>
+                <!--<td class="table-date">{{car['email']}} <i-->
+                <!--class="font-icon font-icon-clock"></i></td>-->
+              </ng-template>
+            </p-column>
+            <p-column>
+              <ng-template pTemplate="header">
+                <div style="text-align: center; " class="th-inner">Social</div>
+                <div class="fht-cell"></div>
+              </ng-template>
+              <ng-template let-col let-car="rowData" pTemplate="body">
+
+                <ul class="clearfix">
+                  <div class="col-sm-6" align="left">
+                    <li>
+                      <a *ngIf="car['linkedindata']" href="{{car['linkedindata']['image']}}">
+                        <div class="circle-social facebook">
+                          <i class="fa fa-linkedin"> </i>
+                        </div>
+                        <!--<span>{{car['data']['social']['facebook']['shares'] + car['data']['social']['facebook']['likes']+ car['data']['social']['facebook']['comments']}}</span>-->
+                      </a>
+                    </li>
+                    <!--<li>-->
+                      <!--<a (mouseenter)="filldata(car['seoData']['twitter'])"-->
+                         <!--*ngIf="car['seoData']['twitter']"-->
+                         <!--(click)="op.toggle($event)">-->
+                        <!--<div class="circle-social twitter">-->
+                          <!--<i class="fa fa-twitter"> </i>-->
+                        <!--</div>-->
+                      <!--</a>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                      <!--<a *ngIf="car['seoData']['pinterest']"-->
+                         <!--(mouseenter)="filldata(car['seoData']['pinterest'])"-->
+                         <!--(click)="op.toggle($event)">-->
+                        <!--<div class="circle-social pinterest">-->
+                          <!--<i class="fa fa-pinterest"></i>-->
+                        <!--</div>-->
+                        <!--&lt;!&ndash;<span>{{car['data']['social']['pinterest']['shares']}}</span>&ndash;&gt;-->
+                      <!--</a>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                      <!--<a (mouseenter)="filldata(car['seoData']['youtube'])"-->
+                         <!--*ngIf="car['seoData']['youtube']"-->
+                         <!--(click)="op.toggle($event)">-->
+                        <!--<div class="circle-social youtube">-->
+                          <!--<i class="fa fa-youtube"></i>-->
+                        <!--</div>-->
+                      <!--</a>-->
+                    <!--</li>-->
+
+                  <!--</div>-->
+                  <!--<div class="col-sm-6 col-lg-push-1">-->
+                    <!--<li>-->
+                      <!--<a (mouseenter)="filldata(car['seoData']['googleplus'])"-->
+                         <!--*ngIf="car['seoData']['googleplus']"-->
+                         <!--(click)="op.toggle($event)">-->
+                        <!--<div class="circle-social google-plus">-->
+                          <!--<i class="fa fa-google-plus"></i>-->
+                        <!--</div>-->
+                        <!--&lt;!&ndash;<span>{{car['data']['social']['gplus']['shares']}}</span>&ndash;&gt;-->
+                      <!--</a>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                      <!--<a (mouseenter)="filldata(car['seoData']['linkedin'])"-->
+                         <!--*ngIf="car['seoData']['linkedin']"-->
+                         <!--(click)="op.toggle($event)">-->
+                        <!--<div class="circle-social linkedin">-->
+                          <!--<i class="fa fa-linkedin"></i>-->
+                        <!--</div>-->
+                        <!--&lt;!&ndash;<span>{{car['data']['social']['linkedin']['shares']}}</span>&ndash;&gt;-->
+                      <!--</a>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                      <!--<a (mouseenter)="filldata(car['seoData']['instagram'])"-->
+                         <!--*ngIf="car['seoData']['instagram']"-->
+                         <!--(click)="op.toggle($event)">-->
+                        <!--<div class="circle-social instagram">-->
+                          <!--<i class="fa fa-instagram"></i>-->
+                        <!--</div>-->
+                      <!--</a>-->
+                    <!--</li>-->
+                  </div>
+                </ul>
+              </ng-template>
+            </p-column>
+
+            <!--<p-column field="location" header="Location"></p-column>-->
+            <p-column>
+              <ng-template pTemplate="header">
+                <div style="text-align: center; " class="th-inner">Category</div>
+                <div class="fht-cell"></div>
+
+              </ng-template>
+
+              <ng-template let-col let-car="rowData" let-ri="rowIndex" pTemplate="body">
+            <div *ngIf="car['category']">
+            <div *ngFor="let cat of car['category']">
+              {{cat['name']}}
+            </div>
+            </div>
+              </ng-template>
+
+            </p-column>
+
+
+            <!--<p-column>-->
+              <!--<ng-template pTemplate="header">-->
+                <!--<div style="text-align: center; " class="th-inner">Messenger</div>-->
+                <!--<div class="fht-cell"></div>-->
+
+              <!--</ng-template>-->
+
+              <!--<ng-template let-col let-car="rowData" let-ri="rowIndex" pTemplate="body">-->
+
+                <!--&lt;!&ndash;<button type="text" (click)="openMessenger()" pButton&ndash;&gt;-->
+                        <!--&lt;!&ndash;class="btn btn-rounded btn-inline btn-info">Chat&ndash;&gt;-->
+                <!--&lt;!&ndash;</button>&ndash;&gt;-->
+
+
+                <!--<a  (click)="openMessenger(car['user'])" class="btn btn-rounded btn-inline btn-info">Chat</a>-->
+
+
+                <!--&lt;!&ndash;<a target="_blank" routerLink="/messenger?uid={{car['user']}}" (click)="openMessenger()" class="btn btn-rounded btn-inline btn-info">Chat</a>&ndash;&gt;-->
+
+              <!--</ng-template>-->
+
+            <!--</p-column>-->
+            <!--<p-column>-->
+              <!--<ng-template pTemplate="header">-->
+                <!--<div style="text-align: center; " class="th-inner">Site Features</div>-->
+                <!--<div class="fht-cell"></div>-->
+
+              <!--</ng-template>-->
+
+              <!--<ng-template let-col let-car="rowData" let-ri="rowIndex" pTemplate="body">-->
+                <!--<ul>-->
+                  <!--<li>-->
+                    <!--Moz Rank:-->
+                    <!--<ul class="list-group-item" style="text-align: right;">-->
+                      <!--<li>-->
+                        <!--{{car['moz_rank']}}-->
+                      <!--</li>-->
+
+                    <!--</ul>-->
+                  <!--</li>-->
+                  <!--<li>Alexa:-->
+                    <!--<ul class="list-group-item" style="text-align: right;">-->
+                      <!--<li>-->
+                        <!--{{car['seoData']['ALEXA']}}-->
+                      <!--</li>-->
+
+                    <!--</ul>-->
+                  <!--</li>-->
+                <!--</ul>-->
+
+                <!--&lt;!&ndash;<button type="text" (click)="fillfeaturedata(car)" pButton&ndash;&gt;-->
+                <!--&lt;!&ndash;class="btn btn-rounded btn-inline btn-info">Show features&ndash;&gt;-->
+                <!--&lt;!&ndash;</button>&ndash;&gt;-->
+
+
+              <!--</ng-template>-->
+
+            <!--</p-column>-->
+
+
+          </p-dataTable>
+        </div>
+      </div>
+    </div>
+  </section>
+  <p-dialog *ngIf="dialogVisible_features" [(visible)]="dialogVisible_features" [responsive]="true" showEffect="fade"
+            [modal]="true" width="450">
+    <p-header *ngIf="dialogVisible_features">
+
+      Web features of <a href="{{feature_data.main_url}}">{{feature_data.title}}</a>
+
+    </p-header>
+    <ul class="list-group">
+
+      <li *ngIf="feature_data.moz_rank" class="list-group-item"><span>Moz Rank:</span>
+        <span style="float: right;">{{feature_data.moz_rank}}</span></li>
+
+      <!--<li class="list-group-item"><span>Spam Score:</span>-->
+      <!--<span style="float: right;">{{feature_data.data.spam_score}}</span></li>-->
+      <!--<li *ngIf="feature_data.data.performance_score" class="list-group-item"><span>Performance:</span>-->
+      <!--<span style="float: right;">{{feature_data.data.performance_score}}</span></li>-->
+      <!--<li *ngIf="feature_data.data.site_categories[0]" class="list-group-item">Category:-->
+      <!--<ul>-->
+      <!--<li *ngFor="let c of feature_data.data.site_categories" class="list-group-item" style="text-align: right;">{{c}}</li>-->
+      <!--</ul>-->
+      <!--</li>-->
+
+    </ul>
+  </p-dialog>
+
+
+  <p-dialog [(visible)]="dialogVisible" [responsive]="true" showEffect="fade" [modal]="true" width="933">
+    <p-header *ngIf="dialogVisible">
+
+      SEO stats for <a href="{{seodata.main_url}}">{{seodata.main_url}}</a>
+
+    </p-header>
+    <table id="table-xs" *ngIf="dialogVisible" class="table table-bordered table-hover table-xs">
+
+      <tbody>
+      <tr>
+        <!--<td title="Blog Rank"><strong>Blog rank</strong></td>-->
+        <!--<td title="Blog Rank">{{seodata.data.blogrank}}</td>-->
+        <!--<td title="Linked By"><strong>Linked By</strong></td>-->
+        <!--<td title="Linked By">{{seodata.data.linkedby}}</td>-->
+        <!--<td title="Posts per week"><strong>Posts per week</strong></td>-->
+        <!--<td title="Posts per week">{{seodata.data.postsperweek}}</td>-->
+        <td title="Worth Of Web Traffic Rank"><strong>WOWTR</strong></td>
+        <td title="Worth Of Web Traffic Rank">{{seodata.seoData.WOWTR}}</td>
+      </tr>
+      <tr>
+        <td title="Estimated worth of website"><strong>EWOW</strong></td>
+        <td title="Estimated worth of website">{{seodata.seoData.EWOW}}</td>
+        <td title="Estimated revenue per day"><strong>ERPD</strong></td>
+        <td title="Estimated revenue per day">{{seodata.seoData.EREVD}}</td>
+        <td title="Estimated revenue per month"><strong>ERPM</strong></td>
+        <td title="Estimated revenue per month">{{seodata.seoData.EREVM}}</td>
+        <td title="Estimated revenue per year"><strong>ERPY</strong></td>
+        <td title="Estimated revenue per year">{{seodata.seoData.EREVY}}</td>
+      </tr>
+      <tr>
+        <td title="Estimated visits per day"><strong>EVISD</strong></td>
+        <td title="Estimated visits per day">{{seodata.seoData.EVISD}}</td>
+        <td title="Estimated visits per month"><strong>EVISM</strong></td>
+        <td title="Estimated visits per month">{{seodata.seoData.EVISM}}</td>
+        <td title="Estimated visits per year"><strong>EVISY</strong></td>
+        <td title="Estimated visits per year">{{seodata.seoData.EVISY}}</td>
+        <td title="Estimated pageviews per day"><strong>EPVISD</strong></td>
+        <td title="Estimated pageviews per day">{{seodata.seoData.EPVISD}}</td>
+      </tr>
+      <!--<tr>-->
+      <!--<td title="Estimated visits per day"><strong>EVISD</strong></td>-->
+      <!--<td title="Estimated visits per day">{{car['data.EVISD}}</td>-->
+      <!--<td title="Estimated visits per month"><strong>EVISM</strong></td>-->
+      <!--<td title="Estimated visits per month">{{car['data.EVISM}}</td>-->
+      <!--<td title="Estimated visits per year"><strong>EVISY</strong></td>-->
+      <!--<td title="Estimated visits per year">{{car['data.EVISY}}</td>-->
+      <!--<td title="Estimated pageviews per day"><strong>EPVISD</strong></td>-->
+      <!--<td title="Estimated pageviews per day">{{car['data.EVIS}}</td>-->
+      <!--</tr>-->
+      <tr>
+        <td title="Estimated pageviews per month"><strong>EPVISM</strong></td>
+        <td title="Estimated pageviews per month">{{seodata.seoData.EPVISM}}</td>
+        <td title="Estimated pageviews per year"><strong>EPVISY</strong></td>
+        <td title="Estimated pageviews per year">{{seodata.seoData.EPVISY}}</td>
+        <td title="Alexa Rank"><strong>ALEXA</strong></td>
+        <td title="Alexa Rank">{{seodata.seoData.ALEXA}}</td>
+        <td title="Worth Of Web Traffic Score"><strong>WOWTS</strong></td>
+        <td title="Worth Of Web Traffic Score">{{seodata.seoData.WOWTS}}</td>
+      </tr>
+      <!--<tr>-->
+      <!--<td><strong>Estimated worth of web</strong></td>-->
+      <!--<td>50</td>-->
+      <!--<td><strong>Estimated revenue per day</strong></td>-->
+      <!--<td>20</td>-->
+      <!--<td><strong>Estimated revenue per month</strong></td>-->
+      <!--<td>20</td>-->
+      <!--</tr>-->
+
+    </table>
+  </p-dialog>
+  <div class="container-fluid" *ngIf="loaded">
+
+  </div>
+
+
+</div>
+

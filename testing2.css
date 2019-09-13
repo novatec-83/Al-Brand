@@ -1,0 +1,24 @@
+.ui-paginator a:not(.ui-state-disabled):not(.ui-state-active):hover {
+    border-color: #d4d4d4;
+    background: #eaeaea;
+    color: #081c22; }
+.ui-paginator a:not(.ui-state-disabled):not(.ui-state-active):hover a {
+    color: #081c22; }
+.ui-widget-overlay {
+    background: #666666;
+    opacity: .50;
+    filter: Alpha(Opacity=50); }
+.ui-overlaypanel .ui-overlaypanel-close:hover {
+    border-color: #d4d4d4;
+    background: #eaeaea;
+    color: #081c22; }
+.ui-overlaypanel .ui-overlaypanel-close:hover a {
+    color: #081c22; }
+.ui-dialog .ui-dialog-titlebar-icon {
+    color: #ffffff; }
+.ui-dialog .ui-dialog-titlebar-icon:hover {
+    border-color: #d4d4d4;
+    background: #eaeaea;
+    color: #081c22; }
+.ui-dialog .ui-dialog-titlebar-icon:hover a {
+    color: #081c22; }

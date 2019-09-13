@@ -1,0 +1,407 @@
+
+  <!--<section class="box-typical">-->
+
+
+    <!--<div class="box-typical-body">-->
+      <!--<div class="table-responsive">-->
+        <!--<div class="bootstrap-table">-->
+          <!--<p-dataTable #dt exportFilename="Influencers" [value]="influencers.results"-->
+                       <!--class="table table-striped table-hover" >-->
+
+            <!--<p-header class="box-typical-header">-->
+              <!--<div class="fixed-table-toolbar">-->
+                <!--<div class="bars pull-left">-->
+                  <!--<div id="toolbar">-->
+                    <!--<div class="bootstrap-table-header">Search results</div>-->
+                    <!--<button  class="btn btn-primary" (click)="add_create_list()">-->
+                      <!--&lt;!&ndash;<i class="font-icon font-icon-close-2"></i> &ndash;&gt;-->
+                      <!--Add to list-->
+                    <!--</button>-->
+                    <!--<button  class="btn btn-primary" (click)="clear_list()">-->
+                      <!--&lt;!&ndash;<i class="font-icon font-icon-close-2"></i> &ndash;&gt;-->
+                      <!--Clear selected-->
+                    <!--</button>-->
+                  <!--</div>-->
+                <!--</div>-->
+                <!--<div class="columns columns-right btn-group pull-right">-->
+
+                  <!--<div class="export btn-group">-->
+                    <!--<button class="btn btn-default dropdown-toggle" data-toggle="dropdown"-->
+                            <!--type="button" aria-expanded="false"><i-->
+                            <!--class="font-icon font-icon-download"></i> <span class="caret"></span>-->
+                    <!--</button>-->
+                    <!--<ul class="dropdown-menu" role="menu" style="min-width: fit-content;left: auto">-->
+                      <!--<li data-type="json"><a href="javascript:void(0)">JSON</a></li>-->
+                      <!--<li data-type="xml"><a href="javascript:void(0)">XML</a></li>-->
+                      <!--<li data-type="csv"><a href="javascript:void(0)">CSV</a></li>-->
+                      <!--<li data-type="txt"><a href="javascript:void(0)">TXT</a></li>-->
+                      <!--<li data-type="sql"><a href="javascript:void(0)">SQL</a></li>-->
+                      <!--<li data-type="excel"><a href="javascript:void(0)">MS-Excel</a></li>-->
+                    <!--</ul>-->
+                  <!--</div>-->
+                <!--</div>-->
+
+
+              <!--</div>-->
+            <!--</p-header>-->
+
+
+
+            <!--<p-column>-->
+              <!--<ng-template pTemplate="header">-->
+                <!--<div class="table-check">-->
+                  <!--<div class="checkbox checkbox-only">-->
+                    <!--<input type="checkbox"  id="table-check-head" name="main_checkbox" [(ngModel)]="main_checkbox" (change)="cheakall($event.target.checked)">-->
+                    <!--<label for="table-check-head"></label>-->
+                  <!--</div>-->
+                <!--</div>-->
+              <!--</ng-template>-->
+              <!--<ng-template pTemplate="body" let-col let-car="rowData">-->
+
+                <!--<div class="table-check">-->
+                  <!--<div class="checkbox checkbox-only">-->
+                    <!--<input type="checkbox"  name="{{car['id']}}" [(ngModel)]="inflist[car['id']]" (change)="chec()" id="table-check-{{car['id']}}">-->
+                    <!--<label for="table-check-{{car['id']}}"></label>-->
+                  <!--</div>-->
+                <!--</div>-->
+              <!--</ng-template>-->
+            <!--</p-column>-->
+            <!--<p-column >-->
+              <!--<ng-template pTemplate="header">-->
+                <!--<div style="text-align: center; " class="th-inner">Name</div>-->
+                <!--<div class="fht-cell"></div>-->
+              <!--</ng-template>-->
+              <!--<ng-template pTemplate="body" let-col let-car="rowData" style="text-align: center">-->
+
+
+                <!--<a (click)="goToLink(car['channel_link'])"-->
+                   <!--title="{{car['name']}}">-->
+                  <!--&lt;!&ndash;{{// car['name']}}&ndash;&gt;-->
+                  <!--<div class="mail-box-item selected-line red" style="max-width: 250px">-->
+                    <!--<div class="mail-box-item-header">-->
+
+                      <!--<div class="mail-box-item-photo">-->
+                        <!--<img *ngIf="car['thumbnail_url']"-->
+                             <!--src="{{car['thumbnail_url']}}"-->
+                             <!--style="width: 32px;height: 32px" alt="" data-toggle="tooltip"-->
+                             <!--data-placement="bottom">-->
+
+                      <!--</div>-->
+                      <!--<div class="tbl mail-box-item-head-tbl">-->
+                        <!--<div class="tbl-row">-->
+                          <!--<div class="tbl-cell">-->
+                            <!--<div class="tbl mail-box-item-user-tbl">-->
+                              <!--<div class="tbl-row">-->
+                                <!--<div class="tbl-cell tbl-cell-name"-->
+                                     <!--[innerHTML]="car['name']"></div>-->
+                                <!--&lt;!&ndash;<div class="tbl-cell tbl-cell-new"><span class="label label-pill label-danger">11</span></div>&ndash;&gt;-->
+                              <!--</div>-->
+                            <!--</div>-->
+
+                          <!--</div>-->
+                          <!--&lt;!&ndash;<div class="tbl-cell tbl-cell-date" title="Type of website"><strong>{{car['data']['site_type']&ndash;&gt;-->
+                          <!--&lt;!&ndash;| uppercase}}</strong></div>&ndash;&gt;-->
+                        <!--</div>-->
+                      <!--</div>-->
+
+                    <!--</div>-->
+                    <!--<div class="mail-box-item-content">-->
+                      <!--&lt;!&ndash;<div *ngIf="!car['highlightText']" class="txt" title="{{car['data']['title_full']}}" [innerHTML]="car['data']['title_full']"></div>&ndash;&gt;-->
+                      <!--<div *ngIf="car['description']" class="txt"-->
+                           <!--title="{{car['description']}}"-->
+                           <!--style="white-space: normal;max-height: 75px;text-overflow: ellipsis"-->
+                           <!--[innerHTML]="car['description']"></div>-->
+                    <!--</div>-->
+                  <!--</div>-->
+                <!--</a>-->
+              <!--</ng-template>-->
+            <!--</p-column>-->
+            <!--<p-column>-->
+              <!--<ng-template pTemplate="header">-->
+                <!--<div style="text-align: center; " class="th-inner">Joined Date</div>-->
+                <!--<div class="fht-cell"></div>-->
+              <!--</ng-template>-->
+              <!--<ng-template let-col let-car="rowData" pTemplate="body">-->
+                <!--<div class="col-item col-contact tooltips">-->
+                  <!--<ul>-->
+                    <!--<li *ngIf="car['date']">-->
+                      <!--<div>-->
+                        <!--<i class="fa fa-map-marker"></i>&lt;!&ndash;ko text:AlexaCountry&ndash;&gt;-->
+                        <!--{{car['date']}}&lt;!&ndash;/ko&ndash;&gt;-->
+                      <!--</div>-->
+                    <!--</li>-->
+                    <!--<li *ngIf="car['contact']">-->
+                      <!--<div>-->
+                        <!--<i class="font-icon-mail"></i>&lt;!&ndash;ko text:AlexaCountry&ndash;&gt;-->
+                        <!--{{car['contact'].replace('mailto:','')}}&lt;!&ndash;/ko&ndash;&gt;-->
+                      <!--</div>-->
+                    <!--</li>-->
+                    <!--<li>-->
+
+                    <!--</li>-->
+
+                  <!--</ul>-->
+
+                <!--</div>-->
+
+
+              <!--</ng-template>-->
+            <!--</p-column>-->
+            <!--<p-column>-->
+              <!--<ng-template pTemplate="header">-->
+                <!--<div style="text-align: center; " class="th-inner">Subscribers</div>-->
+                <!--<div class="fht-cell"></div>-->
+              <!--</ng-template>-->
+              <!--<ng-template let-col let-car="rowData" pTemplate="body">-->
+                <!--{{car['subscribers']| number}}-->
+              <!--</ng-template>-->
+            <!--</p-column>-->
+            <!--<p-column>-->
+              <!--<ng-template pTemplate="header">-->
+                <!--<div style="text-align: center; " class="th-inner">Views</div>-->
+                <!--<div class="fht-cell"></div>-->
+              <!--</ng-template>-->
+              <!--<ng-template let-col let-car="rowData" pTemplate="body">-->
+                <!--{{car['total_views']| number}}-->
+              <!--</ng-template>-->
+            <!--</p-column>-->
+
+
+            <!--<p-column>-->
+              <!--<ng-template pTemplate="header">-->
+                <!--<div style="text-align: center; " class="th-inner">Video uploads</div>-->
+                <!--<div class="fht-cell"></div>-->
+              <!--</ng-template>-->
+              <!--<ng-template let-col let-car="rowData" pTemplate="body">-->
+                <!--&lt;!&ndash;Last Month&ndash;&gt;-->
+                <!--<ul class="list-group-item" style="text-align: right;">-->
+                  <!--<li>-->
+                    <!--<strong style="text-align: left;">Last Month</strong>: {{car['last_month_upload_videos']| number}}-->
+                  <!--</li>-->
+                  <!--<li>-->
+                    <!--<strong style="text-align: left;">Last week</strong>: {{car['last_week_upload_videos']| number}}-->
+                  <!--</li>-->
+                <!--</ul>-->
+
+                <!--&lt;!&ndash;<ul class="list-group-item" style="text-align: right;">&ndash;&gt;-->
+                <!--&lt;!&ndash;&ndash;&gt;-->
+                <!--&lt;!&ndash;</ul>&ndash;&gt;-->
+
+                <!--&lt;!&ndash;<ul class="list-group-item" style="text-align: right;">&ndash;&gt;-->
+                <!--&lt;!&ndash;<li>&ndash;&gt;-->
+                <!--&lt;!&ndash;{{car['today_upload_videos'] +0+car['tomorrow_upload_videos']|number}}&ndash;&gt;-->
+                <!--&lt;!&ndash;</li>&ndash;&gt;-->
+                <!--&lt;!&ndash;</ul>&ndash;&gt;-->
+
+              <!--</ng-template>-->
+            <!--</p-column>-->
+
+
+
+
+
+            <!--<p-column>-->
+              <!--<ng-template pTemplate="header">-->
+                <!--<div style="text-align: center; " class="th-inner">Rank</div>-->
+                <!--<div class="fht-cell"></div>-->
+              <!--</ng-template>-->
+              <!--<ng-template let-col let-car="rowData" pTemplate="body">-->
+
+                <!--&lt;!&ndash;<div class="chart" style=" width: 200px;">&ndash;&gt;-->
+                  <!--&lt;!&ndash;<div class="bar bar-{{car['rank']| round}} red">&ndash;&gt;-->
+                    <!--&lt;!&ndash;<div class="face top">&ndash;&gt;-->
+                      <!--&lt;!&ndash;<div class="growing-bar"></div>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<div class="face side-0">&ndash;&gt;-->
+                      <!--&lt;!&ndash;<div class="growing-bar"></div>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<div class="face floor">&ndash;&gt;-->
+                      <!--&lt;!&ndash;<div class="growing-bar"></div>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<div class="face side-a"></div>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<div class="face side-b"></div>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<div class="face side-1">&ndash;&gt;-->
+                      <!--&lt;!&ndash;<div class="growing-bar"></div>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                  <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                <!--<round-progress [current]="car['rank']|round"-->
+                                <!--[max]="max"-->
+                                <!--[color]="'#ca260f'"-->
+                                <!--[background]="'#eaeaea'"-->
+                                <!--[radius]="100"-->
+                                <!--[stroke]="20"-->
+                                <!--[semicircle]="false"-->
+                                <!--[rounded]="false"-->
+                                <!--[clockwise]="true"-->
+                                <!--[responsive]="false"-->
+                                <!--[duration]="800"-->
+                                <!--[animation]="'easeInOutQuart'"-->
+                                <!--[animationDelay]="5"-->
+                                <!--style="margin: auto; max-width:85px; max-height: 85px;"   >-->
+
+                <!--</round-progress>-->
+                <!--<div style="position: relative; bottom: 60px;font-size:20px;">{{car['rank'] }} %</div>-->
+
+
+              <!--</ng-template>-->
+            <!--</p-column>-->
+
+
+          <!--</p-dataTable>-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</section>-->
+
+
+  <div class="container-fluid" >
+
+    <div class="row" id="myHeader">
+      <div class="col-md-6">
+        <div class="col-md-3">
+          <div id="ck-button">
+            <label>
+
+              <input type="checkbox"  (change)="cheakall($event.target.checked)" ><span>Select All</span>
+            </label>
+          </div>
+        </div>
+        <div class="col-md-9 text-left">
+          <button  class="btn btn-success" (click)="add_create_list()"> Add to list</button>
+
+        </div>
+      </div>
+      <div class="col-md-6 text-right">
+        <h5 style="margin: 10px; color: gray; ">Displaying {{influencers.results.length}} of {{influencers.totalItems}} Results</h5>
+
+      </div>
+    </div>
+
+    <div class="profile-container" *ngFor="let item of influencers.results" >
+        <div class="row main-div">
+
+
+
+            <div class="col-md-3 image-area">
+                <div class="p-checkbox" type="checkbox">
+                    <input type="checkbox" style="display: flex"  name="{{item['id']}}" [(ngModel)]="inflist[item['id']]" (change)="chec()" id="table-check-{{item['id']}}">
+                    <label for="table-check-{{item['id']}}"></label>
+                </div>
+                <div class="p-img">
+                    <img *ngIf="item['thumbnail_url']" [src]="item['thumbnail_url']"  >
+                    <img *ngIf="!item['thumbnail_url']" src="../../assets/no-image-found.jpg"  >
+
+                </div>
+            </div>
+
+
+            <div class="col-md-9 detail-area">
+                <h3 class="">
+                    <img src="../../assets/img/youtub.png">
+                    {{item['name']}}</h3>
+                <p class="item-content" title="{{item['description']}}">{{item['description']}}</p>
+
+                <div class="row">
+                    <div class="col-md-3 text-left">
+                        <label *ngIf="item['location']" class="item-loc"> <i class="fa fa-map-marker" style="font-size:16px;color:#c00"></i> {{item['location']}}</label>
+                        <label *ngIf="!item['location']" class="item-loc"> <i class="fa fa-map-marker" style="font-size:16px;color:#c00"></i> N/A</label>
+
+                    </div>
+                    <div class="col-md-9 text-left" *ngIf="item['channel_link']" >
+
+                        <label class="item-loc">
+                            <i class="fa fa-youtube-play" ></i>
+                            Channel Link:  <a (click)="goToLink(item['channel_link'])" style="color: #646464" >{{item['channel_link']}}</a>
+                        </label>
+                    </div>
+                </div>
+                <hr style="color: #555555">
+                <div class="item-loc" >
+                    <ul style="display: flex; justify-content: space-between">
+                        <li><span class="right-item"><i class="fa fa-users" ></i> subscribers:</span> <span class="list-item1"><span class="label label-success">{{item['subscribers'] | thousandSuff}}</span>   </span> </li>
+                        <li><span class="right-item"> <i class="fa fa-eye" ></i> Total Views:</span> <span class="list-item1">{{item['total_views'] | thousandSuff}}    </span></li>
+                        <li>
+                                <span class="right-item"><i class="fa fa-bar-chart" ></i> Rank:
+                                    <!--</span> <span class="list-item1">{{item['rank']}}-->
+                            </span>
+                            <span *ngIf="item['rank']<5" class="right-item"><span class="label label-danger" style="background: #cc0000"><small>Poor</small> {{item['rank']}}%</span></span>
+                            <span *ngIf="item['rank']>5 && item['rank']<10" class="right-item"><span class="label label-primary" style="background-color: #0095ff"><small>Normal</small> {{item['rank']}}%</span></span>
+                            <span *ngIf="item['rank']>10" class="right-item"><span class="label label-success"><small>Perfect</small> {{item['rank']}}%</span></span>
+                            <span *ngIf="!item['rank']" class="right-item"><span class="label label-success">N/A</span></span>
+
+                        </li>
+                        <li><span class="right-item"><i class="fa fa-calendar-o"></i> Joined Year:</span> <span class="list-item1">{{item['date']}}</span></li>
+
+                    </ul>
+                </div>
+                <hr style="color: #555555">
+                <div class="item-loc" >
+                    <ul style="display: flex; justify-content: space-between">
+                        <li style="font-weight: bolder"> Videos Uploads | </li>
+                        <li><span class="right-item"><i class="fa fa-upload" style="padding-left: 5px"></i> Today :</span> <span class="list-item1">{{item['today_upload_videos']}}   </span> </li>
+                        <li><span class="right-item"> <i class="fa fa-file-video-o" ></i> Tomorrow :</span> <span class="list-item1">{{item['tomorrow_upload_videos']}}    </span></li>
+                        <li><span class="right-item"><i class="fa fa-newspaper-o" ></i> Last Week: </span> <span class="list-item1">{{item['last_week_upload_videos']}}</span></li>
+                        <li><span class="right-item"><i class="fa fa-random" ></i> Last Month:</span> <span class="list-item1">{{item['last_month_upload_videos']}}</span></li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+  </div>
+
+
+  <div class="container-fluid" *ngIf="loaded">
+
+  </div>
+
+  <div id="wrapper" *ngIf="influencers.totalItems!=0">
+    <div id="yourdiv">
+      <nav>
+        <ul *ngIf="pager.pages && pager.pages.length" class="pagination pagination-lg">
+
+          <!--<li [ngClass]="{disabled:pager.currentPage === 1}">-->
+          <!--<a (click)="setPage(pager.currentPage - 1)" class="page-link" aria-label="Previous"></a>-->
+          <!--</li>-->
+          <li class="page-item" [ngClass]="{disabled:pager.currentPage === 1}">
+            <a class="page-link" (click)="setPage(1)" aria-label="Previous">
+              First
+            </a>
+          </li>
+          <li class="page-item" [ngClass]="{disabled:pager.currentPage === 1}">
+            <a class="page-link" (click)="setPage(pager.currentPage - 1)" aria-label="Previous">
+              <span aria-hidden="true">&laquo;</span>
+              <span class="sr-only">Previous</span>
+            </a>
+          </li>
+
+          <li class="page-item" *ngFor="let page of pager.pages"
+              [ngClass]="{active:pager.currentPage === page}"
+              (click)="setPage(page)"><a class="page-link" (click)="navSearch()">{{page}}</a></li>
+          <!--<li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">-->
+          <!--<a (click)="setPage(pager.currentPage + 1)">Next</a>-->
+          <!--</li>-->
+          <li class="page-item" [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+            <a class="page-link" (click)="setPage(pager.currentPage + 1)" aria-label="Next">
+              <span aria-hidden="true">&raquo;</span>
+              <span class="sr-only">Next</span>
+            </a>
+          </li>
+          <li class="page-item" [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+            <a class="page-link" (click)="setPage(pager.totalPages)" aria-label="Next">
+              Last
+            </a>
+          </li>
+          <!--<li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">-->
+          <!--<a (click)="setPage(pager.totalPages)">Last</a>-->
+          <!--</li>-->
+        </ul>
+      </nav>
+
+    </div>
+  </div>
+
+
+

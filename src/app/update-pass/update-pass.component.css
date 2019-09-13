@@ -1,0 +1,42 @@
+.login-form-1{
+    background: #fafafa;
+    width: 45%;
+    padding: 30px;
+    border-radius: 5px;
+    box-shadow: 0px 5px 10px #ccc;
+    margin: 60px auto;
+}
+.profile-group h4{
+    margin: 9px 0px;
+}
+.login-form-1-header{
+    position: relative;
+    background: #cc0000;
+    color: #ffffff;
+    font-size: 26px;
+    font-weight: 600;
+    text-align: center;
+    padding: 10px;
+    box-sizing: border-box;
+    box-shadow: 0px 7px 15px #a5a5a5;
+    margin-top: -60px;
+    width: 100%;
+    border-radius: 5px;
+}
+.login-form-1-header h3{
+    margin: 0px;
+}
+.change-form-btn{
+    width: 100%;
+    background:#000;
+    border: none;
+    color: #ffffff;
+    padding: 14px;
+    font-weight: 600;
+    border-radius: 36px;
+    font-size: 22px;
+    margin-top: 10px;
+}
+.change-form-btn:hover{
+    background: #cc0000;
+}

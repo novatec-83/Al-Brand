@@ -1,0 +1,333 @@
+<!--<p class="lead color-blue-grey-lighter">Zero influencers in the list.<br> Add some influencers <strong></strong></p>-->
+
+<div class="page-content">
+
+    <div class="container-fluid" *ngIf="loaded && lnkdProfiles.totalItems==0">
+        <div class="box-typical box-typical-full-height" style="min-height: 119px;">
+            <div class="add-customers-screen tbl" style="height: 119px;">
+                <div class="add-customers-screen-in">
+                    <div class="add-customers-screen-user">
+                        <i class="font-icon font-icon-user"></i>
+                    </div>
+                    <h2>OOPS!</h2>
+                    <p class="lead color-blue-grey-lighter">Zero influencers in the list.<br> Add some influencers <strong></strong></p>
+                    <!--<a href="#" class="btn">Add customer</a>-->
+                </div>
+            </div>
+        </div><!--.box-typical-->
+    </div>
+    <div>
+        <div class="text-center" *ngIf="loaded&& lnkdProfiles.totalItems!=0">
+            <div>
+                <nav>
+                    <ul *ngIf="pager.pages && pager.pages.length" class="pagination pagination-lg">
+
+                        <!--<li [ngClass]="{disabled:pager.currentPage === 1}">-->
+                        <!--<a (click)="setPage(pager.currentPage - 1)" class="page-link" aria-label="Previous"></a>-->
+                        <!--</li>-->
+                        <li class="page-item" [ngClass]="{disabled:pager.currentPage === 1}">
+                            <a class="page-link" (click)="setPage(1)" aria-label="Previous">
+                                First
+                            </a>
+                        </li>
+                        <li class="page-item" [ngClass]="{disabled:pager.currentPage === 1}">
+                            <a class="page-link" (click)="setPage(pager.currentPage - 1)" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                        </li>
+
+                        <li class="page-item" *ngFor="let page of pager.pages"
+                            [ngClass]="{active:pager.currentPage === page}"
+                            (click)="setPage(page)"><a class="page-link">{{page}}</a>
+                        </li>
+                        <!--<li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">-->
+                        <!--<a (click)="setPage(pager.currentPage + 1)">Next</a>-->
+                        <!--</li>-->
+                        <li class="page-item" [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+                            <a class="page-link" (click)="setPage(pager.currentPage + 1)" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </li>
+                        <li class="page-item" [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+                            <a class="page-link" (click)="setPage(pager.totalPages)" aria-label="Next">
+                                Last
+                            </a>
+                        </li>
+                        <!--<li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">-->
+                        <!--<a (click)="setPage(pager.totalPages)">Last</a>-->
+                        <!--</li>-->
+                    </ul>
+                </nav>
+
+            </div>
+        </div>
+    </div>
+    <!--<section class="box-typical" *ngIf="loaded&& lnkdProfiles.totalItems!=0">-->
+
+        <!--<div class="box-typical-body">-->
+            <!--<div class="table-responsive">-->
+                <!--<div class="bootstrap-table">-->
+                    <!--<p-dataTable #dt exportFilename="Influencers" [value]="lnkdProfiles.results"-->
+                                 <!--[globalFilter]="gb" class="table table-striped table-hover">-->
+
+                        <!--<p-header class="box-typical-header">-->
+                            <!--<div class="fixed-table-toolbar">-->
+                                <!--<div class="bars pull-left">-->
+                                    <!--<div id="toolbar">-->
+
+                                        <!--&lt;!&ndash;<button  style="width:70%;font-size: x-large;font-weight: bold;" class="btn btn-rounded">Login</button>&ndash;&gt;-->
+
+                                        <!--<inline-editor [disabled]="loading" class="bootstrap-table-header" type="text" [(ngModel)]="listname" min="1"-->
+                                                       <!--max="30" [fnErrorLength]="myHandleError" (onSave)="saveEditableList($event)" name="editableText1" size="30"></inline-editor>-->
+                                        <!--<img *ngIf="loading"-->
+                                             <!--src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAA-->
+                        <!--GJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJ-->
+                        <!--CgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAd-->
+                        <!--Ka+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7W-->
+                        <!--EYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhm-->
+                        <!--KtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZf-->
+                        <!--hYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunI-->
+                        <!--nK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEA-->
+                        <!--AQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJC-->
+                        <!--gAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLW-->
+                        <!--zpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtq-->
+                        <!--lAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="/>-->
+                                        <!--<button  class="btn btn-primary" (click)="deleteSelected()" >-->
+                                            <!--&lt;!&ndash;<i class="font-icon font-icon-close-2"></i> &ndash;&gt;-->
+                                            <!--Delete selected-->
+                                        <!--</button>-->
+                                        <!--<button  class="btn btn-primary" (click)="clearSelected()" >-->
+                                            <!--&lt;!&ndash;<i class="font-icon font-icon-close-2"></i> &ndash;&gt;-->
+                                            <!--Clear selected-->
+                                        <!--</button>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                                <!--<div class="columns columns-right btn-group pull-right">-->
+
+                                    <!--<div class="export btn-group">-->
+
+                                        <!--<button class="btn btn-default dropdown-toggle" data-toggle="dropdown"-->
+                                                <!--type="button" aria-expanded="false"><i-->
+                                                <!--class="font-icon font-icon-download"></i> <span class="caret"></span>-->
+                                        <!--</button>-->
+                                        <!--<ul class="dropdown-menu" role="menu" style="min-width: fit-content;left: auto">-->
+                                            <!--&lt;!&ndash;<li data-type="json"><a href="javascript:void(0)">JSON</a></li>&ndash;&gt;-->
+                                            <!--&lt;!&ndash;<li data-type="xml"><a href="javascript:void(0)">XML</a></li>&ndash;&gt;-->
+                                            <!--<li data-type="csv"><a (click)="convert_to_csv()" >CSV</a></li>-->
+                                            <!--&lt;!&ndash;<li data-type="txt"><a href="javascript:void(0)">TXT</a></li>&ndash;&gt;-->
+                                            <!--&lt;!&ndash;<li data-type="sql"><a href="javascript:void(0)">SQL</a></li>&ndash;&gt;-->
+                                            <!--&lt;!&ndash;<li data-type="excel"><a href="javascript:void(0)">MS-Excel</a></li>&ndash;&gt;-->
+                                        <!--</ul>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</p-header>-->
+                        <!--<p-column>-->
+                            <!--<ng-template pTemplate="header">-->
+                            <!--<div class="table-check">-->
+                                <!--<div class="checkbox checkbox-only">-->
+                                    <!--<input type="checkbox" id="table-check-head" (change)="checkAllInfluencers($event.target.checked)">-->
+                                    <!--<label for="table-check-head"></label>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                            <!--</ng-template>-->
+                            <!--<ng-template pTemplate="body" pTemplate="body" let-col let-car="rowData">-->
+                                <!--<div class="table-check">-->
+                                    <!--<div class="checkbox checkbox-only">-->
+                                        <!--<input type="checkbox"  name="{{car['id']}}" [(ngModel)]="inflist[car['id']]" id="table-check-{{car['id']}}">-->
+                                        <!--<label for="table-check-{{car['id']}}"></label>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                            <!--</ng-template>-->
+
+
+                        <!--</p-column>-->
+
+                        <!--&lt;!&ndash;Name column&ndash;&gt;-->
+                        <!--<p-column>-->
+                            <!--<ng-template pTemplate="header">-->
+                                <!--<div style="text-align: center; " class="th-inner">Name</div>-->
+                                <!--<div class="fht-cell"></div>-->
+                            <!--</ng-template>-->
+                            <!--<ng-template pTemplate="body" let-col let-car="rowData">-->
+                    <!--<a   (click)="gotoldProfile(car['profile_linked'])" style="text-align: center" >-->
+                        <!--<div class="mail-box-item selected-line red" style="max-width: 250px;">-->
+                            <!--<div class="mail-box-item-header">-->
+
+                                <!--<div class="mail-box-item-photo">-->
+                                    <!--<img src="{{car['image']}}" *ngIf="car['image']" style="width: 32px;height: 32px" alt="" data-toggle="tooltip"-->
+                                         <!--data-placement="bottom">-->
+                                <!--</div>-->
+
+                            <!--</div>-->
+
+                            <!--<div class="tbl mail-box-item-head-tbl">-->
+                                <!--<div class="tbl-row">-->
+                                    <!--<div class="tbl-cell">-->
+                                        <!--<div class="tbl mail-box-item-user-tbl">-->
+                                            <!--<div class="tbl-row">-->
+                                                <!--<div class="tbl-cell tbl-cell-name"-->
+                                                     <!--[innerHTML]="car['profile_name']"></div>-->
+                                                <!--&lt;!&ndash;<div class="tbl-cell tbl-cell-new"><span class="label label-pill label-danger">11</span></div>&ndash;&gt;-->
+                                            <!--</div>-->
+                                        <!--</div>-->
+
+                                    <!--</div>-->
+                                    <!--&lt;!&ndash;<div class="tbl-cell tbl-cell-date" title="Type of website"><strong>{{car['data']['site_type']&ndash;&gt;-->
+                                    <!--&lt;!&ndash;| uppercase}}</strong></div>&ndash;&gt;-->
+                                <!--</div>-->
+                            <!--</div>-->
+                            <!--<div class="mail-box-item-content">-->
+                                <!--&lt;!&ndash;<div *ngIf="!car['highlightText']" class="txt" title="{{car['data']['title_full']}}" [innerHTML]="car['data']['title_full']"></div>&ndash;&gt;-->
+                                <!--<div *ngIf="car['designation']" class="txt" title="{{car['designation']}}"-->
+                                     <!--style="white-space: normal;max-height: 75px;text-overflow: ellipsis"-->
+                                     <!--[innerHTML]="car['designation']"></div>-->
+                            <!--</div>-->
+
+
+                        <!--</div>-->
+                    <!--</a>-->
+                            <!--</ng-template>-->
+
+
+                        <!--</p-column>-->
+
+                        <!--&lt;!&ndash;Location Column&ndash;&gt;-->
+                        <!--<p-column>-->
+                            <!--<ng-template pTemplate="header">-->
+                                <!--<div style="text-align: center; " class="th-inner">Location</div>-->
+                                <!--<div class="fht-cell"></div>-->
+
+                                                            <!--</ng-template>-->
+                            <!--<ng-template pTemplate="body" let-car="rowData">-->
+                                <!--{{car['location']}}-->
+                            <!--</ng-template>-->
+
+
+                        <!--</p-column>-->
+
+
+
+                        <!--&lt;!&ndash;Work Column&ndash;&gt;-->
+
+                        <!--<p-column>-->
+                            <!--<ng-template pTemplate="header">-->
+                                <!--<div style="text-align: center; " class="th-inner">Work</div>-->
+                                <!--<div class="fht-cell"></div>-->
+                            <!--</ng-template>-->
+                            <!--<ng-template pTemplate="body" let-car="rowData">-->
+                            <!--{{car['current_working']}}-->
+                            <!--</ng-template>-->
+
+
+                        <!--</p-column>-->
+                        <!--<p-column>-->
+                            <!--<ng-template pTemplate="header">-->
+                                <!--<div style="text-align: center" class="th-inner" >-->
+                                    <!--Profile Link-->
+                                <!--</div>-->
+                                <!--<div class="fht-cell"></div>-->
+                            <!--</ng-template>-->
+                            <!--<ng-template pTemplate="body" let-car="rowData">-->
+                                <!--<a target="_blank" href="{{car['profile_linked']}}" style="text-decoration: none" >{{car['profile_linked']}}</a>-->
+                            <!--</ng-template>-->
+                        <!--</p-column>-->
+                    <!--</p-dataTable>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</section>-->
+    <div class="container-fluid" *ngIf="loaded&& lnkdProfiles.totalItems!=0">
+
+        <div class="row" id="myHeader">
+            <div class="col-md-12 list-row">
+                <div class="row">
+                    <div class="col-md-12">
+                        <!--<button  class="btn btn-success">Select All</button>-->
+                        <div id="toolbar">
+
+                            <!--<button  style="width:70%;font-size: x-large;font-weight: bold;" class="btn btn-rounded">Login</button>-->
+
+                            <inline-editor [disabled]="loading" class="bootstrap-table-header" type="text" [(ngModel)]="list_name" min="1"
+                                           max="30" [fnErrorLength]="myHandleError" (onSave)="saveEditable($event)" name="editableText1" size="30"></inline-editor>
+                            <img *ngIf="loading"
+                                 src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAA
+                        GJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJ
+                        CgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAd
+                        Ka+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7W
+                        EYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhm
+                        KtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZf
+                        hYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunI
+                        nK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEA
+                        AQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJC
+                        gAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLW
+                        zpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtq
+                        lAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="/>
+                            <button  class="btn btn-success" (click)="deleteSelected()">
+                                <!--<i class="font-icon font-icon-close-2"></i> -->
+                                Delete selected
+                            </button>
+                            <button  class="btn btn-success" (click)="clear_list()">
+                                <!--<i class="font-icon font-icon-close-2"></i> -->
+                                Clear selected
+                            </button>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="profile-container" *ngFor="let item of lnkdProfiles.results" >
+            <div class="row">
+
+
+                <div class="col-md-2 profile-checkbox" type="checkbox">
+                    <input type="checkbox" style="display: flex"  name="{{item['id']}}" [(ngModel)]="inflist[item['id']]" (change)="chec()" id="table-check-{{item['id']}}">
+                </div>
+
+                <div class="col-md-9" style="margin-left: 3%">
+                    <div class="row">
+                        <label style="padding: 1px!important;" class="tbl-cell tbl-cell-name">{{item['profile_name']}}</label>
+                    </div>
+                    <div class="row" style="padding-top: 8px">
+                        <label class="item-content">{{item['designation']}}</label>
+                    </div>
+                    <div class="row" style="padding-top: 8px">
+                        <div class="col-md-3 text-left">
+                            <label id="lbl1" class="item-loc"> <i class="fa fa-map-marker" style="font-size:16px;color:#c00"></i> {{item['location']}}</label>
+
+                        </div>
+                        <div class="col-md-9 text-left">
+
+                            <label class="item-loc"> <i class="fa fa-location-arrow" style="font-size:16px;color:#c00; "></i> Profile:  <a style="color: #0a6aa1; font-weight: bolder">{{item['profile_linked']}}</a></label>
+                        </div>
+                    </div>
+                    <hr style="color: #555555">
+                    <div class="row" >
+                        <ul style="display: flex; padding-top: 5px">
+                            <!--<div></div>-->
+                            <li><span class="right-item"><i class="fa fa-bar-chart" style="font-size:16px;color:#0a4069"></i> Work:</span> <span class="list-item1">{{item['current_working']}} |  </span> </li>
+                            <!--<li><span class="right-item"> <i class="fa fa-link" style="font-size:16px;color:#0a4069"></i> Connection:</span> <span class="list-item1">{{item['connection']}} |   </span></li>-->
+                            <!--<li><span class="right-item"><i class="fa fa-newspaper-o" style="font-size:16px;color:#0a4069"></i> Blogs:</span> <span class="list-item1">{{item['blogs']}}</span></li>-->
+                            <!--<li><span class="right-item"><i class="fa fa-random" style="font-size:16px;color:#0a4069"></i> Wowtr:</span> <span class="list-item1">{{item['seoData']['WOWTR']}}</span></li>-->
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+

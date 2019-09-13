@@ -1,0 +1,23 @@
+<h1 md-dialog-title>Hi {{data.name}}</h1>
+<div md-dialog-content>
+    <p>Add gmail for for sending emails</p>
+    <!--<md-form-field>-->
+        <!--&lt;!&ndash;<input mdInput  placeholder="Email" [formControl]="data.emailFormControl">&ndash;&gt;-->
+    <!--</md-form-field>-->
+
+    <!--<form>-->
+        <md-form-field>
+            <input mdInput tabindex="1" style="color: black" [(ngModel)]="data.comm_email" placeholder="Email" [formControl]="data.emailFormControl">
+            <md-error *ngIf="data.emailFormControl.hasError('pattern')">
+                Please enter a valid email address
+            </md-error>
+            <md-error *ngIf="data.emailFormControl.hasError('required')">
+                Email is <strong>required</strong>
+            </md-error>
+        </md-form-field>
+    <!--</form>-->
+</div>
+<div md-dialog-actions>
+    <button md-button [disabled]="!data.emailFormControl.hasError('required') && data.emailFormControl.hasError('pattern')" [md-dialog-close]="data.comm_email" tabindex="2">Add</button>
+    <button md-button (click)="onNoClick()" tabindex="-1">No Thanks</button>
+</div>

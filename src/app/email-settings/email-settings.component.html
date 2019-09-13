@@ -1,0 +1,116 @@
+
+<div class="page-content">
+    <div class="container-fluid">
+
+
+
+        <div *ngIf="!notexist && !emailadded && !shownothing">
+            <md-card>
+                <app-add-email></app-add-email>
+                or
+                <md-select placeholder="Select email account" name="semail" [(ngModel)]="selectedemail">
+                    <md-option *ngFor="let food of commemails" [value]="food">
+                        {{ food.email }}
+                    </md-option>
+                </md-select>
+                <!--<md-radio-group class="example-radio-group" [(ngModel)]="selectedemail">-->
+                <!--<md-radio-button class="example-radio-button" *ngFor="let season of commemails" [value]="season">-->
+                <!--{{season.email}}-->
+                <!--</md-radio-button>-->
+                <!--</md-radio-group>-->
+                <div class="example-selected-value" *ngIf="selectedemail.email">Your selected email is:
+                    {{selectedemail.email}}
+                </div>
+            </md-card>
+        </div>
+        <div *ngIf="notexist && !emailadded" >
+
+            <app-add-email></app-add-email>
+            <br><br>
+            <md-card>Please associate gmails with your account for sending emails to influencers.</md-card>
+        </div>
+        <div *ngIf="emailadded">
+            <!--<app-add-email></app-add-email>-->
+
+            <md-card>
+                <a md-raised-button routerLink="/dashboard">Go to Dashboard and select list.</a>
+
+            </md-card>
+        </div>
+        <md-card *ngIf="!notexist && !emailadded && !shownothing">
+            <div class="row">
+                <span class="lbl-email"> To:  </span>
+                <!--<div class="col-sm-1"></div>-->
+                <md-form-field style="margin-left: 20px">
+                    <input mdInput tabindex="1" style="color: black" [(ngModel)]="more_email" placeholder="Email"
+                           [formControl]="emailFormControl">
+
+
+                    <md-error *ngIf="emailFormControl.hasError('pattern')">
+                        Please enter a valid email address
+                    </md-error>
+                    <md-error *ngIf="emailFormControl.hasError('required')">
+                    Email is <strong>required</strong>
+                    </md-error>
+
+                </md-form-field>
+                <!--<div class="col-lg-1"></div>-->
+                <button md-raised-button color="accent" style="margin-left: 20px" [disabled]="emailFormControl.hasError('pattern') || emailFormControl.hasError('required')"
+                        (click)="add_recipient()">Add recipient
+                </button>
+            </div>
+            <select2 [data]="exampleData"
+                     [options]="options"
+                     [width]="500"
+                     [value]="value"
+                     (valueChanged)="changed($event)"
+            ></select2>
+            <br/><br/>
+            <form class="example-form">
+                <md-form-field class="example-full-width">
+                    <input mdInput placeholder="Subject" style="font-weight: bold;color: black;font-size: large"
+                           name="subjectMessage" [(ngModel)]="SubjectMessage">
+                </md-form-field>
+            </form>
+
+            <div [froalaEditor] [(ngModel)]="EmailMessage"></div>
+            <br>
+            <div class="button-row">
+                <!--<button md-raised-button>Basic</button>-->
+                <button md-raised-button color="primary" (click)="checkMsg()">Send</button>
+                <!--<button md-raised-button color="accent">Accent</button>-->
+                <!--<button md-raised-button color="warn">Warn</button>-->
+                <!--<button md-raised-button disabled>Disabled</button>-->
+                <!--<a md-raised-button routerLink=".">Link</a>-->
+            </div>
+        </md-card>
+        <!--<div class="auth">-->
+        <!--<div class="auth-container">-->
+        <!--<div class="card">-->
+        <!--<header class="auth-header">-->
+        <!--<h1 class="auth-title" translate>-->
+        <!--BRAND.NAME-->
+        <!--</h1>-->
+        <!--</header>-->
+        <!--<div class="auth-content">-->
+        <!--<p class="text-xs-center" translate>-->
+        <!--LOGIN.FORM.TITLE-->
+        <!--</p>-->
+        <!--<form id="login-form">-->
+        <!--<div class="form-group">-->
+        <!--<button type="button"-->
+        <!--(click)="signInBtn()"-->
+        <!--class="btn btn-block btn-primary"-->
+        <!--translate>-->
+        <!--FORM.BUTTON.PROCEED-->
+        <!--</button>-->
+        <!--</div>-->
+        <!--</form>-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--</div>-->
+    </div>
+</div>
+
+

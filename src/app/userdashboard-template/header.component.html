@@ -1,0 +1,129 @@
+
+
+<header class="site-header">
+  <preloader-full></preloader-full>
+
+  <div class="container-fluid">
+   <div class="row ">
+          <div class="col-md-2 col-sm-4 col-xs-6  h-logo">
+
+      <a class="site-logo logo-row">
+      <img class="hidden-md-down" [routerLink]="['/dashboard']" src="../../assets/headers-images/Option1.png" alt="">
+      <img class="hidden-lg-up" [routerLink]="['/dashboard']" src="../../assets/headers-images/Option1.png" alt="">
+           </a>
+                </div>
+
+        <div class="col-md-5 showul1 col-sm-4" style="display: none">
+
+            <div class="dropdown" style="float:inherit;">
+              <button class="dropbtn"> <i class="fa fa-user-circle"></i> Platforms <span class="fa fa-angle-down"></span></button>
+
+                <div class="dropdown-content">
+                  <a  [routerLink]="['/facebook/search']"  class="active">
+                    <img  alt="" src="../../assets/header-images/Fb@1x-.png">
+                    <span >   Facebook</span>
+                     </a>
+                       <a [routerLink]="['/youtube/search']"  >
+                        <img  src="../../assets/header-images/YouTube@1x-.png">
+                          <span >   Youtube</span>
+                              </a>
+                              <a [routerLink]="['/instagram/search']" >
+                                <img  alt="" src="../../assets/header-images/Insta@1x-.png">
+                                <span>   Instagram</span>
+                              </a>
+                              <a  [routerLink]="['/twitter/search']"  >
+                                <img  alt="" src="../../assets/header-images/Twitter@1x-.png">
+                                <span >   Twitter</span>
+                              </a>
+                              <a  [routerLink]="['/blogosphere/search']"  >
+                                <img alt="" src="../../assets/header-images/Blog@1x-.png">
+                                <span >  Blogosphere</span>
+                              </a>
+                                  <!-- <a  [routerLink]="['/linkedin/search']"  >
+                                    <img alt="" src="../../assets/header-images/LinkedIn@1x-.png">
+                                    <span >  LinkedIn</span>
+                                  </a> -->
+                                  <a  [routerLink]="['/pinterest/search']"  >
+                                    <img alt="" src="../../assets/header-images/Pin@1x-.png">
+                                    <span >  Pinterest</span>
+                                  </a>
+                              </div>
+                            </div>
+
+        </div>
+
+           <div class=" col-md-6 col-sm-12 showul2" style="margin: 0 auto" >
+                  <div  class="nav-Bar">
+                      <a  [routerLink]="['/facebook/search']" routerlinkactive="active"  class="active">
+                          <img  alt="" src="../../assets/header-images/Fb@1x-.png">
+                          <span >Facebook</span>
+                      </a>
+                      <a [routerLink]="['/youtube/search']" routerlinkactive="active" >
+                          <img  src="../../assets/header-images/YouTube@1x-.png">
+                          <span >Youtube</span>
+                      </a>
+                      <a [routerLink]="['/instagram/search']"routerlinkactive="active" >
+                          <img  alt="" src="../../assets/header-images/Insta@1x-.png">
+                          <span>Instagram</span>
+                      </a>
+                      <a  [routerLink]="['/twitter/search']" routerlinkactive="active" >
+                          <img  alt="" src="../../assets/header-images/Twitter@1x-.png">
+                          <span >Twitter</span>
+                      </a>
+                      <a  [routerLink]="['/blogosphere/search']" routerlinkactive="active" >
+                          <img alt="" src="../../assets/header-images/Blog@1x-.png">
+                          <span >Blogosphere</span>
+                      </a>
+                      <!-- <a  [routerLink]="['/linkedin/search']"  routerlinkactive="active">
+                          <img alt="" src="../../assets/header-images/LinkedIn@1x-.png">
+                          <span >LinkedIn</span>
+                      </a> -->
+                      <a  [routerLink]="['/pinterest/search']" routerlinkactive="active" >
+                          <img alt="" src="../../assets/header-images/Pin@1x-.png">
+                          <span >Pinterest</span>
+                      </a>
+                  </div>
+          </div>
+           <div class="col-md-2 col-sm-4 col-xs-6" style="text-align: right">
+       <!--<a class="btn btn-nav btn-inline btn-danger-outline icon-search-main" href="#search" style="width: 70%; margin-top: 10px"> Search <span class="font-icon-search"></span></a>-->
+       <a  class="font-additional color-main text-uppercase hover-focus-color" data-target=".example-modal-lg" data-toggle="modal" href="#search" id="icon-type-to-search">
+         <button  class="btn btn-primary top-search-btn" id="serbtn" style="float: right">Search
+           <i  class=" fa fa-search"></i>
+         </button>
+       </a>
+     </div>
+           <div class="col-md-2  right-drpdwn">
+
+                <div class="row">
+
+
+                        <div class="dropdown" style="float:right;">
+                            <button class="dropbtn"> <i class="fa fa-user-circle"></i> My InfluExpAI <span class="fa fa-angle-down"></span></button>
+
+                            <div class="dropdown-content">
+                                <a [routerLink]="['/my-profile']"> <i class="fa fa-pencil"></i> My Profile</a>
+                                <a [routerLink]="['/subscription-history']"> <i class="fa fa-history"></i> Subscription</a>
+                                <a [routerLink]="['/update-password']"> <i class="fa fa-key"></i> Change Password</a>
+                                <a [routerLink]="['/login']"> <i class="fa fa-sign-out"></i>Logout</a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+      </div>
+
+          <div id="search">
+              <button type="button" class="close">×</button>
+              <form #myform>
+                  <input #searchvalue1 type="search" value="" placeholder="Search to influence with Roar!" >
+                  <button type="submit" class="close" style="  position: absolute;" (click)="find1(searchvalue1.value)">Search</button>
+              </form>
+          </div>
+  </div>
+
+
+      <!--.container-fluid-->
+</header><!--.site-header-->
+
+

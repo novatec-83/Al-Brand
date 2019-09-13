@@ -1,0 +1,71 @@
+﻿<!--<preloader-full></preloader-full>-->
+<!--<app-loader></app-loader>-->
+<div class="">
+    <div class="">
+<div class="login-page">
+    <div class="col-lg-4 col-md-8 col-sm-10 col-xs-10 login-wrap">
+        <form class="ng-untouched ng-pristine ng-valid"
+              (ngSubmit)="!userFormControl.hasError('required') && !userFormControl.hasError('pattern') && !passwordFormControl.hasError('required')
+               && login()" #f="ngForm" novalidate>
+            <div class="card custom-width">
+                <div class="card-header text-center" data-background-color="rose">
+                    <h4 class="card-title">
+                        <label class="signin-heading"> Sign in to Your Account</label></h4>
+
+                </div>
+
+                <div class="card-content">
+                    <mat-form-field class="loginfrom md-size">
+                        <input matInput type="text" placeholder="Username"  tabindex=1 [formControl]="userFormControl" [(ngModel)]="model.username" required>
+                        <span class="pointer" *ngIf="model.username"  matSuffix mat-list-icon aria-label="Clear" (click)="model.username=''">
+                            <i class="fa fa-close" style="font-size: 23px"></i>
+                        </span>
+                        <mat-error *ngIf="userFormControl.hasError('pattern')">
+                            Please enter a valid username
+                        </mat-error>
+                        <mat-error *ngIf="userFormControl.hasError('required')">
+                            Username is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field class="loginfrom md-size" style="margin-top: -20px;">
+                        <input [type]="hide ? 'password' : 'text'"  matInput placeholder="Password" tabindex=2 [formControl]="passwordFormControl" [(ngModel)]="model.password" required>
+                        <!--<span class="pointer" data-toggle="tooltip" title=" {{hide? 'Show' : 'Hide'}} Password" mdSuffix (click)="hide = !hide">{{ hide ? 'fa fa-eye' : 'fa fa-eye-splash' }}</span>-->
+                        <mat-error *ngIf="passwordFormControl.hasError('required')">
+                            Password is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+
+                </div>
+                <div class="checkpad text-left">
+                    <a class="font2 forgot-pass" [routerLink]="['/reset-password']">Forgot Password? </a>
+                    <!--<md-checkbox [(checked)]="model">Stay signed in</md-checkbox>-->
+                    <mat-slide-toggle name="stay"
+                                     [(ngModel)]="model">Stay signed in</mat-slide-toggle>
+                </div>
+                <div class="text-center recaptcha-box" [ngClass]="{ 'has-error':!recaptcha}">
+                    <app-recapcha></app-recapcha>
+                    <div  style="font-size: 16px;font-weight: bold;color: red; margin: 3%;"  *ngIf="!recaptcha" >Recaptcha is require</div>
+                </div>
+
+
+                <div class="footer text-center">
+                    <button type="submit" class="btn-login" tabindex=3> Sign in</button>
+                    <!--<label class="font1" style="float: left;"> Don't have an account?-->
+                        <!--<a style="font-size: 20px; font-weight: 700;" [routerLink]="['/register']"> Sign Up </a>-->
+                    <!--</label>-->
+                </div>
+                <div  class="have-account">Don't have an online account? <a  routerlink="/register" href="/register"> Register Now</a></div>
+                <!--<div class="row" style="display: flex; flex-direction: row; justify-content: space-evenly; font-size: 20px; margin: 0px 0px 0px 25px">-->
+                    <!--<a href="https://www.influexpai.com/Terms-and-Conditions" target="_blank" style="color: #286ffe;">Terms of use</a>-->
+                    <!--<a href="https://www.influexpai.com/privacy_policy" target="_blank" style="color: #286ffe">Privacy Policy</a>-->
+                <!--</div>-->
+                <div  class="have-account" ><a  href="https://www.influexpai.com/Terms-and-Conditions" target="blank">
+                    Terms of use </a> and <a  href="https://www.influexpai.com/privacy_policy" target="blank"> Privacy Policy</a></div>
+            </div>
+        </form>
+    </div>
+    <div class="col-lg-4 col-md-3"></div>
+</div>
+    </div>
+</div>

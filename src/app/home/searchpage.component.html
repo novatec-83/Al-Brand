@@ -1,0 +1,336 @@
+
+<div class="page-content">
+    <div class="row">
+        <div class="container-fluid ">
+            <mat-tab-group   style="background: #000;  ">
+
+
+                <mat-tab class="font-icon font-icon-page" label="Web" style="margin: 0 auto">
+                    <ng-template mat-tab-label style="background: white">
+                          <span class="nav-link-in">
+                    <i class="fa fa-list-alt" aria-hidden="true"></i>
+                                    Category Search
+									</span>
+                    </ng-template>
+                    <div class="body">
+
+
+                    <div class="row">
+                        <div class="col-md-3">
+                            <h6 style="padding: 20px 20px 2px 20px; font-weight: bolder"> Web Blogs Influencers</h6>
+                        </div>
+                        <div class="col-md-6 text-center p-auto">
+
+                            <!--<p-autoComplete  id="main-input" [(ngModel)]="b2QueryStatic" [suggestions]="filteredsearchwords" class="ui-autocomplete ui-widget"-->
+                            <!--(onSelect)="searchB2Static($event)" (completeMethod)="filterSearchSingle($event)"-->
+                            <!--field="name" [size]="30"-->
+                            <!--[minLength]="1">-->
+                            <!--<ng-template let-country pTemplate="b2QueryStatic">-->
+
+                            <!--<div class="prediction-item">{{country.name}}</div>-->
+
+
+                            <!--</ng-template>-->
+                            <!--</p-autoComplete>-->
+
+
+
+
+                            <mat-form-field class="example-full-width " style="width:60%">
+                                <input type="text" class="form-control" placeholder="Select Category" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
+                                <mat-autocomplete #auto="matAutocomplete" (optionSelected)="searchB2Static($event)">
+                                    <mat-option *ngFor="let option of searchSuggestions "  [value]="option.name">
+                                        {{ option.name }}
+                                    </mat-option>
+                                </mat-autocomplete>
+                            </mat-form-field>
+
+                        </div>
+                    </div>
+                    </div>
+                </mat-tab>
+                <mat-tab class="font-icon font-icon-page" label="Web" style="margin: 0 auto">
+                    <ng-template mat-tab-label style="background: white">
+                          <span class="nav-link-in">
+										<i class="fa fa-fire"></i>
+                                    Advanced Search
+									</span>
+                    </ng-template>
+                    <div class="body">
+                        <div class="container">
+                            <form (submit)="setPage(1)">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <mat-select  name="selected_choice"  [(ngModel)]="selected_category" (change)="getCatNameWeb($event)"
+                                                    placeholder="Select Category" style="width:75%">
+                                            <mat-option *ngFor="let choice of searchSuggestions" [value]="choice">{{ choice }}</mat-option>
+                                        </mat-select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <mat-form-field>
+                                            <input matInput type="text"[(ngModel)]="title" placeholder="Serch by Title/Name" name="contact">
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+
+
+                                <div class="row" style="margin-bottom: 1%">
+                                    <div class="col-md-6">
+                                        <mat-form-field>
+                                            <input matInput type="text" [(ngModel)]="moz" placeholder="Search by Moz Rank" name="er">
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <mat-form-field>
+                                            <input matInput type="text" [(ngModel)]="seo" placeholder="Serch by Alexa Rank" name="er">
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                <div class="row">
+
+                                    <div class="col-md-2 offset-md-4 text-right">
+                                        <button type="submit"  class="btn btn-rounded" >
+                                            Search <i class="fa fa-sliders"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+
+                </mat-tab>
+            </mat-tab-group>
+    </div>
+    </div>
+
+
+
+
+
+<div class="row"  *ngIf="!loaded" style="margin-top: 1%">
+        <div class="col-md-12 text-left">
+            <h4 style="font-weight: bolder">Featured Web Influencers</h4>
+        </div>
+
+</div>
+    <div class="container-fluid" *ngIf="loaded && webInfluencers.totalItems===0" style="margin-top: 1%">
+        <div class="box-typical box-typical-full-height" style="min-height: 115px">
+            <div class="add-customers-screen tbl" style="height: 119px">
+                <div class="box-typical-full-height">
+                    <div class="add-customers-screen-user">
+                        <i class="font-icon font-icon-user"></i>
+                    </div>
+                    <h2>OOPS!</h2>
+                    <p class="lead color-blue-grey-lighter">No search results are found<br> try another category.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row " *ngIf="loaded&& webInfluencers.totalItems!=0" >
+        <div class="col-md-12 text-center">
+            <nav>
+                <ul *ngIf="pager.pages && pager.pages.length" class="pagination pagination-lg">
+
+                    <!--<li [ngClass]="{disabled:pager.currentPage === 1}">-->
+                    <!--<a (click)="setPage(pager.currentPage - 1)" class="page-link" aria-label="Previous"></a>-->
+                    <!--</li>-->
+                    <li class="page-item" [ngClass]="{disabled:pager.currentPage === 1}">
+                        <a class="page-link" (click)="setPage(1)" aria-label="Previous">
+                            First
+                        </a>
+                    </li>
+                    <li class="page-item" [ngClass]="{disabled:pager.currentPage === 1}">
+                        <a class="page-link" (click)="setPage(pager.currentPage - 1)" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                    </li>
+
+                    <li class="page-item" *ngFor="let page of pager.pages"
+                        [ngClass]="{active:pager.currentPage === page}"
+                        (click)="setPage(page)"><a class="page-link" (click)="navSearch()">{{page}}</a></li>
+                    <!--<li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">-->
+                    <!--<a (click)="setPage(pager.currentPage + 1)">Next</a>-->
+                    <!--</li>-->
+                    <li class="page-item" [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+                        <a class="page-link" (click)="setPage(pager.currentPage + 1)" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </li>
+                    <li class="page-item" [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+                        <a class="page-link" (click)="setPage(pager.totalPages)" aria-label="Next">
+                            Last
+                        </a>
+                    </li>
+                    <!--<li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">-->
+                    <!--<a (click)="setPage(pager.totalPages)">Last</a>-->
+                    <!--</li>-->
+                </ul>
+            </nav>
+        </div>
+        </div>
+
+<div class="container-fluid" *ngIf="!loaded">
+
+    <div class="row" id="myHeader">
+        <div class="col-md-12 list-row">
+                <div class="row">
+                        <div class="col-md-6">
+                              <!--<button  class="btn btn-success">Select All</button>-->
+                            <div id="ck-button">
+                                <label>
+
+                                    <input type="checkbox"  (change)="cheakalldef($event.target.checked)" ><span>Select All</span>
+                                </label>
+                            </div>
+
+                            <button  class="btn btn-success" (click)="add_create_list()"> Add to list</button>
+
+                        </div>
+                </div>
+        </div>
+    </div>
+
+        <div class="profile-container" *ngFor="let item of results" >
+            <div class="row">
+
+
+            <div class="col-md-2 profile-checkbox" type="checkbox">
+                <input type="checkbox" style="display: flex"  name="{{item['id']}}" [(ngModel)]="inflist[item['id']]" (change)="chec()" id="table-check-{{item['id']}}">
+                <label for="table-check-{{item['id']}}"></label>
+            </div>
+
+            <div class="col-md-7" style="margin-left: 3%">
+                <div class="row">
+                    <label class="tbl-cell tbl-cell-name">{{item['title']}}</label>
+                </div>
+                <div class="row" style="padding-top: 8px">
+                    <label class="item-content">{{item['description']}}</label>
+                </div>
+                <div class="row" style="padding-top: 8px">
+                    <div class="col-md-3 text-left">
+                        <label class="item-loc"> <i class="fa fa-map-marker" style="font-size:16px;color:#c00"></i> {{item['location']}}</label>
+
+                    </div>
+                    <div class="col-md-9 text-left">
+
+                        <label class="item-loc"> <i class="fa fa-location-arrow" style="font-size:16px;color:#c00; "></i> Contact:  <a style="color: #0a6aa1; font-weight: bolder">{{item['main_url']}}</a></label>
+                    </div>
+                </div>
+                <hr style="color: #555555">
+                <div class="row" >
+                    <ul style="display: flex; padding-top: 5px">
+                        <li><span class="right-item" *ngIf="item['seoData']['ALEXA']"><i class="fa fa-bar-chart" style="font-size:16px;color:#0a4069"></i> Alexa:</span> <span class="list-item1">{{item['seoData']['ALEXA']}} |  </span> </li>
+                        <li><span class="right-item" *ngIf="!item['seoData']['ALEXA']"><i class="fa fa-bar-chart" style="font-size:16px;color:#0a4069"></i> Alexa:</span> <span class="list-item1">N/A |  </span> </li>
+
+                        <li><span class="right-item" *ngIf="item['moz_rank']"> <i class="fa fa-link" style="font-size:16px;color:#0a4069"></i> Moz Rank:</span> <span class="list-item1">{{item['moz_rank']}} |   </span></li>
+                        <li><span class="right-item" *ngIf="!item['moz_rank']"> <i class="fa fa-link" style="font-size:16px;color:#0a4069"></i> Moz Rank:</span> <span class="list-item1">N/A |   </span></li>
+
+                        <li><span class="right-item"><i class="fa fa-newspaper-o" style="font-size:16px;color:#0a4069"></i> Blogs:</span> <span class="list-item1">{{item['blogs']}}</span></li>
+                        <li><span class="right-item"><i class="fa fa-random" style="font-size:16px;color:#0a4069"></i> Wowtr:</span> <span class="list-item1">{{item['seoData']['WOWTR']}}</span></li>
+
+                    </ul>
+                </div>
+            </div>
+            </div>
+        </div>
+</div>
+
+
+    <div  class="" *ngIf="loaded&& webInfluencers.totalItems!=0">
+
+        <div class="row" id="myHeader">
+            <div class="col-md-12 list-row">
+                <div class="row">
+                    <div class="col-md-6">
+                        <!--<button  class="btn btn-success">Select All</button>-->
+                        <div id="ck-button">
+                            <label>
+
+                                <input type="checkbox"  (change)="cheakall($event.target.checked)" ><span>Select All</span>
+                            </label>
+                        </div>
+
+                        <button  class="btn btn-success" (click)="add_create_list()"> Add to list</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class=" container-fluid">
+            <div class="row">
+            <div class="loaded-container" *ngFor="let item of webInfluencers.results" >
+
+                <div class="col-md-1 checkbox-loaded" type="checkbox">
+                    <input type="checkbox" style="display: flex"  name="{{item['id']}}" [(ngModel)]="inflist[item['id']]"  id="table-check-{{item['id']}}">
+                    <!--<label for="table-check-{{item['id']}}"></label>-->
+                </div>
+                <div class="col-md-2 text-center">
+                    <img [src]="item['data']['main_image']"  style="height: 125px;  width: 125px; margin-top: 50px; border-radius: 100%">
+                </div>
+
+                <div class="col-md-9">
+                    <div class="row">
+                        <label class="tbl-cell tbl-cell-name">{{item['title']}}</label>
+                    </div>
+                    <div class="row txt" style="padding-top: 8px; ">
+                        <label class="item-content" style="    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;" title="{{item['highlightText']}}">{{item['highlightText']}}</label>
+
+                    </div>
+                    <div class="row" style="margin-top: 15px">
+                        <div class="col-md-2 text-left">
+                            <label class="item-loc"> <i class="fa fa-map-marker" style="font-size:16px;color:#c00"></i> {{item['data']['country']}}</label>
+
+                        </div>
+                        <div class="col-md-10 text-left">
+
+                            <label class="item-loc"> <i class="fa fa-location-arrow" style="font-size:16px;color:#c00; "></i> Contact:  <a style="color: #0a6aa1; font-weight: bolder">{{item['main_url']}}</a></label>
+                        </div>
+                    </div>
+                    <hr style="color: #555555">
+                    <div class="row" style="margin-top: 10px">
+                        <ul style="display: flex; padding-top: 5px">
+                            <li><span class="right-item"><i class="fa fa-bar-chart" style="font-size:16px;color:#0a4069"></i> Alexa:</span> <span class="list-item1">{{ item['seoData']['ALEXA']}} |  </span> </li>
+                            <li><span class="right-item"> <i class="fa fa-link" style="font-size:16px;color:#0a4069"></i> Type:</span> <span class="list-item1">{{item['data']['site_type']}} |   </span></li>
+                            <li><span class="right-item"><i class="fa fa-newspaper-o" style="font-size:16px;color:#0a4069"></i> EWOW:</span> <span class="list-item1">{{item['seoData']['EWOW']}}</span></li>
+                            <li><span class="right-item"><i class="fa fa-random" style="font-size:16px;color:#0a4069"></i> Wowtr:</span> <span class="list-item1">{{item['seoData']['WOWTR']}}</span></li>
+
+                        </ul>
+                    </div>
+                    <hr style="color: #555555">
+                    <div class="row" style="margin-top: 10px">
+                        <ul style="display: flex; padding-top: 5px">
+                            <li><span class="right-item"><i class="fa fa-user-circle-o" style="font-size:16px;color:#0a4069"></i> Author:</span> <span class="list-item1">{{item['author']}} |</span></li>
+                            <li><span class="right-item"><i class="fa fa-list-alt" style="font-size:16px;color:#0a4069"></i> EVISD: </span> <span class="list-item1">{{item['seoData']['EVISD']}} |  </span> </li>
+                            <li><span class="right-item"><i class="fa fa-bar-chart-o" style="font-size:16px;color:#0a4069"></i> Domain Rank: </span> <span class="list-item1">{{item['data']['domain_rank']}}  </span> </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            </div>
+
+        </div>
+
+</div>
+</div>
+<script>
+    window.onscroll = function() {myFunction()};
+
+    var header = document.getElementById("myHeader");
+    var sticky = header.offsetTop;
+
+    function myFunction() {
+        if (window.pageYOffset > sticky) {
+            header.classList.add("sticky");
+        } else {
+            header.classList.remove("sticky");
+        }
+    }
+</script>

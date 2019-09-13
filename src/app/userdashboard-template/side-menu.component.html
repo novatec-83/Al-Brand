@@ -1,0 +1,271 @@
+<div class="mobile-menu-left-overlay"></div>
+<nav class="side-menu">
+    <!--<div class="side-menu-avatar">-->
+        <!--<div class="avatar-preview avatar-preview-100">-->
+            <!--&lt;!&ndash; <img src="../../assets/img/avatar-1-256.png" alt=""> &ndash;&gt;-->
+            <!--&lt;!&ndash;<p-fileUpload name="myfile[]" customUpload="true" (uploadHandler)="myUploader($event)"></p-fileUpload>&ndash;&gt;-->
+            <!--<img *ngIf="currentUserLoaded&&!currentUser.profile_image" src={{img}} alt="" (click)="processProfileImage()">-->
+            <!--<img *ngIf="currentUserLoaded&&currentUser.profile_image" src={{currentUser.profile_image}} alt=""-->
+                 <!--(click)="processProfileImage()" onerror="this.src='../../assets/img/Blank_Avatar.png'">-->
+            <!--&lt;!&ndash;<input type="file" class="" #fileInput placeholder="Upload file..." />&ndash;&gt;-->
+            <!--&lt;!&ndash;<button type="button" (click)="upload()">Upload</button>&ndash;&gt;-->
+        <!--</div>-->
+    <!--</div>-->
+
+
+
+    <ul class="side-menu-list">
+        <li class="sub-list">
+            <a [routerLink]="['/dashboard']" style="color: black;">
+                <!--<i class="fa fa-list-alt"></i>-->
+                <img src="../../assets/header-images/list-with-dots.png">
+                <span class="lbl">Lists</span>
+            </a>
+        </li>
+        <!--<li class="brown">-->
+            <!--<a [routerLink]="['/twitter/categories']">-->
+                <!--<img src="../../assets/header-images/diagram.png">-->
+                <!--<span class="lbl">Twitter categories</span>-->
+            <!--</a>-->
+        <!--</li>-->
+
+        <li class="aquamarine">
+            <a [routerLink]="['/multi/search']">
+                <img src="../../assets/header-images/internet.png">
+                <span class="lbl">Web Search</span>
+            </a>
+        </li>
+
+
+        <li class="blue with-sub">
+            <a [routerLink]="['/facebook/search']">
+                <!--<i class="font-icon font-icon-facebook"></i>-->
+                <img src="../../assets/header-images/Fb@1x-.png">
+
+                <span class="lbl">Facebook</span>
+            </a>
+        </li>
+
+
+        <li class="sub-list">
+            <a [routerLink]="['/youtube/search']">
+                <img src="../../assets/header-images/YouTube@1x-.png">
+                <span class="lbl"> Youtube</span>
+            </a>
+        </li>
+        <li class="sub-list">
+            <a [routerLink]="['/instagram/search']">
+                <img src="../../assets/header-images/Insta@1x-.png">
+                <span class="lbl"> Instagram</span>
+            </a>
+        </li>
+
+
+        <li class="sub-list">
+            <a [routerLink]="['/twitter/search']">
+                <img src="../../assets/header-images/Twitter@1x-.png">
+
+                <span class="lbl"> Twitter</span>
+            </a>
+        </li>
+        <li class="sub-list">
+            <a [routerLink]="['/blogosphere/search']">
+                <img src="../../assets/header-images/Blog@1x-.png">
+                <span class="lbl"> Blogosphere</span>
+            </a>
+        </li>
+        <!-- <li class="sub-list">
+            <a [routerLink]="['/linkedin/search']">
+                <img src="../../assets/header-images/LinkedIn@1x-.png">
+                <span class="lbl"> LinkedIn</span>
+            </a>
+        </li> -->
+        <li class="sub-list">
+            <a [routerLink]="['/pinterest/search']">
+                <img src="../../assets/header-images/Pin@1x-.png">
+
+                <span class="lbl"> Pinterest</span>
+            </a>
+        </li>
+
+        <li class="sub-list">
+            <a [routerLink]="['/periscope/search']">
+                <img src="../../assets/img/periscope_24.png">
+
+                <span class="lbl"> Periscope</span>
+            </a>
+        </li>
+        <li class="sub-list">
+            <a [routerLink]="['/medium/search']">
+                <img src="../../assets/header-images/medium.png">
+
+                <span class="lbl">Medium</span>
+            </a>
+        </li>
+        <li class="sub-list">
+            <a [routerLink]="['/flickr/search']">
+                <img src="../../assets/header-images/flickr_32.png">
+
+                <span class="lbl"> Flickr</span>
+            </a>
+        </li>
+        <li class="sub-list">
+            <a [routerLink]="['/optin/search']">
+                <img src="../../assets/header-images/team.png">
+
+                <span class="lbl"> Opt-In Influencers</span>
+            </a>
+        </li>
+        <!--<li class="sub-list">-->
+            <!--<a data-toggle="modal" data-target="#myModal3">-->
+                <!--<img src="../../assets/header-images/review.png">-->
+                <!--<span class="lbl">Leave Review</span>-->
+            <!--</a>-->
+        <!--</li>-->
+        <!--<li class="sub-list">-->
+            <!--<a [routerLink]="['/my-profile']">-->
+                <!--<img src="../../assets/header-images/user%20(1).png">-->
+                <!--<span class="lbl">My Profile</span>-->
+            <!--</a>-->
+        <!--</li>-->
+        <!--<li class="sub-list">-->
+            <!--<a [routerLink]="['/update-password']">-->
+                <!--<img src="../../assets/header-images/key%20(1).png">-->
+                <!--<span class="lbl">Change Password</span>-->
+            <!--</a>-->
+        <!--</li>-->
+        <li class="sub-list">
+            <a [routerLink]="['/login']">
+                <img src="../../assets/header-icon/logout.png">
+                <span class="lbl"> Logout</span>
+            </a>
+        </li>
+    </ul>
+
+</nav>
+
+<!--<nav class="sidenav" id="mySidenav">-->
+
+    <!--<div class="side-menu-avatar">-->
+        <!--<a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>-->
+        <!--<div class="avatar-preview avatar-preview-100">-->
+            <!--&lt;!&ndash; <img src="../../assets/img/avatar-1-256.png" alt=""> &ndash;&gt;-->
+            <!--&lt;!&ndash;<p-fileUpload name="myfile[]" customUpload="true" (uploadHandler)="myUploader($event)"></p-fileUpload>&ndash;&gt;-->
+            <!--<img *ngIf="currentUserLoaded&&!currentUser.profile_image" src={{img}} alt="" (click)="processProfileImage()">-->
+            <!--<img *ngIf="currentUserLoaded&&currentUser.profile_image" src={{currentUser.profile_image}} alt=""-->
+                 <!--(click)="processProfileImage()" onerror="this.src='../../assets/img/Blank_Avatar.png'">-->
+            <!--&lt;!&ndash;<input type="file" class="" #fileInput placeholder="Upload file..." />&ndash;&gt;-->
+            <!--&lt;!&ndash;<button type="button" (click)="upload()">Upload</button>&ndash;&gt;-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<ul class="side-menu-list">-->
+        <!--<li class="grey with-sub">-->
+            <!--<a [routerLink]="['/dashboard']">-->
+                <!--<i class="fa fa-list-alt"></i>-->
+                <!--<span class="lbl">Dashboard</span>-->
+            <!--</a>-->
+        <!--</li>-->
+        <!--<li class="brown">-->
+            <!--<a [routerLink]="['/twitter/categories']">-->
+                <!--<i class="font-icon font-icon-widget"></i>-->
+                <!--<span class="lbl">Twitter categories</span>-->
+            <!--</a>-->
+        <!--</li>-->
+
+        <!--&lt;!&ndash;<li class="magenta">&ndash;&gt;-->
+        <!--&lt;!&ndash;<a href="#">&ndash;&gt;-->
+        <!--&lt;!&ndash;<i class="font-icon font-icon-user"></i>&ndash;&gt;-->
+        <!--&lt;!&ndash;<span class="lbl">Profile</span>&ndash;&gt;-->
+        <!--&lt;!&ndash;</a>&ndash;&gt;-->
+        <!--&lt;!&ndash;</li>&ndash;&gt;-->
+
+        <!--<li class="aquamarine">-->
+            <!--<a [routerLink]="['/multi/search']">-->
+                <!--<i class="fa fa-search"></i>-->
+                <!--<span class="lbl">Search</span>-->
+            <!--</a>-->
+        <!--</li>-->
+
+
+        <!--<li class="blue with-sub">-->
+            <!--<a [routerLink]="['/facebook/search']">-->
+                <!--<i class="font-icon font-icon-facebook"></i>-->
+                <!--<span class="lbl">Facebook</span>-->
+            <!--</a>-->
+        <!--</li>-->
+
+
+        <!--<li class="red">-->
+            <!--<a [routerLink]="['/youtube/search']">-->
+                <!--<i class="fa fa-youtube"></i>-->
+                <!--<span class="lbl">Youtube</span>-->
+            <!--</a>-->
+        <!--</li>-->
+        <!--<li class="gold with-sub">-->
+            <!--<a [routerLink]="['/instagram/search']">-->
+                <!--<i class="fa fa-instagram"></i>-->
+                <!--<span class="lbl">Instagram</span>-->
+            <!--</a>-->
+        <!--</li>-->
+
+
+        <!--<li class="blue">-->
+            <!--<a [routerLink]="['/twitter/search']">-->
+                <!--<i class="font-icon font-icon-twitter"></i>-->
+                <!--<span class="lbl">Twitter</span>-->
+            <!--</a>-->
+        <!--</li>-->
+        <!--<li class="magenta opened">-->
+            <!--<a [routerLink]="['/blogosphere/search']">-->
+                <!--<i class="fa fa-newspaper-o"></i>-->
+                <!--<span class="lbl">Blogosphere</span>-->
+            <!--</a>-->
+        <!--</li>-->
+        <!--<li class="blue">-->
+            <!--<a [routerLink]="['/linkedin/search']">-->
+                <!--<i class="font-icon font-icon-linkedin"></i>-->
+                <!--<span class="lbl">LinkedIn</span>-->
+            <!--</a>-->
+        <!--</li>-->
+        <!--<li class="red">-->
+            <!--<a [routerLink]="['/pinterest/search']">-->
+                <!--<i class="fa fa-pinterest"></i>-->
+                <!--<span class="lbl">Pinterest</span>-->
+            <!--</a>-->
+        <!--</li>-->
+        <!--<li class="brown">-->
+            <!--<a [routerLink]="['/optin/search']">-->
+                <!--<i class="fa fa-wifi"></i>-->
+                <!--<span class="lbl">Opt-In Influencers</span>-->
+            <!--</a>-->
+        <!--</li>-->
+        <!--&lt;!&ndash;<li class="coral">&ndash;&gt;-->
+        <!--&lt;!&ndash;<a href="#">&ndash;&gt;-->
+        <!--&lt;!&ndash;<i class="font-icon font-icon-cogwheel"></i>&ndash;&gt;-->
+        <!--&lt;!&ndash;<span class="lbl">Settings</span>&ndash;&gt;-->
+        <!--&lt;!&ndash;</a>&ndash;&gt;-->
+        <!--&lt;!&ndash;</li>&ndash;&gt;-->
+
+        <!--<li class="blue-dirty">-->
+            <!--<a [routerLink]="['/my-profile']">-->
+                <!--<i class="fa fa-user"></i>-->
+                <!--<span class="lbl">My Profile</span>-->
+            <!--</a>-->
+        <!--</li>-->
+        <!--<li class="blue-dirty">-->
+            <!--<a [routerLink]="['/update-password']">-->
+                <!--<i class="fa fa-key" style="color: red"></i>-->
+                <!--<span class="lbl">Change Password</span>-->
+            <!--</a>-->
+        <!--</li>-->
+        <!--<li class="blue-dirty">-->
+            <!--<a [routerLink]="['/login']">-->
+                <!--<i class="font-icon glyphicon glyphicon-log-out"></i>-->
+                <!--<span class="lbl">Logout</span>-->
+            <!--</a>-->
+        <!--</li>-->
+
+
+    <!--</ul>-->
+<!--</nav>-->
+<!--.side-menu-->

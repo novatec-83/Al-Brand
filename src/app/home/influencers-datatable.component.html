@@ -1,0 +1,177 @@
+<div class="page-content">
+  <div class="container-fluid">
+
+    <section class="box-typical faq-page">
+      <form class="faq-page-header-search">
+        <div class="search">
+          <input type="text" #searchvalue class="form-control form-control-rounded" style="font-size: x-large" placeholder="Search by Skillset, Category or Keyword"/>
+          <button type="submit" class="find" (click)="find(searchvalue.value)">
+            <i class="font-icon font-icon-search"></i>
+          </button>
+        </div>
+      </form><!--.faq-page-header-search-->
+
+
+
+      <app-categorycard  (clicked)="onClicked($event)"></app-categorycard>
+    </section><!--.faq-page-->
+  </div><!--.container-fluid-->
+</div><!--.page-content-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--<div class="page-content">-->
+
+  <!--<div class="row">-->
+    <!--<div class="col-lg-2"></div>-->
+    <!--<div class="col-lg-8">-->
+    <!--<form style="height: 44px" class="site-header-search">-->
+    <!--<input style="font-size: xx-large" type="text" placeholder="Search">-->
+    <!--<button type="submit">-->
+      <!--<span class="font-icon-search large"></span>-->
+    <!--</button>-->
+    <!--<div class="overlay"></div>-->
+  <!--</form>-->
+    <!--</div>-->
+  <!--</div>-->
+  <!--<section class="box-typical">-->
+    <!--&lt;!&ndash;<header class="box-typical-header">&ndash;&gt;-->
+    <!--&lt;!&ndash;<div class="tbl-row">&ndash;&gt;-->
+    <!--&lt;!&ndash;<div class="tbl-cell tbl-cell-title">&ndash;&gt;-->
+    <!--&lt;!&ndash;<h3>Influencers</h3>&ndash;&gt;-->
+    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+    <!--&lt;!&ndash;<div class="tbl-cell tbl-cell-action-bordered">&ndash;&gt;-->
+    <!--&lt;!&ndash;<button type="button" class="action-btn"><i class="font-icon font-icon-pencil"></i></button>&ndash;&gt;-->
+    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+    <!--&lt;!&ndash;<div class="tbl-cell tbl-cell-action-bordered">&ndash;&gt;-->
+    <!--&lt;!&ndash;<button type="button" class="action-btn"><i class="font-icon font-icon-re"></i></button>&ndash;&gt;-->
+    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+    <!--&lt;!&ndash;<div class="tbl-cell tbl-cell-action-bordered">&ndash;&gt;-->
+    <!--&lt;!&ndash;<button type="button" class="action-btn"><i class="font-icon font-icon-trash"></i></button>&ndash;&gt;-->
+    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+    <!--&lt;!&ndash;</header>&ndash;&gt;-->
+
+    <!--<div class="box-typical-body">-->
+      <!--<div class="table-responsive">-->
+        <!--<div class="bootstrap-table">-->
+          <!--<p-dataTable [value]="influencers" class="table table-hover"  [globalFilter]="gb" [rows]="10"-->
+                       <!--[paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]">-->
+
+            <!--<p-header class="box-typical-header">-->
+              <!--<div class="fixed-table-toolbar">-->
+                <!--<div class="bars pull-left">-->
+                  <!--<div id="toolbar">-->
+                    <!--Influencers-->
+                  <!--</div>-->
+                <!--</div>-->
+              <!--</div>-->
+            <!--</p-header>-->
+            <!--<p-column>-->
+              <!--<ng-template let-col let-car="rowData" let-ri="rowIndex" pTemplate="body">-->
+                <!--<dt class="table-photo">-->
+                  <!--<img src="{{car['image_url']}}" alt="" data-toggle="tooltip" data-placement="bottom"-->
+                       <!--title="{{car['name']}}">-->
+                <!--</dt>-->
+              <!--</ng-template>-->
+            <!--</p-column>-->
+            <!--<p-column field="name" header="Name">-->
+              <!--<ng-template pTemplate="body" let-col let-car="rowData" >-->
+                <!--<button type="button" class="btn btn-link" (click) ="goTwitterProfile(car)">{{car[col.field]}}</button>-->
+                <!--<span class="hint-circle"-->
+                      <!--data-toggle="tooltip"-->
+                      <!--data-placement="top"-->
+                      <!--title="{{car['description']}}">?</span>-->
+              <!--</ng-template>-->
+            <!--</p-column>-->
+            <!--<p-column field="created_at" header="Created At" sortable="true">-->
+              <!--<ng-template let-col let-car="rowData"  pTemplate="body">-->
+                <!--<td class="table-date">{{car['created_at']| date:'short'}} <i-->
+                  <!--class="font-icon font-icon-clock"></i></td>-->
+              <!--</ng-template>-->
+            <!--</p-column>-->
+            <!--<p-column field="screen_name" header="Screen Name">-->
+            <!--</p-column>-->
+
+            <!--<p-column field="location" header="Location"></p-column>-->
+            <!--<p-column field="favourites_count">-->
+              <!--<ng-template pTemplate="header">-->
+                <!--<dt class="table-icon-cell">-->
+                  <!--<i class="font-icon font-icon-heart"></i>-->
+                <!--</dt>-->
+              <!--</ng-template>-->
+
+              <!--<ng-template let-col let-car="rowData" let-ri="rowIndex" pTemplate="body">-->
+                <!--<dt class="table-icon-cell">-->
+                  <!--<i class="font-icon font-icon-heart"></i>-->
+                  <!--{{car[col.field]}}-->
+                <!--</dt>-->
+              <!--</ng-template>-->
+
+            <!--</p-column>-->
+            <!--<p-column field="followers_count" header="Followers"></p-column>-->
+
+            <!--<p-column field="trend" header="Category">-->
+
+              <!--<ng-template let-col let-car="rowData" let-ri="rowIndex" pTemplate="body">-->
+
+                <!--&lt;!&ndash;<span *ngFor="let trend of car[col.field]">&ndash;&gt;-->
+                  <!--&lt;!&ndash;<span *ngFor="let cat of trend.category" >&ndash;&gt;-->
+                    <!--&lt;!&ndash;{{cat.name}}&ndash;&gt;-->
+                  <!--&lt;!&ndash;</span>&ndash;&gt;-->
+                <!--&lt;!&ndash;</span>&ndash;&gt;-->
+                <!--<td >-->
+
+                  <!--&lt;!&ndash;style="visibility:hidden"&ndash;&gt;-->
+
+                  <!--<table id="table-xs" class="table table-bordered table-hover table-xs">-->
+
+                    <!--<tbody>-->
+                    <!--<ul *ngFor="let trend of car[col.field]">-->
+                      <!--<tr *ngFor="let cat of trend.category">-->
+                        <!--<td>{{cat.name}}</td>-->
+                        <!--<td class="table-date">{{cat.classfied_at| date:'short'}} <i-->
+                          <!--class="font-icon font-icon-clock"></i></td>-->
+                      <!--</tr>-->
+                    <!--</ul>-->
+                    <!--</tbody>-->
+                  <!--</table>-->
+
+
+                <!--</td>-->
+
+              <!--</ng-template>-->
+
+            <!--</p-column>-->
+
+          <!--</p-dataTable>-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</section>-->
+<!--</div>-->
+
+

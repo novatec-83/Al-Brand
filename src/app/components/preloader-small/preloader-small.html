@@ -1,0 +1,6 @@
+
+<div class="loading-container" *ngIf="preloaderService.getPreloaderCount('small') > 0 && preloaderService.getPreloaderCount('full') == 0">
+    <div class="spinner"></div>
+    <div class="spinner-center"></div>
+    <div class="loading-text">Loading...</div>
+</div>

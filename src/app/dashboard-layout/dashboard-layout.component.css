@@ -1,0 +1,16 @@
+.right-nav{
+    background: #fafafa;
+    width: 80%;
+    float: right;
+    margin-right: 10px;
+}
+@media (max-width: 991px) {
+    .openbtn {
+        display: block!important;
+        top: 70px!important;
+        font-size: 22px!important;
+        left: 10px;
+        z-index: 0;
+    }
+
+}

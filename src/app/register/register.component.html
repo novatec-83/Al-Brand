@@ -1,0 +1,115 @@
+<preloader-full></preloader-full>
+<div class="">
+  <div class="">
+    <div class="login-page" style="padding: 255px 50px">
+      <div class="col-lg-5 col-md-9 col-sm-12 col-xs-12 login-wrap">
+        <form class="ng-untouched ng-pristine ng-valid"
+              (ngSubmit)="!userFormControl.hasError('required')
+                && !firstnameFormControl.hasError('required')
+                  && !lastnameFormControl.hasError('required')
+                   && !passwordFormControl.hasError('required')">
+          <div class="card custom-width">
+            <div class="card-header text-center" data-background-color="rose">
+              <h4 class="card-title">
+                <label class="signin-heading"> Sign up to Your Account</label></h4>
+
+            </div>
+
+            <div class="card-content">
+              <div class="row">
+                <div class="col-md-6 col-sm-12">
+                  <mat-form-field>
+                    <input matInput placeholder="Username" [(ngModel)]="model.username" name="un" required>
+                    <mat-error *ngIf="userFormControl.hasError('required')">
+                      Username is <strong>required</strong>
+                    </mat-error>
+                  </mat-form-field>
+
+                </div>
+
+                <div class="col-md-6 col-sm-12">
+                  <mat-form-field>
+                    <input matInput placeholder="Firstname" [(ngModel)]="model.firstname" name="ft" required>
+
+                    <mat-error *ngIf="firstnameFormControl.hasError('required')">
+                      Firstname is <strong>required</strong>
+                    </mat-error>
+                  </mat-form-field>
+
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6 col-sm-12">
+                  <mat-form-field>
+                    <input matInput placeholder="Lastname" [(ngModel)]="model.lastname" name="lt" required>
+
+                    <mat-error *ngIf="lastnameFormControl.hasError('required')">
+                      Lastname is <strong>required</strong>
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-md-6 col-sm-12">
+
+                  <mat-form-field>
+                    <input matInput placeholder="Email" [(ngModel)]="model.email" type="email" name="el" required>
+                    <mat-error *ngIf="emailFormControl.hasError('required')">
+                      Email is <strong>required</strong>
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+              </div> <div class="row">
+                <div class="col-md-6 col-sm-12">
+
+                  <mat-form-field style="width: 97%">
+                    <input matInput placeholder="Password" [(ngModel)]="model.password" type="password" name="pd" required>
+
+                    <mat-error *ngIf="passwordFormControl.hasError('required')">
+                      Password is <strong>required</strong>
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+              <div class="col-md-6 col-sm-12">
+
+                <mat-form-field style="width: 97%">
+                  <input matInput placeholder="Confirm Password"  [(ngModel)]="password2" (focusout)="showAllert()"   type="password" name="pd" required>
+                  <mat-error *ngIf="passwordFormControl.hasError('required')">
+                    Password is <strong>required</strong>
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              </div>
+              <div class="row">
+                <div class="text-center recaptcha-box" style="margin: auto" [ngClass]="{ 'has-error':!recaptcha}">
+                                <app-recapcha></app-recapcha>
+                  <div  style="font-size: 21px;font-weight: bold;color: red"  *ngIf="!recaptcha" >Recaptcha is require</div>
+                </div>
+              </div>
+            <div class="footer text-center">
+              <!--<button type="submit"  tabindex=3  >Sign Up</button>-->
+              <div class="row">
+                <div class="col-md-6">
+                  <button type="submit" class="btn-fill"  (click)="freeSignup()" style="color: #ffffff!important; font-size: 21px!important;" >Start Trail</button>
+
+                </div>
+                <div class="col-md-6">
+                  <button type="submit" class="btn-fill" (click)="paidSignup()"  style="color: #ffffff!important; font-size: 21px!important;" >Paid Sign up</button>
+
+                </div>
+              </div>
+
+              <label class="font1" style="float: left;"> Already have account.
+                <a style="font-size: 20px; font-weight: 700;" [routerLink]="['/login']"> Sign In </a>
+              </label>
+            </div>
+          </div>
+          </div>
+        </form>
+      </div>
+      <div class="col-lg-4 col-md-3"></div>
+    </div>
+  </div>
+</div>
+
+
+
+

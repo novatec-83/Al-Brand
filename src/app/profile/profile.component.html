@@ -1,0 +1,56 @@
+<div class="container" style="margin-top: 30px">
+  <div class="login-form-1-center profile-form">
+    <form  class="login-form-1" role="form" #form="ngForm"  name="form" novalidate>
+      <div class="login-form-1-header " style="background-color: black">
+        <h3>Brand Profile </h3>
+        <!--<ul class="logic-from-1-sl">-->
+        <!--<li><a href=""><i class="fa fa-facebook"></i></a></li>-->
+        <!--<li><a href=""><i class="fa fa-twitter"></i></a></li>-->
+        <!--<li><a href=""><i class="fa fa-google-plus"></i></a></li>-->
+        <!--</ul>-->
+      </div>
+      <div class="login-form-1-body">
+
+
+        <div  class="row">
+          <div class="col-md-12 text-center">
+          <!---->
+          <img  class="img-responsive" height="200px" style="border-radius: 100px" data-target=".bd-example-modal-lg3" data-toggle="modal"  [src]="profile_image"  onerror="this.src='../../assets/img/Blank_Avatar.png'" >
+          <!--<input type="file"  class="upload-input" style="opacity: 0;"  (change)="onChange($event)" accept="image/*">-->
+
+          <!--<button class="btn btn-rounded" value="">Upload Picture</button>-->
+          </div>
+        </div>
+        <div class="row ">
+          <div class="col-md-12 text-right">
+                        <span class="btn-file">
+                Upload Image
+                <input type="file"  class="upload-input" (change)="onChange($event)" accept="image/*">
+              </span>
+          </div>
+        </div>
+
+        <!--<div class="form-group profile-group label-overlay">-->
+          <!--<h4 for="title" title="You Can't Change Username">Name</h4>-->
+          <!--<input type="text" class="form-control"name="username" value="{{currentUser.first_name}}"   placeholder="User Name" disabled >-->
+        <!--</div>-->
+        <div class="form-group profile-group label-overlay">
+          <h4 >User Name</h4>
+          <input type="text"  class="form-control"   pattern="[A-Za-z]+ ?" value="{{currentUser.username}}" placeholder="First Name" >
+                  </div>
+
+        <input type="submit" [disabled]="!form.dirty" value="Update Profile" class="profile-form-btn"  >
+      </div>
+    </form>
+  </div>
+</div>
+
+<div aria-hidden="true" aria-labelledby="mySmallModalLabel" class="modal fade bd-example-modal-lg3" role="dialog" tabindex="-1">
+  <div  class="modal-dialog modal-lg">
+    <div  class="modal-content">
+      <img  class="img-responsive" [src]="profile_image">
+    </div>
+  </div>
+</div>
+
+<!--<img  src="../../assets/img/report/photo_1430169140972.jpg" style="cursor: pointer">-->
